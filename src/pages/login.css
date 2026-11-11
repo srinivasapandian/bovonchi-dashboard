@@ -1,0 +1,49 @@
+.bv-login {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(380px, 480px);
+  align-items: center;
+  column-gap: clamp(32px, 6vw, 120px);
+  padding: 48px clamp(24px, 6vw, 96px) 72px;
+  background: var(--bv-ivory);
+  position: relative;
+}
+
+.bv-login__hero { max-width: 640px; }
+.bv-login__eyebrow { margin: 0 0 22px; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; color: var(--bv-gold-deep); }
+.bv-login__hero h1 { margin: 0 0 28px; font-family: var(--bv-font-display); font-weight: 400; font-size: clamp(52px, 7vw, 92px); line-height: 1.02; letter-spacing: -0.01em; }
+.bv-login__hero h1 em { display: block; font-style: italic; color: var(--bv-gold-deep); }
+.bv-login__lede { margin: 0; max-width: 360px; font-size: 17px; line-height: 1.75; color: var(--bv-ink-muted); font-weight: 300; }
+
+.bv-login__panel { display: flex; justify-content: center; }
+.bv-login__card { width: 100%; padding: 36px 48px 44px; background: #fff; border: 1px solid var(--bv-line); }
+.bv-login__brand { display: flex; justify-content: center; margin-bottom: 26px; }
+.bv-login__card h2 { margin: 0 0 8px; font-family: var(--bv-font-display); font-weight: 500; font-size: 36px; }
+.bv-login__sub { margin: 0 0 28px; font-size: 14px; color: var(--bv-ink-muted); }
+
+.bv-field { display: block; margin-bottom: 22px; }
+.bv-field__label { display: block; margin-bottom: 8px; font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--bv-ink); }
+.bv-field__label i { font-style: normal; color: var(--bv-gold); margin-left: 4px; }
+.bv-field__wrap { position: relative; display: block; }
+.bv-field__input { display: block; width: 100%; height: 52px; padding: 0 16px; background: var(--bv-paper); border: 1px solid transparent; border-bottom: 1px solid var(--bv-ink-faint); font: inherit; font-size: 15px; color: var(--bv-ink); outline: none; border-radius: 0; transition: border-color 0.15s ease, background 0.15s ease; }
+.bv-field__input::placeholder { color: var(--bv-ink-muted); opacity: 0.85; }
+.bv-field__input:focus { border-color: var(--bv-gold); background: #fffdf8; }
+.bv-field__wrap .bv-field__input { padding-right: 64px; }
+.bv-field__toggle { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); padding: 4px; background: transparent; border: none; font: inherit; font-size: 13px; text-decoration: underline; color: var(--bv-ink); cursor: pointer; }
+
+.bv-login__error { margin: -4px 0 18px; padding: 10px 14px; background: #f6e9e5; border: 1px solid #e6c3ba; color: var(--bv-clay); font-size: 13.5px; }
+
+.bv-login__submit { display: block; width: 100%; height: 48px; margin-top: 10px; background: var(--bv-gold); color: #fff; border: none; border-radius: 999px; font: inherit; font-size: 11px; font-weight: 500; letter-spacing: 0.34em; text-transform: uppercase; cursor: pointer; transition: background 0.15s ease; }
+.bv-login__submit:hover:not(:disabled) { background: var(--bv-gold-deep); }
+.bv-login__submit:disabled { opacity: 0.65; cursor: progress; }
+.bv-login__submit:focus-visible { outline: 2px solid var(--bv-ink); outline-offset: 3px; }
+
+.bv-login__foot { position: absolute; left: 0; right: 0; bottom: 22px; display: flex; justify-content: center; }
+.bv-login__foot img { display: block; height: 22px; width: auto; }
+
+@media (max-width: 900px) {
+  .bv-login { grid-template-columns: 1fr; row-gap: 32px; padding: 32px 20px 80px; align-content: start; }
+  .bv-login__hero h1 { font-size: 46px; }
+  .bv-login__lede { font-size: 15px; }
+  .bv-login__card { padding: 28px 24px 32px; }
+}

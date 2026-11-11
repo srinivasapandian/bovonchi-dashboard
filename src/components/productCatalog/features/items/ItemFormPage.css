@@ -1,0 +1,71 @@
+/* Age spinner — custom number input replacing native browser spinners */
+
+.age-spinner-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.age-custom-input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-family: var(--font-primary, Jost, sans-serif);
+  color: var(--t1, #453F39);
+  padding: 8px 28px 8px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--card-border, #E6DFD3);
+  outline: none;
+  background: var(--surface, #FFFFFF);
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.age-custom-input--error {
+  border-color: var(--red, #A63D2F);
+}
+
+.age-custom-input::-webkit-inner-spin-button,
+.age-custom-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.age-spinner-btns {
+  position: absolute;
+  right: 2px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.age-spinner-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: var(--t3, #D6CCBB);
+  cursor: default;
+  overflow: hidden;
+}
+
+.age-spinner-btn:not(:disabled) {
+  color: var(--t2, #8A7F72);
+  cursor: pointer;
+}
+
+.age-spinner-btn:not(:disabled):hover {
+  color: var(--t1, #453F39);
+}
+
+
+.age-spinner-btn .material-symbols-rounded {
+  font-size: 20px;
+  line-height: 1;
+}

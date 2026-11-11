@@ -1,0 +1,146 @@
+/* ==========================================================================
+   BOVONCHI dashboard — design tokens
+   Mirrors the storefront (bovonchi-demo.brisquedemo.com):
+   ivory paper, warm ink, antique gold, sage; Cormorant Garamond + Jost.
+   The product-catalog screens (ported from the Merchant Portal) read the
+   short-named tokens in the "portal aliases" block, so re-theming them is
+   just a matter of pointing those at the Bovonchi palette.
+   ========================================================================== */
+
+:root {
+  /* Storefront palette */
+  --bv-ivory: #ffffff;
+  --bv-paper: #fdfcf9;
+  --bv-sand: #f4f0e8;
+  --bv-line: #e6dfd3;
+  --bv-line-soft: #ece5d8;
+  --bv-ink: #453f39;
+  --bv-ink-muted: #6e665d;
+  --bv-ink-faint: #9a9084;
+  --bv-gold: #b89550;
+  --bv-gold-deep: #8a6d33;
+  --bv-gold-tint: #f3ead7;
+  --bv-sage: #9caf88;
+  --bv-sage-deep: #2f402d;
+  --bv-sage-tint: #edf3eb;
+  --bv-clay: #a63d2f;
+
+  --bv-font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --bv-font-ui: 'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Portal aliases (used by ported product-catalog code) */
+  --bg: var(--bv-ivory);
+  --surface: #ffffff;
+  --surface-2: var(--bv-sand);
+  --card: #ffffff;
+  --hover: var(--bv-sand);
+
+  --accent: var(--bv-gold);
+  --accent-soft: rgba(184, 149, 80, 0.12);
+
+  --green: #5f7a55;
+  --green-soft: rgba(95, 122, 85, 0.12);
+  --red: var(--bv-clay);
+  --red-soft: rgba(166, 61, 47, 0.08);
+  --orange: #b07a2a;
+  --orange-soft: rgba(176, 122, 42, 0.1);
+
+  --t1: var(--bv-ink);
+  --t2: var(--bv-ink-muted);
+  --t3: var(--bv-ink-faint);
+
+  --card-border: var(--bv-line);
+  --border: var(--bv-line);
+  --divider: var(--bv-line-soft);
+
+  --shadow: 0 1px 3px rgba(69, 63, 57, 0.06);
+  --card-shadow: 0 1px 4px rgba(69, 63, 57, 0.05);
+
+  --font-primary: var(--bv-font-ui);
+  --font-mono: 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  --radius-card: 2px;
+  --radius-input: 2px;
+  --radius-button: 999px;
+  --radius-pill: 999px;
+
+  /* Layout */
+  --sidebar-w: 248px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bv-ivory);
+  color: var(--bv-ink);
+  font-family: var(--bv-font-ui);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--bv-gold-tint);
+}
+
+/* Material Symbols (catalog icons) */
+.material-symbols-rounded {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* Keyframes the ported screens rely on */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes appShimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+/* Thin, quiet scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bv-line) transparent;
+}
+
+/* Keyframes shared with the ported catalog screens */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+@keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(184, 149, 80, 0.35); } 50% { box-shadow: 0 0 0 10px rgba(184, 149, 80, 0); } }
+@keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+@keyframes bone-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: translateX(0); } }
+
+* { -webkit-tap-highlight-color: transparent; }
+
+/* Prevent iOS Safari zoom on input focus */
+@media screen and (max-width: 768px) {
+  input, select, textarea { font-size: 16px; }
+}
