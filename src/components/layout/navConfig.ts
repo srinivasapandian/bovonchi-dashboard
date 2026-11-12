@@ -11,7 +11,7 @@ export interface NavLeaf {
 /** Product Catalog sub-navigation, in the order the Merchant Portal presents it. */
 export const CATALOG_NAV: NavLeaf[] = [
   { label: 'Control Centre', icon: 'dashboard', path: pcPaths.availability },
-  { label: 'Items', icon: 'inventory_2', path: pcPaths.items },
+  { label: 'Products' /* was: label: 'Items' */, icon: 'inventory_2', path: pcPaths.items },
   { label: 'Categories', icon: 'category', path: pcPaths.categories },
   { label: 'Product Options', /* was: label: 'Modifiers', */ icon: 'tune', path: pcPaths.modifiers },
   // Menus, Variations, Combos and Set Menus are hidden, as in the Merchant Portal sidebar.

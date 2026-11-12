@@ -174,7 +174,8 @@ function Slide5Illustration() {
     { num: 1, text: "Click Add Product Option" },
     { num: 2, text: "Name it & add your options" },
     { num: 3, text: "Set required / optional & min-max" },
-    { num: 4, text: "Apply to your items" },
+    // { num: 4, text: "Apply to your items" },
+    { num: 4, text: "Apply to your products" },
   ];
 
   return (

@@ -986,7 +986,7 @@ export default function ControlCentreMobile({
     try {
       await bulkEditItemApi('availability', { locationId, itemIds: ids, channelAvailability, ...(userId ? { userId } : {}) }, token);
       ids.forEach((id) => updateItem(id, { status: 'active' as any }));
-      addToast(`${ids.length} items restored`, 'success');
+      addToast(`${ids.length} products restored` /* was: `${ids.length} items restored` */, 'success');
       markProductCatalogSyncNeeded();
       setSheet(null);
       clearSelected();
@@ -1015,7 +1015,7 @@ export default function ControlCentreMobile({
     try {
       await bulkEditItemApi('availability', { locationId, itemIds: availabilityTargetIds, channelAvailability, ...(userId ? { userId } : {}) }, token);
       availabilityTargetIds.forEach((id) => updateItem(id, { status: 'out_of_stock' as any }));
-      addToast(`${availabilityTargetIds.length} item(s) marked out of stock`, 'success');
+      addToast(`${availabilityTargetIds.length} product(s) marked out of stock` /* was: `${availabilityTargetIds.length} item(s) marked out of stock` */, 'success');
       markProductCatalogSyncNeeded();
       if (selectedIds.size > 0 && availabilityTargetIds.length === selectedIds.size) clearSelected();
       closeAvailabilityModal();
@@ -1027,7 +1027,7 @@ export default function ControlCentreMobile({
   }, [availabilityTargetIds, availabilityScope, availabilityChannels, locationId, channels, computeInactiveWindow, resolveOrderTypeId, userId, token, updateItem, addToast, selectedIds.size, clearSelected, closeAvailabilityModal, refreshAll, setSheet]);
 
   const tabs: { id: EntityTab; label: string; icon: string; count: number }[] = [
-    { id: 'items',      label: 'Items',      icon: 'inventory_2', count: items.length },
+    { id: 'items',      label: 'Products' /* was: label: 'Items' */,      icon: 'inventory_2', count: items.length },
     { id: 'categories', label: 'Categories', icon: 'category',    count: topCategories.length },
   ];
 
@@ -1199,7 +1199,7 @@ export default function ControlCentreMobile({
                       fontFamily: 'var(--font-primary)',
                     }}
                   >
-                    {allVisibleSelected ? 'Clear all selected' : 'Select all items'}
+                    {allVisibleSelected ? 'Clear all selected' : 'Select all products' /* was: 'Select all items' */}
                   </button>
                 </div>
               )}
@@ -1326,7 +1326,7 @@ export default function ControlCentreMobile({
               {allVisibleIds.length === 0 && (
                 <div style={{ textAlign: 'center', padding: '56px 24px', color: T3, fontFamily: 'var(--font-primary)' }}>
                   <span className="material-symbols-rounded" style={{ fontSize: 44, display: 'block', marginBottom: 10 }}>search_off</span>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: T2 }}>No items found</div>
+                  <div style={{ fontSize: 14, fontWeight: 600, color: T2 }}>{/* was: No items found */}No products found</div>
                   <div style={{ fontSize: 12, marginTop: 4 }}>Try a different search or filter</div>
                 </div>
               )}
@@ -1510,7 +1510,7 @@ export default function ControlCentreMobile({
                 {selectedCount} selected
               </div>
               <div style={{ fontSize: 11, color: T3, fontFamily: 'var(--font-primary)' }}>
-                Bulk actions apply to selected items
+                {/* was: Bulk actions apply to selected items */}Bulk actions apply to selected products
               </div>
             </div>
             <button

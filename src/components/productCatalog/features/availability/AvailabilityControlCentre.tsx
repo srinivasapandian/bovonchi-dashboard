@@ -1369,7 +1369,7 @@ export default function AvailabilityControlCentre() {
       setBulkModal(null);
       await refreshAll();
     } catch (e) {
-      const message = e instanceof Error ? e.message : 'Failed to mark items out of stock';
+      const message = e instanceof Error ? e.message : 'Failed to mark products out of stock' /* was: 'Failed to mark items out of stock' */;
       addToast(message, 'error');
     } finally {
       mutationLockRef.current = false;
@@ -1430,7 +1430,7 @@ export default function AvailabilityControlCentre() {
       setBulkModal(null);
       await refreshAll();
     } catch (e) {
-      addToast(e instanceof Error ? e.message : 'Failed to restore items', 'error');
+      addToast(e instanceof Error ? e.message : 'Failed to restore products' /* was: 'Failed to restore items' */, 'error');
     } finally {
       mutationLockRef.current = false;
       setMutationBusy(false);
@@ -1617,7 +1617,7 @@ export default function AvailabilityControlCentre() {
   };
 
   const tabs: { id: EntityTab; label: string; icon: string; count: number }[] = [
-    { id: 'items', label: 'Items', icon: 'inventory_2', count: items.length },
+    { id: 'items', label: 'Products' /* was: label: 'Items' */, icon: 'inventory_2', count: items.length },
     { id: 'categories', label: 'Categories', icon: 'category', count: categories.filter((c) => !c.parentCategoryId).length },
   ];
 
@@ -1785,7 +1785,7 @@ export default function AvailabilityControlCentre() {
                   }
                 }}
                 options={ITEMS_TAB_AVAILABILITY_OPTIONS}
-                ariaLabel="Filter by item availability"
+                ariaLabel="Filter by product availability" /* was: ariaLabel="Filter by item availability" */
                 variant="teal"
                 isActive={itemsAvailabilityFilter !== 'all'}
               />
@@ -1863,14 +1863,14 @@ export default function AvailabilityControlCentre() {
             {items.length === 0 ? 'inventory_2' : 'filter_alt_off'}
           </span>
           <div style={{ fontSize: 15, fontWeight: 600, color: T1, marginBottom: 6 }}>
-            {items.length === 0 ? 'No items in this catalog' : 'No items for this filter'}
+            {items.length === 0 ? 'No products in this catalog' /* was: 'No items in this catalog' */ : 'No products for this filter' /* was: 'No items for this filter' */}
           </div>
           <div style={{ fontSize: 12, color: T3, maxWidth: 360, margin: '0 auto', lineHeight: 1.5 }}>
             {items.length === 0
-              ? 'Items for this location will appear here once they are added.'
+              ? 'Products for this location will appear here once they are added.' /* was: 'Items for this location will appear here once they are added.' */
               : itemsTabHasActiveFilters
                 ? 'Try adjusting category, session, availability, or search.'
-                : 'No items match the current view.'}
+                : 'No products match the current view.' /* was: 'No items match the current view.' */}
           </div>
         </div>
       )}

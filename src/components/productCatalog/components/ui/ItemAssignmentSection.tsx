@@ -198,7 +198,7 @@ const S = {
 /* ── Component ── */
 
 export function ItemAssignmentSection({
-  title = 'Item Assignment',
+  title = 'Product Assignment' /* was: 'Item Assignment' */,
   titleCountBadge,
   icon = 'package_2',
   description,
@@ -212,10 +212,10 @@ export function ItemAssignmentSection({
   loading = false,
   itemsLoading = false,
   emptyLabel,
-  searchPlaceholder = 'Search items...',
+  searchPlaceholder = 'Search products...' /* was: 'Search items...' */,
   showPills = true,
-  addButtonLabel = 'Add Items',
-  noResultsLabel = 'No items found.',
+  addButtonLabel = 'Add Products' /* was: 'Add Items' */,
+  noResultsLabel = 'No products found.' /* was: 'No items found.' */,
   onReorder,
   persistedSelectedIds,
   staticTitleMarginBottom = 14,
@@ -412,7 +412,7 @@ export function ItemAssignmentSection({
         </button>
       </div>
       {itemsLoading ? (
-        <div style={S.muted}>Loading items...</div>
+        <div style={S.muted}>{/* was: Loading items... */}Loading products...</div>
       ) : filteredPickerItems.length === 0 ? (
         <div style={S.muted}>{noResultsLabel}</div>
       ) : (

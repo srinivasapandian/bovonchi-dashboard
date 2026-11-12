@@ -13,7 +13,7 @@ import UserProfileDropdown, { getInitials } from '../../layout/UserProfileDropdo
 
 const MODULES = [
   { icon: 'inventory_2', label: 'Items', desc: 'Manage menu items, pricing & availability', path: pcPaths.items, color: '#B89550', countKey: 'items' as const },
-  { icon: 'category', label: 'Categories', desc: 'Organize items into categories', path: pcPaths.categories, color: '#8C6A7A', countKey: 'categories' as const },
+  { icon: 'category', label: 'Categories', desc: 'Organize products into categories' /* was: 'Organize items into categories' */, path: pcPaths.categories, color: '#8C6A7A', countKey: 'categories' as const },
   { icon: 'tune', label: 'Product Options' /* was: 'Modifiers' */, desc: 'Size, metal, finish & other choices' /* was: 'Add-ons, toppings & customizations' */, path: pcPaths.modifiers, color: '#5E8C7B', countKey: 'modifiers' as const },
   { icon: 'schedule', label: 'Sessions', desc: 'Time-based availability slots', path: pcPaths.sessions, color: '#5F7A55', countKey: 'sessions' as const },
   { icon: 'soup_kitchen', label: 'Kitchen Stations', desc: 'Routing & printer configuration', path: pcPaths.kitchenStations, color: '#A63D2F', countKey: 'stations' as const },
@@ -68,7 +68,7 @@ export default function InventoryHubPage() {
   const [hubCountsReady, setHubCountsReady] = useState(() => !locationId);
   const hubBatchGenRef = useRef(0);
 
-  useErrorToast(itemsError, { fallbackMessage: 'Failed to load items' });
+  useErrorToast(itemsError, { fallbackMessage: 'Failed to load products' /* was: 'Failed to load items' */ });
   useErrorToast(categoriesError, { fallbackMessage: 'Failed to load categories' });
   useErrorToast(menusError, { fallbackMessage: 'Failed to load menus' });
   useErrorToast(combosError, { fallbackMessage: 'Failed to load combos' });

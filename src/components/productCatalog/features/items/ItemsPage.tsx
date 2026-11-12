@@ -423,7 +423,7 @@ interface ColumnDef {
 
 const ALL_COLUMNS: ColumnDef[] = [
   { key: 'selection', label: 'Selection', locked: true, defaultVisible: true, group: 'always' },
-  { key: 'item', label: 'Item', locked: true, defaultVisible: true, group: 'always' },
+  { key: 'item', label: 'Product' /* was: label: 'Item' */, locked: true, defaultVisible: true, group: 'always' },
   { key: 'code', label: 'Code', defaultVisible: true, group: 'standard' },
   { key: 'price', label: 'Price', defaultVisible: true, group: 'standard' },
   // { key: 'status', label: 'Status', defaultVisible: true, group: 'standard' },
@@ -536,7 +536,7 @@ export default function ItemsPage() {
     kitchenPrintOrderTypes,
     updateItem,
   );
-  useErrorToast(itemsError, { fallbackMessage: 'Failed to load items' });
+  useErrorToast(itemsError, { fallbackMessage: 'Failed to load products' /* was: 'Failed to load items' */ });
   useErrorToast(categoriesError, { fallbackMessage: 'Failed to load categories' });
   useErrorToast(menusError, { fallbackMessage: 'Failed to load menus' });
 
@@ -560,7 +560,7 @@ export default function ItemsPage() {
 
   const setTopBarProps = useDesktopTopBar();
   useEffect(() => {
-    setTopBarProps({ title: 'Items', breadcrumbs: 'Product Catalog' });
+    setTopBarProps({ title: 'Products' /* was: title: 'Items' */, breadcrumbs: 'Product Catalog' });
   }, [setTopBarProps]);
 
   useEffect(() => {
@@ -616,9 +616,9 @@ export default function ItemsPage() {
       setSelectedItems(new Set());
       clearItemsCache();
       clearCategoriesCache();
-      addToast(`Kitchen printing updated for ${updatedCount} item${updatedCount === 1 ? '' : 's'}`, 'success');
+      addToast(`Kitchen printing updated for ${updatedCount} product${updatedCount === 1 ? '' : 's'}` /* was: `Kitchen printing updated for ${updatedCount} item${updatedCount === 1 ? '' : 's'}` */, 'success');
       if (updatedCount < requestedCount) {
-        addToast(`${requestedCount - updatedCount} item${requestedCount - updatedCount === 1 ? '' : 's'} could not be updated`, 'error');
+        addToast(`${requestedCount - updatedCount} product${requestedCount - updatedCount === 1 ? '' : 's'} could not be updated` /* was: `${requestedCount - updatedCount} item${requestedCount - updatedCount === 1 ? '' : 's'} could not be updated` */, 'error');
       }
       void fetchItems(kitchenPrintLocationId, token, { force: true });
     } catch (e) {
@@ -672,7 +672,7 @@ export default function ItemsPage() {
     fetch(`${ITEMS_API_BASE}/exclusive/${encodeURIComponent(locationId)}`, { headers })
       .then(async (res) => {
         const data = await res.json() as { exclusiveCategoryId?: string; items?: Array<{ itemId: string; itemName: string; sortOrder: number }> };
-        if (!res.ok) throw new Error((data as any)?.message ?? 'Failed to load exclusive items');
+        if (!res.ok) throw new Error((data as any)?.message ?? 'Failed to load exclusive products' /* was: 'Failed to load exclusive items' */);
         setExclusiveCategoryId(data.exclusiveCategoryId ?? null);
         const arr = Array.isArray(data.items) ? data.items : [];
         // Normalize ids/types so DnD-kit IDs match our state comparisons (numbers vs strings).
@@ -687,7 +687,7 @@ export default function ItemsPage() {
         setExclusiveItems(normalized);
         setExclusiveBaselineItems(normalized);
       })
-      .catch((err: Error) => setExclusiveError(err.message ?? 'Failed to load exclusive items'))
+      .catch((err: Error) => setExclusiveError(err.message ?? 'Failed to load exclusive products' /* was: 'Failed to load exclusive items' */))
       .finally(() => setExclusiveLoading(false));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedBranch?.id, selectedBranch?.locationId, auth?.accessToken, auth?.access_token]);
@@ -834,12 +834,12 @@ export default function ItemsPage() {
       clearItemsCache();
       clearCategoriesCache();
       addToast(
-        n === 1 ? '1 item has been successfully deleted' : `${n} items have been successfully deleted`,
+        n === 1 ? '1 product has been successfully deleted' /* was: '1 item has been successfully deleted' */ : `${n} products have been successfully deleted` /* was: `${n} items have been successfully deleted` */,
         'success',
       );
       void fetchItems(locationId, token, { force: true });
     } catch (e) {
-      addToast(e instanceof Error ? e.message : 'Failed to delete items', 'error');
+      addToast(e instanceof Error ? e.message : 'Failed to delete products' /* was: 'Failed to delete items' */, 'error');
     } finally {
       deletingItemsRef.current = false;
       setDeletingItems(false);
@@ -871,7 +871,7 @@ export default function ItemsPage() {
       } catch (e) {
         // Roll back to server truth when update fails.
         await fetchItems(locationId, token, { force: true });
-        addToast(e instanceof Error ? e.message : 'Failed to update item status', 'error');
+        addToast(e instanceof Error ? e.message : 'Failed to update product status' /* was: 'Failed to update item status' */, 'error');
       }
     },
     [selectedBranch, auth, addToast, updateItem, fetchItems],
@@ -1108,11 +1108,11 @@ export default function ItemsPage() {
 
     const catName = categories.find((c) => c.id === catId)?.name ?? 'category';
     if (action === 'disable') {
-      addToast(`${successCount} items in '${catName}' disabled`, 'success');
+      addToast(`${successCount} products in '${catName}' disabled` /* was: `${successCount} items in '${catName}' disabled` */, 'success');
     } else {
       const msg = failCount > 0
-        ? `${successCount} items enabled, ${failCount} items failed --- missing required fields`
-        : `${successCount} items in '${catName}' enabled`;
+        ? `${successCount} products enabled, ${failCount} products failed --- missing required fields` /* was: `${successCount} items enabled, ${failCount} items failed --- missing required fields` */
+        : `${successCount} products in '${catName}' enabled` /* was: `${successCount} items in '${catName}' enabled` */;
       addToast(msg, failCount > 0 ? 'info' : 'success');
     }
     setBulkToggleTarget(null);
@@ -1145,7 +1145,7 @@ export default function ItemsPage() {
       const modeLabel = mode === 'manual' ? 'until manually re-enabled'
         : mode === 'next_session' ? 'until next session'
         : `until ${reEnableAt ? new Date(reEnableAt).toLocaleString() : 'specified time'}`;
-      addToast(`'${item?.name ?? 'Item'}' marked out of stock ${modeLabel}`, 'success');
+      addToast(`'${item?.name ?? 'Product'}' marked out of stock ${modeLabel}` /* was: `'${item?.name ?? 'Item'}' marked out of stock ${modeLabel}` */, 'success');
       setOutOfStockItemId(null);
     },
     [outOfStockItemId, updateItem, items, addToast],
@@ -1190,18 +1190,18 @@ export default function ItemsPage() {
             null,
             token,
           );
-          addToast(`Item order updated for '${catName}'`, 'success');
+          addToast(`Product order updated for '${catName}'` /* was: `Item order updated for '${catName}'` */, 'success');
           // Clear cached responses so the next fetch reflects the new sort order.
           clearItemsCache();
           clearCategoriesCache();
           void fetchItems(locationId, token, { force: true });
         } catch {
-          addToast(`Failed to save item order for '${catName}'`, 'error');
+          addToast(`Failed to save product order for '${catName}'` /* was: `Failed to save item order for '${catName}'` */, 'error');
         } finally {
           setSavingReorderCatId(null);
         }
       } else {
-        addToast(`Item order updated for '${catName}'`, 'success');
+        addToast(`Product order updated for '${catName}'` /* was: `Item order updated for '${catName}'` */, 'success');
       }
       setReorderCategorySnapshots((prev) => {
         if (!prev[catId]) return prev;
@@ -1272,7 +1272,7 @@ export default function ItemsPage() {
       } catch {
         setExclusiveBaselineItems(exclusiveItems.map((item, idx) => ({ ...item, sortOrder: idx + 1 })));
       }
-      addToast('Exclusive items order saved', 'success');
+      addToast('Exclusive products order saved' /* was: 'Exclusive items order saved' */, 'success');
     } catch (err: unknown) {
       addToast((err as Error)?.message ?? 'Failed to save order', 'error');
     } finally {
@@ -1639,7 +1639,7 @@ export default function ItemsPage() {
           }}
         >
           <div style={{ width: 32, flexShrink: 0 }} />
-          <div style={{ width: 200, flexShrink: 0, ...gridHeaderCell }}>Item</div>
+          <div style={{ width: 200, flexShrink: 0, ...gridHeaderCell }}>{/* was: Item */}Product</div>
           {visibleColumns.has('code') && (
             <div style={{ width: 128, flexShrink: 0, textAlign: 'center', ...gridHeaderCell }}>Code</div>
           )}
@@ -1824,7 +1824,7 @@ export default function ItemsPage() {
                     value={item.status}
                     onChange={(v) => handleStatusChange(item.id, v)}
                     options={ITEM_STATUS_OPTIONS}
-                    ariaLabel="Item status"
+                    ariaLabel="Product status"
                     menuMaxHeight={240}
                     triggerStyle={{
                       fontSize: 10,
@@ -2095,7 +2095,7 @@ export default function ItemsPage() {
               color: 'var(--t2)',
             }}
           >
-            {isMobile ? catItems.length : `${catItems.length} item${catItems.length !== 1 ? 's' : ''}`}
+            {isMobile ? catItems.length : `${catItems.length} product${catItems.length !== 1 ? 's' : ''}` /* was: `${catItems.length} item${catItems.length !== 1 ? 's' : ''}` */}
           </span>
 
           <div style={{ flex: 1 }} />
@@ -2144,7 +2144,7 @@ export default function ItemsPage() {
                 marginLeft: 4,
                 color: 'var(--t3)',
               }}
-              title="Reorder items"
+              title="Reorder products" /* was: title="Reorder items" */
             >
               <span className="material-symbols-rounded" style={{ fontSize: 20 }}>swap_vert</span>
             </button>
@@ -2163,7 +2163,7 @@ export default function ItemsPage() {
               }}>
                 <span style={{ fontSize: 12, fontWeight: 600, color: '#B07A2A', display: 'flex', alignItems: 'center', gap: 6 }}>
                   <span className="material-symbols-rounded" style={{ fontSize: 16 }}>swap_vert</span>
-                  Reorder mode --- drag items to rearrange
+                  {/* was: Reorder mode --- drag items to rearrange */}Reorder mode --- drag products to rearrange
                 </span>
                 <div style={{ display: 'flex', gap: 8 }}>
                   <button type="button" onClick={() => cancelReorder(catId)} style={{
@@ -2184,8 +2184,8 @@ export default function ItemsPage() {
                 <span className="material-symbols-rounded" style={{ fontSize: 32, color: '#E6DFD3', display: 'block', marginBottom: 8 }}>inventory_2</span>
                 <p style={{ fontSize: 12, color: 'var(--t3)', margin: 0 }}>
                   {isUncategorized
-                    ? 'No uncategorized items. Items without a category appear here.'
-                    : 'No items in this category.'}
+                    ? 'No uncategorized products. Products without a category appear here.' /* was: 'No uncategorized items. Items without a category appear here.' */
+                    : 'No products in this category.' /* was: 'No items in this category.' */}
                 </p>
               </div>
             ) : viewMode === 'grid' ? (
@@ -2521,7 +2521,7 @@ export default function ItemsPage() {
               value={item.status}
               onChange={(v) => handleStatusChange(item.id, v)}
               options={ITEM_STATUS_OPTIONS}
-              ariaLabel="Item status"
+              ariaLabel="Product status"
               menuMaxHeight={240}
               triggerStyle={{
                 fontSize: 11,
@@ -2612,7 +2612,7 @@ export default function ItemsPage() {
             {/* Align header with rows: rows render an avatar before the item name */}
             <div style={{ width: 40, flexShrink: 0 }} />
             <div style={{ flex: 1, minWidth: 0, fontSize: 10, fontWeight: 700, color: 'var(--t3)', textTransform: 'uppercase', letterSpacing: 0.5 }}>
-              Item
+              {/* was: Item */}Product
             </div>
           </>
         )}
@@ -2689,11 +2689,11 @@ export default function ItemsPage() {
               inventory_2
             </span>
           }
-          title="Items"
-          subtitle="Manage your menus, categories, and menu items"
+          title="Products" /* was: title="Items" */
+          subtitle="Manage your products and categories" /* was: subtitle="Manage your menus, categories, and menu items" */
           actions={
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-              <CatalogHelpLink topic="Items" Tutorial={ItemsTutorial} createPath={pcPaths.itemsCreate} />
+              <CatalogHelpLink topic="Products" /* was: topic="Items" */ Tutorial={ItemsTutorial} createPath={pcPaths.itemsCreate} />
             <Button
               icon={
                 <span className="material-symbols-rounded" style={{ fontSize: 18, color: 'rgba(255,255,255,0.95)' }}>
@@ -2702,7 +2702,7 @@ export default function ItemsPage() {
               }
                 onClick={() => navigate(pcPaths.itemsCreate)}
             >
-              Add Item
+              {/* was: Add Item */}Add Product
             </Button>
             </div>
           }
@@ -2735,7 +2735,7 @@ export default function ItemsPage() {
               onMouseEnter={(e) => { if (activeMenu !== 'all') e.currentTarget.style.background = 'var(--hover)'; }}
               onMouseLeave={(e) => { if (activeMenu !== 'all') e.currentTarget.style.background = 'transparent'; }}
             >
-              All Items
+              {/* was: All Items */}All Products
               <span style={countBadge(activeMenu === 'all')}>{allTabBadgeCount}</span>
             </button>
             <button
@@ -2840,7 +2840,7 @@ export default function ItemsPage() {
             <SearchInput
               value={search}
               onChange={(v) => setSearch(v)}
-              placeholder="Search items by name, code"
+              placeholder="Search products by name, code" /* was: placeholder="Search items by name, code" */
             />
           </div>
           {activeMenu !== 'exclusive' && (
@@ -2849,7 +2849,7 @@ export default function ItemsPage() {
                 value={categoryFilter}
                 onChange={setCategoryFilter}
                 options={categoryOptions}
-                ariaLabel="Filter items by category"
+                ariaLabel="Filter products by category" /* was: ariaLabel="Filter items by category" */
                 triggerStyle={{
                   fontSize: 13,
                   fontFamily: 'var(--font-primary)',
@@ -3120,7 +3120,7 @@ export default function ItemsPage() {
         {activeMenu === 'exclusive' && (
           <div>
             {exclusiveLoading && (
-              <div style={{ textAlign: 'center', padding: 40, color: 'var(--t3)', fontSize: 14 }}>Loading exclusive items…</div>
+              <div style={{ textAlign: 'center', padding: 40, color: 'var(--t3)', fontSize: 14 }}>{/* was: Loading exclusive items… */}Loading exclusive products…</div>
             )}
             {exclusiveError && (
               <div style={{ marginBottom: 16, padding: 12, background: '#F6E9E5', borderRadius: 2, color: '#8E3226', fontSize: 13 }}>
@@ -3129,8 +3129,8 @@ export default function ItemsPage() {
             )}
             {!exclusiveLoading && !exclusiveError && exclusiveFilteredMenuItems.length === 0 && (
               <EmptyState
-                title={search.trim() ? 'No exclusive items found' : 'No exclusive items'}
-                description={search.trim() ? 'Try adjusting your search.' : 'No items have been marked as exclusive.'}
+                title={search.trim() ? 'No exclusive products found' : 'No exclusive products'} /* was: title={search.trim() ? 'No exclusive items found' : 'No exclusive items'} */
+                description={search.trim() ? 'Try adjusting your search.' : 'No products have been marked as exclusive.'} /* was: description={search.trim() ? 'Try adjusting your search.' : 'No items have been marked as exclusive.'} */
               />
             )}
             {!exclusiveLoading && exclusiveFilteredMenuItems.length > 0 && (
@@ -3210,11 +3210,11 @@ export default function ItemsPage() {
                 description={
                   search || categoryFilter !== 'all' || activeMenu !== 'all'
                     ? 'Try adjusting your search, filter.'
-                    : 'Create your first item to get started.'
+                    : 'Create your first product to get started.' /* was: 'Create your first item to get started.' */
                 }
                 action={
                   !search && categoryFilter === 'all' && activeMenu === 'all' ? (
-                    <Button onClick={() => navigate(pcPaths.itemsCreate)}>Add Item</Button>
+                    <Button onClick={() => navigate(pcPaths.itemsCreate)}>{/* was: Add Item */}Add Product</Button>
                   ) : undefined
                 }
               />
@@ -3284,20 +3284,20 @@ export default function ItemsPage() {
         confirmLoading={deletingItems}
         title={(() => {
           const ids = pendingDeleteIds;
-          if (!ids?.length) return deleteConfirmTitle('this item');
+          if (!ids?.length) return deleteConfirmTitle('this product' /* was: 'this item' */);
           if (ids.length === 1) {
             const one = items.find((i) => i.id === ids[0]);
-            return deleteConfirmTitle(one?.name ?? 'this item');
+            return deleteConfirmTitle(one?.name ?? 'this product' /* was: 'this item' */);
           }
-          return `Delete ${ids.length} items?`;
+          return `Delete ${ids.length} products?` /* was: `Delete ${ids.length} items?` */;
         })()}
         description={(() => {
           const ids = pendingDeleteIds;
           if (!ids?.length) return null;
           if (ids.length === 1) {
-            return 'This will remove the item from categories and anywhere it is linked. This cannot be undone.';
+            return 'This will remove the product from categories and anywhere it is linked. This cannot be undone.' /* was: 'This will remove the item from categories and anywhere it is linked. This cannot be undone.' */;
           }
-          return `This will permanently delete ${ids.length} items from your catalog and remove them from categories. This cannot be undone.`;
+          return `This will permanently delete ${ids.length} products from your catalog and remove them from categories. This cannot be undone.` /* was: `This will permanently delete ${ids.length} items from your catalog and remove them from categories. This cannot be undone.` */;
         })()}
       />
 
@@ -3305,7 +3305,7 @@ export default function ItemsPage() {
       <Modal
         open={!!bulkToggleTarget}
         onClose={() => setBulkToggleTarget(null)}
-        title={bulkToggleTarget?.action === 'disable' ? 'Disable All Items in Category' : 'Enable All Items in Category'}
+        title={bulkToggleTarget?.action === 'disable' ? 'Disable All Products in Category' /* was: 'Disable All Items in Category' */ : 'Enable All Products in Category' /* was: 'Enable All Items in Category' */}
         width={440}
         footer={
           <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end' }}>
@@ -3330,15 +3330,17 @@ export default function ItemsPage() {
                 fontFamily: 'var(--font-primary)',
               }}
             >
-              {bulkToggleTarget?.action === 'disable' ? 'Disable Items' : 'Enable Items'}
+              {bulkToggleTarget?.action === 'disable' ? 'Disable Products' /* was: 'Disable Items' */ : 'Enable Products' /* was: 'Enable Items' */}
             </button>
           </div>
         }
       >
         <p style={{ fontSize: 13, color: 'var(--t2)', margin: '0 0 16px', lineHeight: 1.5 }}>
           {bulkToggleTarget?.action === 'disable'
-            ? `This will set ${getItemsInCategory(bulkToggleTarget?.catId ?? '', bulkToggleTarget?.includeSubcategories ?? false).length} items in '${categories.find((c) => c.id === bulkToggleTarget?.catId)?.name ?? ''}' to Hidden. They will not appear on any customer-facing channel.`
-            : `This will set eligible items in '${categories.find((c) => c.id === bulkToggleTarget?.catId)?.name ?? ''}' to Active. Items missing required fields will remain at their current status.`}
+            // ? `This will set ${getItemsInCategory(bulkToggleTarget?.catId ?? '', bulkToggleTarget?.includeSubcategories ?? false).length} items in '${categories.find((c) => c.id === bulkToggleTarget?.catId)?.name ?? ''}' to Hidden. They will not appear on any customer-facing channel.`
+            ? `This will set ${getItemsInCategory(bulkToggleTarget?.catId ?? '', bulkToggleTarget?.includeSubcategories ?? false).length} products in '${categories.find((c) => c.id === bulkToggleTarget?.catId)?.name ?? ''}' to Hidden. They will not appear on any customer-facing channel.`
+            // : `This will set eligible items in '${categories.find((c) => c.id === bulkToggleTarget?.catId)?.name ?? ''}' to Active. Items missing required fields will remain at their current status.`}
+            : `This will set eligible products in '${categories.find((c) => c.id === bulkToggleTarget?.catId)?.name ?? ''}' to Active. Products missing required fields will remain at their current status.`}
         </p>
         {bulkToggleTarget && hasSubcategories(bulkToggleTarget.catId) && (
           <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: 13, color: 'var(--t1)', fontWeight: 500 }}>
@@ -3371,9 +3373,9 @@ export default function ItemsPage() {
       <div style={{ position: 'sticky', top: 0, zIndex: 50, background: '#fff', borderBottom: '1px solid #E6DFD3', padding: '12px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <span onClick={() => navigate(PC_BASE)} className="material-symbols-rounded" style={{ fontSize: 22, color: '#453F39', cursor: 'pointer' }}>arrow_back</span>
-          <h1 style={{ fontSize: 18, fontWeight: 700, color: '#453F39', margin: 0 }}>Items</h1>
+          <h1 style={{ fontSize: 18, fontWeight: 700, color: '#453F39', margin: 0 }}>{/* was: Items */}Products</h1>
         </div>
-        <CatalogHelpLink topic="Items" Tutorial={ItemsTutorial} createPath={pcPaths.itemsCreate} />
+        <CatalogHelpLink topic="Products" /* was: topic="Items" */ Tutorial={ItemsTutorial} createPath={pcPaths.itemsCreate} />
       </div>
 
       <div style={{ padding: 16 }}>
@@ -3415,13 +3417,13 @@ export default function ItemsPage() {
 
         {/* Search + Filter */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 12 }}>
-          <SearchInput value={search} onChange={(v) => setSearch(v)} placeholder="Search items..." />
+          <SearchInput value={search} onChange={(v) => setSearch(v)} placeholder="Search products..." /* was: placeholder="Search items..." */ />
           {activeMenu !== 'exclusive' && (
             <CatalogDropdown
               value={categoryFilter}
               onChange={setCategoryFilter}
               options={categoryOptions}
-              ariaLabel="Filter items by category"
+              ariaLabel="Filter products by category" /* was: ariaLabel="Filter items by category" */
               triggerStyle={{
                 fontSize: 13, fontFamily: 'var(--font-primary)', color: 'var(--t1)',
                 backgroundColor: '#fff', border: '1px solid #E6DFD3', borderRadius: 2,
@@ -3455,7 +3457,7 @@ export default function ItemsPage() {
         {activeMenu === 'exclusive' && (
           <div>
             {exclusiveLoading && (
-              <div style={{ textAlign: 'center', padding: 32, color: '#9A9084', fontSize: 14 }}>Loading exclusive items…</div>
+              <div style={{ textAlign: 'center', padding: 32, color: '#9A9084', fontSize: 14 }}>{/* was: Loading exclusive items… */}Loading exclusive products…</div>
             )}
             {exclusiveError && (
               <div style={{ marginBottom: 12, padding: 12, background: '#F6E9E5', borderRadius: 2, color: '#8E3226', fontSize: 13 }}>
@@ -3464,8 +3466,8 @@ export default function ItemsPage() {
             )}
             {!exclusiveLoading && !exclusiveError && exclusiveFilteredMenuItems.length === 0 && (
               <EmptyState
-                title={search.trim() ? 'No exclusive items found' : 'No exclusive items'}
-                description={search.trim() ? 'Try adjusting your search.' : 'No items have been marked as exclusive.'}
+                title={search.trim() ? 'No exclusive products found' : 'No exclusive products'} /* was: title={search.trim() ? 'No exclusive items found' : 'No exclusive items'} */
+                description={search.trim() ? 'Try adjusting your search.' : 'No products have been marked as exclusive.'} /* was: description={search.trim() ? 'Try adjusting your search.' : 'No items have been marked as exclusive.'} */
               />
             )}
             {!exclusiveLoading && exclusiveFilteredMenuItems.length > 0 && (
@@ -3533,11 +3535,11 @@ export default function ItemsPage() {
                 description={
                   search || categoryFilter !== 'all' || activeMenu !== 'all'
                     ? 'Try adjusting your search or filter.'
-                    : 'Create your first item to get started.'
+                    : 'Create your first product to get started.' /* was: 'Create your first item to get started.' */
                 }
                 action={
                   !search && categoryFilter === 'all' && activeMenu === 'all' ? (
-                    <Button onClick={() => navigate(pcPaths.itemsCreate)}>Add Item</Button>
+                    <Button onClick={() => navigate(pcPaths.itemsCreate)}>{/* was: Add Item */}Add Product</Button>
                   ) : undefined
                 }
               />
@@ -3604,18 +3606,18 @@ export default function ItemsPage() {
         confirmLoading={deletingItems}
         title={(() => {
           const ids = pendingDeleteIds;
-          if (!ids?.length) return deleteConfirmTitle('this item');
+          if (!ids?.length) return deleteConfirmTitle('this product' /* was: 'this item' */);
           if (ids.length === 1) {
             const one = items.find((i) => i.id === ids[0]);
-            return deleteConfirmTitle(one?.name ?? 'this item');
+            return deleteConfirmTitle(one?.name ?? 'this product' /* was: 'this item' */);
           }
-          return `Delete ${ids.length} items?`;
+          return `Delete ${ids.length} products?` /* was: `Delete ${ids.length} items?` */;
         })()}
         description={(() => {
           const ids = pendingDeleteIds;
           if (!ids?.length) return null;
-          if (ids.length === 1) return 'This will remove the item from categories and anywhere it is linked. This cannot be undone.';
-          return `This will permanently delete ${ids.length} items from your catalog and remove them from categories. This cannot be undone.`;
+          if (ids.length === 1) return 'This will remove the product from categories and anywhere it is linked. This cannot be undone.' /* was: 'This will remove the item from categories and anywhere it is linked. This cannot be undone.' */;
+          return `This will permanently delete ${ids.length} products from your catalog and remove them from categories. This cannot be undone.` /* was: `This will permanently delete ${ids.length} items from your catalog and remove them from categories. This cannot be undone.` */;
         })()}
       />
       <BottomNav />

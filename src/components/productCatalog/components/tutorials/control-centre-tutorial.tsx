@@ -61,7 +61,7 @@ function SlideTwoIllustration() {
     <div style={{ borderRadius: 2, border: '1px solid #E6DFD3', overflow: 'hidden', fontSize: 9 }}>
       {/* original grid: gridTemplateColumns: '90px repeat(3, 1fr)' */}
       <div style={{ display: 'grid', gridTemplateColumns: '90px repeat(1, 1fr)', background: '#FFFFFF' }}>
-        <div style={{ padding: '6px 8px', fontWeight: 600, color: T2 }}>Item</div>
+        <div style={{ padding: '6px 8px', fontWeight: 600, color: T2 }}>{/* was: Item */}Product</div>
         {channels.map((ch) => (
           <div key={ch} style={{ padding: '6px 4px', textAlign: 'center', fontWeight: 600, color: T3 }}>{ch}</div>
         ))}
@@ -141,8 +141,10 @@ function SlideThreeIllustration() {
 /* ─── Slide 4: Filters & Tabs ─── */
 function SlideFourIllustration() {
   const steps = [
-    { icon: 'tab', text: 'Switch between Items and Categories using the tabs at the top' },
-    { icon: 'search', text: 'Search by name to quickly find an item or category' },
+    // { icon: 'tab', text: 'Switch between Items and Categories using the tabs at the top' },
+    { icon: 'tab', text: 'Switch between Products and Categories using the tabs at the top' },
+    // { icon: 'search', text: 'Search by name to quickly find an item or category' },
+    { icon: 'search', text: 'Search by name to quickly find a product or category' },
     { icon: 'filter_alt', text: 'Use filters — Category, Session, Availability — to focus your view' },
     { icon: 'touch_app', text: 'Click any cell to open the panel and toggle OOS (Out of Stock) or visibility' },
   ];
@@ -174,17 +176,20 @@ const CONTROL_CENTRE_SLIDES: TutorialSlide[] = [
     headline: "Reading the Matrix",
     // body: "Each cell shows one indicator: a teal dot means the item is available, an amber dot means OOS (Out of Stock), and a crossed-out eye means the item is hidden on that channel.",
     // body: "Each cell shows one indicator: a teal dot means the item is available, an amber dot means OOS (Out of Stock), and a crossed-out eye means the product is hidden on Pickup.",
-    body: "Each cell shows one indicator: a teal dot means the item is available, an amber dot means OOS (Out of Stock), and a crossed-out eye means the product is hidden on Online.",
+    // body: "Each cell shows one indicator: a teal dot means the item is available, an amber dot means OOS (Out of Stock), and a crossed-out eye means the product is hidden on Online.",
+    body: "Each cell shows one indicator: a teal dot means the product is available, an amber dot means OOS (Out of Stock), and a crossed-out eye means the product is hidden on Online.",
   },
   {
     illustration: <SlideThreeIllustration />,
     headline: "Manage in One Click",
-    body: "Click any cell to open a panel where you can mark the item OOS (Out of Stock) or restore it, and toggle visibility on or off for that specific channel.",
+    // body: "Click any cell to open a panel where you can mark the item OOS (Out of Stock) or restore it, and toggle visibility on or off for that specific channel.",
+    body: "Click any cell to open a panel where you can mark the product OOS (Out of Stock) or restore it, and toggle visibility on or off for that specific channel.",
   },
   {
     illustration: <SlideFourIllustration />,
     headline: "Find What You Need",
-    body: "Use the Items and Categories tabs to switch views. Search by name, or apply filters for Category, Session, and Availability to focus on exactly what you need.",
+    // body: "Use the Items and Categories tabs to switch views. Search by name, or apply filters for Category, Session, and Availability to focus on exactly what you need.",
+    body: "Use the Products and Categories tabs to switch views. Search by name, or apply filters for Category, Session, and Availability to focus on exactly what you need.",
   },
 ];
 

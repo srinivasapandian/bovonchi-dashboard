@@ -1089,7 +1089,7 @@ export default function CategoriesPage() {
         icon="category"
         name="categories"
         title="No categories yet"
-        description="Create categories to organize your menu items into logical groups like appetizers, mains, and desserts."
+        description="Create categories to organize your products into logical groups like earrings, rings, and bracelets." /* was: description="Create categories to organize your menu items into logical groups like appetizers, mains, and desserts." */
         action={(
           <Button
             onClick={() => navigate(pcPaths.categoriesCreate)}
@@ -1371,7 +1371,7 @@ export default function CategoriesPage() {
                 </span>
               }
               title="Categories"
-              subtitle="Organize your menu items into categories and subcategories."
+              subtitle="Organize your products into categories and subcategories." /* was: subtitle="Organize your menu items into categories and subcategories." */
               actions={
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
                   <CatalogHelpLink topic="Categories" Tutorial={CategoriesTutorial} createPath={pcPaths.categoriesCreate} />

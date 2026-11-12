@@ -110,7 +110,7 @@ export default function CombosPage() {
         <PageHeader
           icon={<span className="material-symbols-rounded" style={{ fontSize: 24, color: 'rgba(255,255,255,0.95)' }}>fastfood</span>}
           title="Combos"
-          subtitle="Bundle items at a discounted price to boost average order value"
+          subtitle="Bundle products at a discounted price to boost average order value" /* was: subtitle="Bundle items at a discounted price to boost average order value" */
           actions={
             <div style={{ display: 'flex', gap: 8 }}>
               <CatalogHelpLink topic="Combos" Tutorial={ComboTutorial} createPath={pcPaths.combosCreate} />

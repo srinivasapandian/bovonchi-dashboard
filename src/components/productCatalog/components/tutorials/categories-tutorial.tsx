@@ -363,7 +363,8 @@ function Slide5Illustration() {
   const steps = [
     { num: 1, text: "Name it", icon: Edit },
     { num: 2, text: "Choose channels", icon: Globe },
-    { num: 3, text: "Add items", icon: Package },
+    // { num: 3, text: "Add items", icon: Package },
+    { num: 3, text: "Add products", icon: Package },
     { num: 4, text: "Set a parent", icon: Layers, optional: true },
   ];
 
@@ -432,7 +433,8 @@ function Slide5Illustration() {
 const CATEGORIES_SLIDES: TutorialSlide[] = [
   {
     headline: "What is a Category?",
-    body: "A category is a group for your items \u2014 like sections on a menu. \u2018Pizzas\u2019, \u2018Starters\u2019, \u2018Beverages\u2019 \u2014 each holds items that belong together.",
+    // body: "A category is a group for your items \u2014 like sections on a menu. \u2018Pizzas\u2019, \u2018Starters\u2019, \u2018Beverages\u2019 \u2014 each holds items that belong together.",
+    body: "A category is a group for your products — like sections in a store. ‘Earrings’, ‘Rings’, ‘Bracelets’ — each holds products that belong together.",
     illustration: <Slide1Illustration />,
   },
   {
@@ -441,8 +443,10 @@ const CATEGORIES_SLIDES: TutorialSlide[] = [
     illustration: <Slide2Illustration />,
   },
   {
-    headline: "Items Can Be Anywhere",
-    body: "An item can belong to one category, multiple categories, or none at all. Uncategorized items appear in a separate group.",
+    // headline: "Items Can Be Anywhere",
+    headline: "Products Can Be Anywhere",
+    // body: "An item can belong to one category, multiple categories, or none at all. Uncategorized items appear in a separate group.",
+    body: "A product can belong to one category, multiple categories, or none at all. Uncategorized products appear in a separate group.",
     illustration: <Slide3Illustration />,
   },
   {
@@ -452,7 +456,8 @@ const CATEGORIES_SLIDES: TutorialSlide[] = [
   },
   {
     headline: "Getting Started",
-    body: "Create your first category in seconds. Name it, pick channels, add items \u2014 or add items later.",
+    // body: "Create your first category in seconds. Name it, pick channels, add items \u2014 or add items later.",
+    body: "Create your first category in seconds. Name it, pick channels, add products — or add products later.",
     illustration: <Slide5Illustration />,
   },
 ];

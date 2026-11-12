@@ -1233,7 +1233,7 @@ export default function ModifierFormPage() {
             onToggle={toggleAssignedItem}
             onRemove={removeAssignedItem}
             defaultOpen={false}
-            emptyLabel="No items using this product option yet." /* was: "No items using this modifier yet." */
+            emptyLabel="No products using this product option yet." /* was: "No items using this product option yet." */ /* was: "No items using this modifier yet." */
             persistedSelectedIds={initialAssignedItemIdsRef.current}
             hideSubtitle
           />
@@ -1286,7 +1286,7 @@ export default function ModifierFormPage() {
           setEditWarningOpen(false);
           void handleSave();
         }}
-        title="Apply Changes to All Items?"
+        title="Apply Changes to All Products?" /* was: title="Apply Changes to All Items?" */
         /* was: description={`This modifier is applied to ... */ description={`This product option is applied to ${assignedItemIds.length} item${assignedItemIds.length !== 1 ? 's' : ''}. Your changes will apply to all of them.`}
         confirmLabel="Save Changes"
       />

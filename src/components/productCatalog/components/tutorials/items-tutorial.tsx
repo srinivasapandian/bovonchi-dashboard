@@ -249,7 +249,7 @@ function Slide3Illustration() {
             gap: 6,
           }}
         >
-          {["Item Name", "Category", "Price"].map((field) => (
+          {["Product Name" /* was: "Item Name" */, "Category", "Price"].map((field) => (
             <div
               key={field}
               style={{
@@ -345,13 +345,17 @@ function Slide3Illustration() {
 
 const ITEMS_SLIDES: TutorialSlide[] = [
   {
-    headline: "What is an Item?",
-    body: "An item is anything your customers can order \u2014 a Margherita Pizza, a Mojito, a slice of Tiramisu. Each item has a name, a price, and lives inside a category.",
+    // headline: "What is an Item?",
+    headline: "What is a Product?",
+    // body: "An item is anything your customers can order \u2014 a Margherita Pizza, a Mojito, a slice of Tiramisu. Each item has a name, a price, and lives inside a category.",
+    body: "A product is anything your customers can buy — a pair of earrings, a ring, a bracelet. Each product has a name, a price, and lives inside a category.",
     illustration: <Slide1Illustration />,
   },
   {
-    headline: "Items Live Inside Categories",
-    body: "Your items are grouped by category \u2014 Pizzas, Drinks, Desserts. On the Items page, categories appear as expandable rows. Click to see items inside.",
+    // headline: "Items Live Inside Categories",
+    headline: "Products Live Inside Categories",
+    // body: "Your items are grouped by category \u2014 Pizzas, Drinks, Desserts. On the Items page, categories appear as expandable rows. Click to see items inside.",
+    body: "Your products are grouped by category — Earrings, Rings, Bracelets. On the Products page, categories appear as expandable rows. Click to see products inside.",
     illustration: <Slide2Illustration />,
   },
   {

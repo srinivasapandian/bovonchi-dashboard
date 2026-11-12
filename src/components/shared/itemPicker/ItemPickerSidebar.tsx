@@ -56,14 +56,14 @@ interface PickerGroup {
 export function ItemPickerSidebar({
   open,
   onClose,
-  title = 'Select Items',
+  title = 'Select Products' /* was: 'Select Items' */,
   zIndex = 100,
   items,
   categories,
   selectedIds,
   onToggle,
-  searchPlaceholder = 'Search items...',
-  noResultsLabel = 'No items found.',
+  searchPlaceholder = 'Search products...' /* was: 'Search items...' */,
+  noResultsLabel = 'No products found.' /* was: 'No items found.' */,
   itemsLoading = false,
   maxSelections,
   persistedSelectedIds,
@@ -511,7 +511,7 @@ export function ItemPickerSidebar({
 
           {itemsLoading ? (
             <div style={{ fontSize: 13, color: 'var(--t3, #9A9084)', padding: '12px 0' }}>
-              Loading items...
+              {/* was: Loading items... */}Loading products...
             </div>
           ) : groups.length === 0 ? (
             <div style={{ fontSize: 13, color: 'var(--t3, #9A9084)', padding: '12px 0' }}>

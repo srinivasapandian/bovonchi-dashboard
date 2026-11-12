@@ -436,14 +436,14 @@ function itemMandatoryComplete(f: FormState): boolean {
 function getItemHint(f: FormState, hasImage: boolean): string {
   const priced =
     (f.basePrice !== '' && Number(f.basePrice) > 0) || (f.itemType === 'event' && f.isFreeEvent);
-  if (!f.name.trim()) return 'Add an item name to get started.';
+  if (!f.name.trim()) return 'Add a product name to get started.' /* was: 'Add an item name to get started.' */;
   if (!priced && !f.categoryIds.length) return 'Add price and category to improve.';
   if (!priced) return 'Add a price to complete the basics.';
   if (!f.categoryIds.length) return 'Add a category to complete the basics.';
   if (!f.description.trim()) return 'Add a description to help customers.';
-  if (!hasImage) return 'Add an image to make your item stand out.';
-  if (!f.itemCode.trim()) return 'Add a Item code for better tracking.';
-  return 'Your item looks great!';
+  if (!hasImage) return 'Add an image to make your product stand out.' /* was: 'Add an image to make your item stand out.' */;
+  if (!f.itemCode.trim()) return 'Add a product code for better tracking.' /* was: 'Add a Item code for better tracking.' */;
+  return 'Your product looks great!' /* was: 'Your item looks great!' */;
 }
 
 function isValidItemCode(code: string): boolean {
@@ -468,9 +468,9 @@ function computeItemFormErrors(
   isEdit: boolean = false,
 ): Record<string, string> {
   const errs: Record<string, string> = {};
-  if (!form.name.trim()) errs.name = 'Item name is required';
-  else if (!hasAlphanumericName(form.name)) errs.name = 'Please enter a valid item name.';
-  else if (form.name.length > ITEM_NAME_MAX) errs.name = `Item name cannot exceed ${ITEM_NAME_MAX} characters.`;
+  if (!form.name.trim()) errs.name = 'Product name is required' /* was: 'Item name is required' */;
+  else if (!hasAlphanumericName(form.name)) errs.name = 'Please enter a valid product name.' /* was: 'Please enter a valid item name.' */;
+  else if (form.name.length > ITEM_NAME_MAX) errs.name = `Product name cannot exceed ${ITEM_NAME_MAX} characters.` /* was: `Item name cannot exceed ${ITEM_NAME_MAX} characters.` */;
   const isFreeEvent = form.itemType === 'event' && form.isFreeEvent;
   if (!isFreeEvent) {
     if (form.basePrice === '' || form.basePrice === null) errs.basePrice = 'Base price is required';
@@ -484,9 +484,9 @@ function computeItemFormErrors(
   }
   if (form.isSeasonal) {
     const todayIso = toIsoLocalDate(new Date());
-    if (!form.seasonStart) errs.seasonStart = 'Start date is required for seasonal items';
+    if (!form.seasonStart) errs.seasonStart = 'Start date is required for seasonal products' /* was: 'Start date is required for seasonal items' */;
     else if (!isEdit && form.seasonStart < todayIso) errs.seasonStart = 'Start date cannot be in the past';
-    if (!form.seasonEnd) errs.seasonEnd = 'End date is required for seasonal items';
+    if (!form.seasonEnd) errs.seasonEnd = 'End date is required for seasonal products' /* was: 'End date is required for seasonal items' */;
     if (form.seasonStart && form.seasonEnd) {
       const t0 = new Date(form.seasonStart).getTime();
       const t1 = new Date(form.seasonEnd).getTime();
@@ -497,7 +497,7 @@ function computeItemFormErrors(
   }
   const code = form.itemCode.trim();
   if (code.length > 0 && !isValidItemCode(code)) {
-    errs.itemCode = `Item code must be letters and numbers only (up to ${ITEM_CODE_MAX} characters)`;
+    errs.itemCode = `Product code must be letters and numbers only (up to ${ITEM_CODE_MAX} characters)` /* was: `Item code must be letters and numbers only (up to ${ITEM_CODE_MAX} characters)` */;
   } else if (serverItemCodeMessage && code.length > 0 && isValidItemCode(code)) {
     errs.itemCode = serverItemCodeMessage;
   }
@@ -533,7 +533,7 @@ function computeItemFormErrors(
     }
   }
   if (form.bestPairedItemIds.length > BEST_PAIRED_MAX) {
-    errs.bestPaired = `You can add at most ${BEST_PAIRED_MAX} best paired items.`;
+    errs.bestPaired = `You can add at most ${BEST_PAIRED_MAX} best paired products.` /* was: `You can add at most ${BEST_PAIRED_MAX} best paired items.` */;
   }
   const kitchenRows = pricingRows.filter((row) => !isThirdPartyTypeGroup((row as { typeGroup?: string }).typeGroup));
   if (form.kitchenPrintMode === 'selected' && kitchenRows.length > 0) {
@@ -1084,7 +1084,7 @@ export default function ItemFormPage() {
   const { menus } = useMenusStore();
   const { getForItem: getMenuPricesForItem, setMenuPrice, removeAllForItem: removeMenuPricesForItem } = useMenuPricesStore();
   const isMobile = useMediaQuery('(max-width: 768px)');
-  useErrorToast(itemsError, { fallbackMessage: 'Failed to load items' });
+  useErrorToast(itemsError, { fallbackMessage: 'Failed to load products' /* was: 'Failed to load items' */ });
   useErrorToast(stationsError, { fallbackMessage: 'Failed to load kitchen stations' });
   useErrorToast(modifiersError, { fallbackMessage: 'Failed to load product options' /* was: 'Failed to load modifiers' */ });
   useErrorToast(sessionsError, { fallbackMessage: 'Failed to load sessions' });
@@ -1097,7 +1097,7 @@ export default function ItemFormPage() {
 
   const isEdit = Boolean(id);
   const existing = isEdit ? items.find((i) => i.id === id) : null;
-  const saveIdleLabel = isEdit ? 'Update Item' : 'Create Item';
+  const saveIdleLabel = isEdit ? 'Update Product' /* was: 'Update Item' */ : 'Create Product' /* was: 'Create Item' */;
   const saveLoadingLabel = isEdit ? 'Updating...' : 'Creating...';
   const cloneId = !isEdit ? searchParams.get('clone')?.trim() || null : null;
   const cloneSource = useMemo(
@@ -1124,20 +1124,20 @@ export default function ItemFormPage() {
   useEffect(() => {
     if (isEdit) {
       setTopBarProps({
-        title: `Edit Item (${existing?.name})`,
-        breadcrumbs: 'Product Catalog > Items',
+        title: `Edit Product (${existing?.name})` /* was: `Edit Item (${existing?.name})` */,
+        breadcrumbs: 'Product Catalog > Products' /* was: 'Product Catalog > Items' */,
         subtitle: undefined,
       });
     } else if (isCloneHydrate && cloneSource) {
       setTopBarProps({
-        title: `Clone Item (${cloneSource.name})`,
-        breadcrumbs: 'Product Catalog > Items',
+        title: `Clone Product (${cloneSource.name})` /* was: `Clone Item (${cloneSource.name})` */,
+        breadcrumbs: 'Product Catalog > Products' /* was: 'Product Catalog > Items' */,
         subtitle: undefined,
       });
     } else {
       setTopBarProps({
-        title: 'New Item',
-        breadcrumbs: 'Product Catalog > Items',
+        title: 'New Product' /* was: 'New Item' */,
+        breadcrumbs: 'Product Catalog > Products' /* was: 'Product Catalog > Items' */,
         subtitle: undefined,
       });
     }
@@ -1991,7 +1991,7 @@ export default function ItemFormPage() {
       if (!has && prev.bestPairedItemIds.length >= BEST_PAIRED_MAX) {
         setErrors((e) => ({
           ...e,
-          bestPaired: `You can add at most ${BEST_PAIRED_MAX} best paired items.`,
+          bestPaired: `You can add at most ${BEST_PAIRED_MAX} best paired products.` /* was: `You can add at most ${BEST_PAIRED_MAX} best paired items.` */,
         }));
         return prev;
       }
@@ -2212,7 +2212,7 @@ export default function ItemFormPage() {
     if (!isValidItemCode(code)) {
       setErrors((prev) => ({
         ...prev,
-        itemCode: `Item code must be letters and numbers only (up to ${ITEM_CODE_MAX} characters)`,
+        itemCode: `Product code must be letters and numbers only (up to ${ITEM_CODE_MAX} characters)` /* was: `Item code must be letters and numbers only (up to ${ITEM_CODE_MAX} characters)` */,
       }));
       return;
     }
@@ -2748,7 +2748,7 @@ export default function ItemFormPage() {
         highlightItemId = (createdItemId || uploadedItemId || '').trim();
       }
 
-      addToast(isEdit ? 'Item updated successfully' : 'Item created successfully', 'success');
+      addToast(isEdit ? 'Product updated successfully' /* was: 'Item updated successfully' */ : 'Product created successfully' /* was: 'Item created successfully' */, 'success');
       dispatch(invalidateFetchCache());
       clearItemsCache();
       navigate(
@@ -2757,7 +2757,7 @@ export default function ItemFormPage() {
           : pcPaths.items,
       );
     } catch (e) {
-      const rawMsg = normalizeApiErrorMessage(e, 'Failed to save item');
+      const rawMsg = normalizeApiErrorMessage(e, 'Failed to save product' /* was: 'Failed to save item' */);
       // If the failure is the backend's "item code already in use" message,
       // rephrase it to surface the offending product name (MHB rephrase
       // requirement). Detect by phrase since the API doesn't tag error codes.
@@ -3073,12 +3073,12 @@ export default function ItemFormPage() {
   const templatesForType = ITEM_TEMPLATES.filter((t) => t.type === form.itemType);
 
   const pageTitle = isEdit
-    ? `Edit Item (${existing?.name})`
+    ? `Edit Product (${existing?.name})` /* was: `Edit Item (${existing?.name})` */
     : (isCloneHydrate && cloneSource)
-      ? `Clone Item (${cloneSource.name})`
+      ? `Clone Product (${cloneSource.name})` /* was: `Clone Item (${cloneSource.name})` */
       : isCloneHydrate
-        ? 'Clone Item'
-        : 'New Item';
+        ? 'Clone Product' /* was: 'Clone Item' */
+        : 'New Product' /* was: 'New Item' */;
       
  
         
@@ -3184,7 +3184,7 @@ export default function ItemFormPage() {
                         padding: '8px 0',
                       }}
                     >
-                      No templates for this item type. Change item type below or close to continue.
+                      {/* was: No templates for this item type. Change item type below or close to continue. */}No templates for this product type. Change product type below or close to continue.
                     </div>
                   )}
                   {templatesForType.map((t) => (
@@ -3338,7 +3338,7 @@ export default function ItemFormPage() {
                 </div>
                 {form.status === 'archived' && (
                   <p style={{ fontSize: 10, color: '#8A6D33', marginTop: 8, fontFamily: 'var(--font-primary)' }}>
-                    Archiving removes this item from menus and channels after save.
+                    Archiving removes this product from menus and channels after save.
                   </p>
                 )}
                 {form.status === 'hidden' && (
@@ -3351,12 +3351,12 @@ export default function ItemFormPage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div id="item-field-name">
               <TextField
-                label="Item Name"
+                label="Product Name" /* was: label="Item Name" */
                 value={form.name}
                 onChange={(v) => patch('name', v.slice(0, ITEM_NAME_MAX))}
                 required
                 error={displayErrors.name}
-                  placeholder="Enter item name"
+                  placeholder="Enter product name" /* was: placeholder="Enter item name" */
                 maxLength={ITEM_NAME_MAX}
                 counterWarnAfter={115}
                 inputRef={itemNameInputRef}
@@ -3366,7 +3366,7 @@ export default function ItemFormPage() {
                 label="Description"
                 value={form.description}
                 onChange={(v) => patch('description', v)}
-                  placeholder="Describe this item"
+                  placeholder="Describe this product" /* was: placeholder="Describe this item" */
                   counterWarnAfter={900}
                   maxLength={1000}
                 rows={3}
@@ -3572,7 +3572,7 @@ export default function ItemFormPage() {
                 </div>
                 <div id="item-field-itemCode">
                 <TextField
-                  label="Item Code"
+                  label="Product Code" /* was: label="Item Code" */
                   value={form.itemCode}
                   inputRef={itemCodeInputRef}
                   onChange={(v) => {
@@ -3586,7 +3586,7 @@ export default function ItemFormPage() {
                         return next;
                       }
                       if (!isValidItemCode(code)) {
-                        next.itemCode = `Item code must be letters and numbers only (up to ${ITEM_CODE_MAX} characters)`;
+                        next.itemCode = `Product code must be letters and numbers only (up to ${ITEM_CODE_MAX} characters)` /* was: `Item code must be letters and numbers only (up to ${ITEM_CODE_MAX} characters)` */;
                         return next;
                       }
                       delete next.itemCode;
@@ -3676,7 +3676,7 @@ export default function ItemFormPage() {
                     htmlFor="exclusive-item"
                     style={{ fontSize: 12, color: 'var(--t1, #453F39)', cursor: 'pointer', fontFamily: 'var(--font-primary)', fontWeight: 600 }}
                   >
-                    Exclusive item
+                    {/* was: Exclusive item */}Exclusive product
                     <span style={{ fontSize: 11, fontWeight: 700, marginLeft: 8, padding: '2px 8px', borderRadius: 999, background: 'rgba(184,149,80,0.06)', border: '1px solid rgba(184,149,80,0.15)', color: 'var(--accent, #B89550)' }}>
                       {exclusiveCountForDisplay == null ? '...' : exclusiveCountForDisplay}/{exclusiveItemsLimit == null ? '...' : exclusiveItemsLimit}
                     </span>
@@ -3845,7 +3845,7 @@ export default function ItemFormPage() {
                 Channel Visibility
               </div>
               <p style={{ fontSize: 11, color: 'var(--t3, #9A9084)', margin: '0 0 10px', fontFamily: 'var(--font-primary)', lineHeight: 1.5, paddingLeft: 10, borderLeft: '2px solid rgba(124,58,237,0.2)' }}>
-                Choose which channels this item appears on. This narrows within what your category and menu allow.
+                {/* was: Choose which channels this item appears on. This narrows within what your category and menu allow. */}Choose which channels this product appears on. This narrows within what your category and menu allow.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {outletChannelRows.map((row) => {
@@ -4122,7 +4122,7 @@ export default function ItemFormPage() {
                   );
                   if (itemMenus.length === 0) return (
                     <div style={{ padding: 12, borderRadius: 2, background: '#F7EFDF', border: '1px solid #E9D8B5', fontSize: 12, color: '#8A6D33', fontFamily: 'var(--font-primary)' }}>
-                      This item isn't in any menu yet. Add it to a menu first, then set menu-specific prices.
+                      This product isn't in any menu yet. Add it to a menu first, then set menu-specific prices.
                     </div>
                   );
                   return (
@@ -4510,7 +4510,7 @@ export default function ItemFormPage() {
                     label="Kitchen item name"
                     value={form.kitchenName}
                     onChange={(v) => patch('kitchenName', v)}
-                    placeholder="Same as item name if blank"
+                    placeholder="Same as product name if blank"
                     maxLength={30}
                   /> */}
                   <Select
@@ -5085,7 +5085,7 @@ export default function ItemFormPage() {
                       <div>
                         <div style={{ fontSize: 12, fontWeight: 600, fontFamily: 'var(--font-primary)' }}>Catering</div>
                         <p style={{ fontSize: 11, color: 'var(--t3, #9A9084)', margin: '4px 0 0', fontFamily: 'var(--font-primary)' }}>
-                          Sell this item in catering.
+                          {/* was: Sell this item in catering. */}Sell this product in catering.
                         </p>
                       </div>
                       <Toggle
@@ -5272,13 +5272,13 @@ export default function ItemFormPage() {
                             value={form.cateringTaxRateId}
                             onChange={(v) => patch('cateringTaxRateId', v)}
                             options={[
-                              { value: '', label: 'Use item default tax' },
+                              { value: '', label: 'Use product default tax' },
                               ...cateringTaxOptions,
                             ]}
-                            placeholder="Use item default tax"
+                            placeholder="Use product default tax"
                           />
                           <p style={{ fontSize: 10, color: 'var(--t3, #9A9084)', margin: '4px 0 0', fontFamily: 'var(--font-primary)' }}>
-                            Leave blank to use the item's regular tax.
+                            Leave blank to use the product's regular tax.
                           </p>
                         </div>
                         */}
@@ -5413,7 +5413,7 @@ export default function ItemFormPage() {
                           onChange={(e) => patch('isSeasonal', e.target.checked)}
                           style={{ accentColor: 'var(--accent, #B89550)', width: 16, height: 16 }}
                         />
-                        Mark as seasonal item
+                        {/* was: Mark as seasonal item */}Mark as seasonal product
                       </label>
                       {cloneSeasonalPastEndBanner && (
                         <div
@@ -5654,9 +5654,9 @@ export default function ItemFormPage() {
                         onRemove={removeBestPairedItem}
                         onReorder={(ids) => setForm((prev) => ({ ...prev, bestPairedItemIds: ids }))}
                         collapsible={false}
-                        searchPlaceholder="Search items to pair..."
-                        emptyLabel="No paired items yet."
-                        addButtonLabel="Add items"
+                        searchPlaceholder="Search products to pair..." /* was: searchPlaceholder="Search items to pair..." */
+                        emptyLabel="No paired products yet." /* was: emptyLabel="No paired items yet." */
+                        addButtonLabel="Add products" /* was: addButtonLabel="Add items" */
                         persistedSelectedIds={initialBestPairedItemIdsRef.current}
                       />
                       {displayErrors.bestPaired && (
@@ -5683,7 +5683,7 @@ export default function ItemFormPage() {
           </div>
         </div>
 
-          <aside style={isMobile ? { width: '100%', order: -1, marginBottom: 16 } : S.rightRail} aria-label="Item preview">
+          <aside style={isMobile ? { width: '100%', order: -1, marginBottom: 16 } : S.rightRail} aria-label="Product preview" /* was: aria-label="Item preview" */>
             <div style={isMobile ? { ...S.previewCard, position: 'relative' as const } : S.previewCard}>
               <div style={{ ...S.previewImage, position: 'relative', overflow: 'hidden' }}>
                 {previewImageSrc ? (
@@ -5718,7 +5718,7 @@ export default function ItemFormPage() {
                     wordBreak: 'break-word',
                   }}
                 >
-                  {form.name.trim() || 'Item Name'}
+                  {form.name.trim() || 'Product Name'}
                 </div>
                 <div
                   style={{
@@ -6003,7 +6003,7 @@ export default function ItemFormPage() {
             if (pendingItemType) patch('itemType', pendingItemType);
             setPendingItemType(null);
           }}
-          title="Change item type?"
+          title="Change product type?" /* was: title="Change item type?" */
           description="Some sections may move; your data is kept if you switch back."
           confirmLabel="Continue"
           cancelLabel="Cancel"
@@ -6034,7 +6034,7 @@ export default function ItemFormPage() {
             void handleSave();
           }}
           title="Seasonal end date is in the past"
-          description={`This item has an end date (${form.seasonEnd}) that is earlier than today. Do you want to save anyway?`}
+          description={`This product has an end date (${form.seasonEnd}) that is earlier than today. Do you want to save anyway?` /* was: `This item has an end date (${form.seasonEnd}) that is earlier than today. Do you want to save anyway?` */}
           confirmLabel="Confirm"
           cancelLabel="Cancel"
           confirmButtonVariant="primary"
@@ -6054,7 +6054,7 @@ export default function ItemFormPage() {
           title={
             zeroPriceModalDetail.mode === 'channels' && zeroPriceModalDetail.channelLabels.length > 0
               ? 'A channel price is $0.00'
-              : 'This item has a $0.00 price'
+              : 'This product has a $0.00 price' /* was: 'This item has a $0.00 price' */
           }
           description={
             zeroPriceModalDetail.mode === 'channels' && zeroPriceModalDetail.channelLabels.length > 0 ? (

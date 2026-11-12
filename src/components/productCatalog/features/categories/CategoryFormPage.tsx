@@ -712,7 +712,7 @@ export default function CategoryFormPage() {
                 Channel Visibility
               </div>
               <p style={{ fontSize: 11, color: 'var(--t3, #9A9084)', margin: '0 0 12px', fontFamily: 'var(--font-primary)', lineHeight: 1.5, paddingLeft: 10, borderLeft: '2px solid rgba(124,58,237,0.2)' }}>
-                This is a parent control. Turning a channel OFF here blocks all items in this category from that channel.
+                {/* was: This is a parent control. Turning a channel OFF here blocks all items in this category from that channel. */}This is a parent control. Turning a channel OFF here blocks all products in this category from that channel.
                 {parentCategoryFromStore && (
                   <> Subcategories cannot enable channels the parent category has hidden or does not use.</>
                 )}
@@ -786,7 +786,7 @@ export default function CategoryFormPage() {
                 const affectedCount = catItems.length;
                 if (affectedCount === 0) return (
                   <p style={{ fontSize: 10, color: '#9A9084', fontStyle: 'italic', marginTop: 8, fontFamily: 'var(--font-primary)' }}>
-                    No items in this category yet. This setting will apply to items added later.
+                    {/* was: No items in this category yet. This setting will apply to items added later. */}No products in this category yet. This setting will apply to products added later.
                   </p>
                 );
                 return (
@@ -866,9 +866,9 @@ export default function CategoryFormPage() {
                       package_2
                     </span>
                     <div style={{ fontSize: 12, color: 'var(--t2, #6E665D)', fontFamily: 'var(--font-primary)', lineHeight: 1.5 }}>
-                      <strong>Item Assignment</strong>
+                      <strong>{/* was: Item Assignment */}Product Assignment</strong>
                       <br />
-                      Items cannot be assigned to parent categories. Add items to the subcategories under this category instead.
+                      {/* was: Items cannot be assigned to parent categories. Add items to the subcategories under this category instead. */}Products cannot be assigned to parent categories. Add products to the subcategories under this category instead.
                     </div>
                   </div>
                 </>
@@ -933,7 +933,7 @@ export default function CategoryFormPage() {
               If you continue, <strong>{pendingParentItemCount} item{pendingParentItemCount !== 1 ? 's' : ''} will become unassigned</strong>.{' '}
             </>
           )}
-          Assigning a parent may also alter channel visibility for items in this category.
+          {/* was: Assigning a parent may also alter channel visibility for items in this category. */}Assigning a parent may also alter channel visibility for products in this category.
           Continue?
         </p>
         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8 }}>

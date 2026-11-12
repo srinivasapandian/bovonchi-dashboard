@@ -49,7 +49,8 @@ function SlideTwoIllustration() {
     { icon: 'countertops', label: 'Kitchen Stations', desc: 'Routing', color: TEAL },
     // { icon: 'tune', label: 'Modifiers', desc: 'Customisation', color: ORANGE },
     { icon: 'tune', label: 'Product Options', desc: 'Customisation', color: ORANGE },
-    { icon: 'inventory_2', label: 'Items', desc: 'Your products', color: ACCENT },
+    // { icon: 'inventory_2', label: 'Items', desc: 'Your products', color: ACCENT },
+    { icon: 'inventory_2', label: 'Products', desc: 'Your products', color: ACCENT },
   ];
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -66,7 +67,7 @@ function SlideTwoIllustration() {
         ))}
       </div>
       <div style={{ textAlign: 'center', fontSize: 8, color: T3, fontStyle: 'italic', marginTop: 2 }}>
-        Set these up first. Items depend on all of them.
+        {/* was: Set these up first. Items depend on all of them. */}Set these up first. Products depend on all of them.
       </div>
     </div>
   );
@@ -128,7 +129,7 @@ function SlideFourIllustration() {
     <div style={{ borderRadius: 2, border: '1px solid #E6DFD3', overflow: 'hidden', fontSize: 8 }}>
       {/* original grid: gridTemplateColumns: '70px repeat(3, 1fr)' (3 channels) */}
       <div style={{ display: 'grid', gridTemplateColumns: '70px repeat(1, 1fr)', background: '#FFFFFF' }}>
-        <div style={{ padding: '5px 6px', fontWeight: 600, color: T2 }}>Item</div>
+        <div style={{ padding: '5px 6px', fontWeight: 600, color: T2 }}>{/* was: Item */}Product</div>
         {channels.map((ch) => (
           <div key={ch} style={{ padding: '5px 4px', textAlign: 'center', fontWeight: 600, color: T3 }}>{ch}</div>
         ))}
@@ -160,7 +161,8 @@ function SlideFiveIllustration() {
     { num: 3, icon: 'category', label: 'Categories', desc: 'Organise store sections', color: ACCENT },
     // { num: 4, icon: 'tune', label: 'Modifiers', desc: 'Set up customisation', color: ORANGE },
     { num: 4, icon: 'tune', label: 'Product Options', desc: 'Set up customisation', color: ORANGE },
-    { num: 5, icon: 'inventory_2', label: 'Items', desc: 'Add your products', color: ACCENT },
+    // { num: 5, icon: 'inventory_2', label: 'Items', desc: 'Add your products', color: ACCENT },
+    { num: 5, icon: 'inventory_2', label: 'Products', desc: 'Add your products', color: ACCENT },
     // { num: 6, icon: 'rocket_launch', label: 'Go Live', desc: 'Sync and serve', color: GREEN },
     { num: 6, icon: 'rocket_launch', label: 'Go Live', desc: 'Sync and sell', color: GREEN },
   ];
@@ -197,26 +199,31 @@ const OVERVIEW_SLIDES: TutorialSlide[] = [
     illustration: <SlideTwoIllustration />,
     headline: "The Building Blocks",
     // body: "Four foundational entities power your catalog: Sessions (when), Categories (where), Kitchen Stations (routing), and Modifiers (customisation). Set these up first, then add your items.",
-    body: "Four foundational entities power your catalog: Sessions (when), Categories (where), Kitchen Stations (routing), and Product Options (customisation). Set these up first, then add your items.",
+    // body: "Four foundational entities power your catalog: Sessions (when), Categories (where), Kitchen Stations (routing), and Product Options (customisation). Set these up first, then add your items.",
+    body: "Four foundational entities power your catalog: Sessions (when), Categories (where), Kitchen Stations (routing), and Product Options (customisation). Set these up first, then add your products.",
   },
   {
     illustration: <SlideThreeIllustration />,
-    headline: "Items — The Heart of Everything",
+    // headline: "Items — The Heart of Everything",
+    headline: "Products — The Heart of Everything",
     // body: "Every item connects to categories, sessions, kitchen stations, and modifiers. Name it, price it, categorise it, assign it — and it appears everywhere.",
-    body: "Every item connects to categories, sessions, kitchen stations, and product options. Name it, price it, categorise it, assign it — and it appears everywhere.",
+    // body: "Every item connects to categories, sessions, kitchen stations, and product options. Name it, price it, categorise it, assign it — and it appears everywhere.",
+    body: "Every product connects to categories, sessions, kitchen stations, and product options. Name it, price it, categorise it, assign it — and it appears everywhere.",
   },
   {
     illustration: <SlideFourIllustration />,
     headline: "Control Centre — See Everything",
     // body: "The Control Centre shows what's visible and available on every channel in a single matrix. A dot means the item is visible — teal for available, amber for OOS (Out of Stock). A crossed-out eye means hidden.",
     // body: "The Control Centre shows what's visible and available for Pickup in a single matrix. A dot means the item is visible — teal for available, amber for OOS (Out of Stock). A crossed-out eye means hidden.",
-    body: "The Control Centre shows what's visible and available for Online in a single matrix. A dot means the item is visible — teal for available, amber for OOS (Out of Stock). A crossed-out eye means hidden.",
+    // body: "The Control Centre shows what's visible and available for Online in a single matrix. A dot means the item is visible — teal for available, amber for OOS (Out of Stock). A crossed-out eye means hidden.",
+    body: "The Control Centre shows what's visible and available for Online in a single matrix. A dot means the product is visible — teal for available, amber for OOS (Out of Stock). A crossed-out eye means hidden.",
   },
   {
     illustration: <SlideFiveIllustration />,
     headline: "Where to Start",
     // body: "Follow this order: Sessions → Kitchen Stations → Categories → Modifiers → Items → Go Live. Start with Sessions and work your way down.",
-    body: "Follow this order: Sessions → Kitchen Stations → Categories → Product Options → Items → Go Live. Start with Sessions and work your way down.",
+    // body: "Follow this order: Sessions → Kitchen Stations → Categories → Product Options → Items → Go Live. Start with Sessions and work your way down.",
+    body: "Follow this order: Sessions → Kitchen Stations → Categories → Product Options → Products → Go Live. Start with Sessions and work your way down.",
   },
 ];
 

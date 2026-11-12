@@ -295,7 +295,7 @@ function SortableSlotRow({ slot, index, allItems, pricingModel, onUpdate, onRemo
         </div>
         {slot.eligibleItems.length > 0 && (
           <div>
-            <label style={labelStyle}>Default item</label>
+            <label style={labelStyle}>{/* was: Default item */}Default product</label>
             <select value={slot.defaultItemId} onChange={(e) => onUpdate({ defaultItemId: e.target.value })} style={{ ...compactInput, cursor: 'pointer' }}>
               <option value="">None</option>
               {slot.eligibleItems.map((ei) => {
@@ -355,8 +355,8 @@ function SortableSlotRow({ slot, index, allItems, pricingModel, onUpdate, onRemo
             onRemove={handleRemove}
             collapsible={false}
             showPills={pricingModel !== 'dynamic'}
-            emptyLabel="No items added yet"
-            searchPlaceholder="Search items..."
+            emptyLabel="No products added yet" /* was: emptyLabel="No items added yet" */
+            searchPlaceholder="Search products..." /* was: searchPlaceholder="Search items..." */
             persistedSelectedIds={[]}
           />
         </>
@@ -422,9 +422,9 @@ function SortableSlotRow({ slot, index, allItems, pricingModel, onUpdate, onRemo
                   onUpdate({ subGroups: next });
                 }}
                 collapsible={false}
-                emptyLabel="No items"
-                searchPlaceholder="Search items..."
-                addButtonLabel="Add Items"
+                emptyLabel="No products" /* was: emptyLabel="No items" */
+                searchPlaceholder="Search products..." /* was: searchPlaceholder="Search items..." */
+                addButtonLabel="Add Products" /* was: addButtonLabel="Add Items" */
                 persistedSelectedIds={[]}
               />
             </div>
