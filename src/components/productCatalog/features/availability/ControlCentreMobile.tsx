@@ -672,7 +672,7 @@ export default function ControlCentreMobile({
         const n = countItemsMatchingSession(s, items);
         return {
           value,
-          label: `${s.name} (${n} items)`,
+          label: `${s.name} (${n} products)` /* was: `${s.name} (${n} items)` */,
         };
       }),
     ],
@@ -1264,7 +1264,7 @@ export default function ControlCentreMobile({
                       >
                         {catNameLabel.display}
                       </span>
-                      <span style={{ fontSize: 13, color: T3, fontFamily: 'var(--font-primary)', flexShrink: 0, whiteSpace: 'nowrap' }}>{totalItems} item{totalItems !== 1 ? 's' : ''}</span>
+                      <span style={{ fontSize: 13, color: T3, fontFamily: 'var(--font-primary)', flexShrink: 0, whiteSpace: 'nowrap' }}>{totalItems} {/* was: item */}product{totalItems !== 1 ? 's' : ''}</span>
                       <span className="material-symbols-rounded" style={{ fontSize: 18, color: T3, transform: isExpanded ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s', flexShrink: 0 }}>expand_more</span>
                     </button>
 
@@ -1299,7 +1299,7 @@ export default function ControlCentreMobile({
                               />
                               <span title={childNameLabel.title} style={{ flex: 1, minWidth: 0 }}>
                                 {childNameLabel.display}
-                                <span style={{ marginLeft: 6, fontWeight: 600, color: T3 }}>{childItems.length} item{childItems.length !== 1 ? 's' : ''}</span>
+                                <span style={{ marginLeft: 6, fontWeight: 600, color: T3 }}>{childItems.length} {/* was: item */}product{childItems.length !== 1 ? 's' : ''}</span>
                               </span>
                             </div>
                             {childItems.map((item) => (
@@ -1562,7 +1562,7 @@ export default function ControlCentreMobile({
         <div style={{ position: 'fixed', inset: 0, zIndex: 1200, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.4)', padding: 12 }}>
           <div style={{ background: CARD_BG, borderRadius: 2, padding: 20, width: '100%', maxWidth: 640, boxShadow: '0 8px 30px rgba(0,0,0,0.15)' }}>
             <h3 style={{ fontSize: 16, fontWeight: 700, color: T1, margin: '0 0 14px', fontFamily: 'var(--font-primary)' }}>
-              Mark {availabilityTargetIds.length} item{availabilityTargetIds.length !== 1 ? 's' : ''} as out of stock
+              {/* was: Mark {availabilityTargetIds.length} item{availabilityTargetIds.length !== 1 ? 's' : ''} as out of stock */}Mark {availabilityTargetIds.length} product{availabilityTargetIds.length !== 1 ? 's' : ''} as out of stock
             </h3>
             <div style={{ marginBottom: 12 }}>
               <div style={{ fontSize: 11, fontWeight: 600, color: T2, marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.04em', fontFamily: 'var(--font-primary)' }}>Scope</div>

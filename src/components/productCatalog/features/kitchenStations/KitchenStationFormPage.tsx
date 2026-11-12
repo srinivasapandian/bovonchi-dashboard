@@ -295,7 +295,7 @@ export default function KitchenStationFormPage() {
             />
 
             <ItemAssignmentSection
-              title="Assign Items"
+              title="Assign Products" /* was: title="Assign Items" */
               icon="package_2"
               items={assignableItems}
               categories={categories}
@@ -308,9 +308,9 @@ export default function KitchenStationFormPage() {
               onRemove={(itemId) => setSelectedItemIds((prev) => prev.filter((id) => id !== itemId))}
               loading={itemsLoading}
               itemsLoading={itemsLoading}
-              emptyLabel="No items assigned to this station"
-              addButtonLabel="Add Items"
-              noResultsLabel="No items found"
+              emptyLabel="No products assigned to this station" /* was: emptyLabel="No items assigned to this station" */
+              addButtonLabel="Add Products" /* was: addButtonLabel="Add Items" */
+              noResultsLabel="No products found" /* was: noResultsLabel="No items found" */
               collapsible={false}
               persistedSelectedIds={persistedItemIds}
               titleCountBadge={`${selectedItemIds.length} selected`}
@@ -421,7 +421,7 @@ export default function KitchenStationFormPage() {
                 />
 
                 <ItemAssignmentSection
-                  title="Assign Items"
+                  title="Assign Products" /* was: title="Assign Items" */
                   icon="package_2"
                   items={assignableItems}
                   categories={categories}
@@ -434,9 +434,9 @@ export default function KitchenStationFormPage() {
                   onRemove={(itemId) => setSelectedItemIds((prev) => prev.filter((id) => id !== itemId))}
                   loading={itemsLoading}
                   itemsLoading={itemsLoading}
-                  emptyLabel="No items assigned to this station"
-                  addButtonLabel="Add Items"
-                  noResultsLabel="No items found"
+                  emptyLabel="No products assigned to this station" /* was: emptyLabel="No items assigned to this station" */
+                  addButtonLabel="Add Products" /* was: addButtonLabel="Add Items" */
+                  noResultsLabel="No products found" /* was: noResultsLabel="No items found" */
                   collapsible={false}
                   persistedSelectedIds={persistedItemIds}
                   titleCountBadge={`${selectedItemIds.length} selected`}

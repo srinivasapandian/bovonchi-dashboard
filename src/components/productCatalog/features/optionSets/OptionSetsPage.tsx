@@ -328,7 +328,7 @@ export default function VariationSetsPage() {
         onConfirm={confirmDelete}
         confirmLoading={deletingOptionSet}
         title={deleteTarget ? deleteConfirmTitle(deleteTarget.displayName || deleteTarget.name) : deleteConfirmTitle('this variation set')}
-        description="Items that reference this variation set may need to be updated. This cannot be undone."
+        description="Products that reference this variation set may need to be updated. This cannot be undone." /* was: description="Items that reference this variation set may need to be updated. This cannot be undone." */
       />
       <BottomNav />
     </div>
@@ -344,7 +344,7 @@ export default function VariationSetsPage() {
             </span>
           }
           title="Variations"
-          subtitle="Reusable variation templates for your items"
+          subtitle="Reusable variation templates for your products" /* was: subtitle="Reusable variation templates for your items" */
           actions={
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
               <CatalogHelpLink
@@ -533,7 +533,7 @@ export default function VariationSetsPage() {
           onConfirm={confirmDelete}
           confirmLoading={deletingOptionSet}
           title={deleteTarget ? deleteConfirmTitle(deleteTarget.displayName || deleteTarget.name) : deleteConfirmTitle('this variation set')}
-          description="Items that reference this variation set may need to be updated. This cannot be undone."
+          description="Products that reference this variation set may need to be updated. This cannot be undone." /* was: description="Items that reference this variation set may need to be updated. This cannot be undone." */
         />
       </div>
     </DesktopLayout>

@@ -54,7 +54,7 @@ export function BulkKitchenPrintModal({
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
         {noStationCount > 0 && (
           <p style={{ fontSize: 12, color: 'var(--orange, #B07A2A)', margin: 0, fontFamily: 'var(--font-primary)' }}>
-            {noStationCount} of these items {noStationCount === 1 ? 'has' : 'have'} no kitchen station; the setting will apply once one is assigned.
+            {/* was: {noStationCount} of these items {noStationCount === 1 ? 'has' : 'have'} no kitchen station; the setting will apply once one is assigned. */}{noStationCount} of these products {noStationCount === 1 ? 'has' : 'have'} no kitchen station; the setting will apply once one is assigned.
           </p>
         )}
         <KitchenPrintOrderTypesField

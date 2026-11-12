@@ -274,10 +274,10 @@ function SortableCourseRow({
       </div>
 
       {/* Eligible items chips */}
-      <label style={labelStyle}>Eligible Items ({course.eligibleItems.length})</label>
+      <label style={labelStyle}>{/* was: Eligible Items */}Eligible Products ({course.eligibleItems.length})</label>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 8 }}>
         {course.eligibleItems.length === 0 && (
-          <span style={{ fontSize: 11, color: '#9A9084', fontStyle: 'italic' }}>No items added yet</span>
+          <span style={{ fontSize: 11, color: '#9A9084', fontStyle: 'italic' }}>{/* was: No items added yet */}No products added yet</span>
         )}
         {course.eligibleItems.map((ei) => {
           const item = allItems.find((it) => it.id === ei.itemId);
@@ -320,7 +320,7 @@ function SortableCourseRow({
         }}
       >
         <span className="material-symbols-rounded" style={{ fontSize: 14 }}>add</span>
-        Add Items
+        {/* was: Add Items */}Add Products
       </button>
 
       {showPicker && (
@@ -331,11 +331,11 @@ function SortableCourseRow({
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search items..."
+            placeholder="Search products..." /* was: placeholder="Search items..." */
             style={{ ...compactInput, marginBottom: 4 }}
           />
           {filteredItems.length === 0 && (
-            <div style={{ fontSize: 11, color: '#9A9084', padding: 8, textAlign: 'center' }}>No items found</div>
+            <div style={{ fontSize: 11, color: '#9A9084', padding: 8, textAlign: 'center' }}>{/* was: No items found */}No products found</div>
           )}
           {filteredItems.map((it) => (
             <div
@@ -358,7 +358,7 @@ function SortableCourseRow({
       <div style={{ marginTop: 12 }}>
         <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--t3, #9A9084)', marginBottom: 6, fontFamily: 'var(--font-primary)' }}>
           Course Modifiers
-          <span style={{ fontWeight: 400, marginLeft: 4 }}>(appear for any item in this course)</span>
+          <span style={{ fontWeight: 400, marginLeft: 4 }}>{/* was: (appear for any item in this course) */}(appear for any product in this course)</span>
         </div>
         {course.courseModifierIds.length > 0 && (
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginBottom: 8 }}>
@@ -505,7 +505,7 @@ export default function SetMenuFormPage() {
     if (form.name.length > 30) errs.name = 'Name must be 30 characters or less';
     if (!form.price || Number(form.price) <= 0) errs.price = 'Price is required';
     form.courses.forEach((c, i) => {
-      if (c.eligibleItems.length === 0) errs[`course_${i}`] = `${c.label || `Course ${i + 1}`} needs at least 1 item`;
+      if (c.eligibleItems.length === 0) errs[`course_${i}`] = `${c.label || `Course ${i + 1}`} needs at least 1 product`; /* was: needs at least 1 item */
       if (c.maxSelections < c.minSelections) errs[`course_sel_${i}`] = `${c.label}: max must be ≥ min`;
     });
     setErrors(errs);

@@ -102,8 +102,8 @@ export default function MenuPerformanceReport() {
       {/* Item-level impact */}
       <div style={{ background: '#fff', borderRadius: 2, border: '1px solid #E6DFD3', overflow: 'hidden' }}>
         <div style={{ padding: '16px 20px', borderBottom: '1px solid #F4F0E8' }}>
-          <h2 style={{ fontSize: 14, fontWeight: 700, color: '#453F39', margin: 0 }}>Item-Level Price Impact</h2>
-          <p style={{ fontSize: 11, color: '#9A9084', margin: '4px 0 0' }}>Per-menu breakdown for key items</p>
+          <h2 style={{ fontSize: 14, fontWeight: 700, color: '#453F39', margin: 0 }}>{/* was: Item-Level Price Impact */}Product-Level Price Impact</h2>
+          <p style={{ fontSize: 11, color: '#9A9084', margin: '4px 0 0' }}>{/* was: Per-menu breakdown for key items */}Per-menu breakdown for key products</p>
         </div>
         <div style={{ padding: 20 }}>
           {mockItemImpact.map((item) => (

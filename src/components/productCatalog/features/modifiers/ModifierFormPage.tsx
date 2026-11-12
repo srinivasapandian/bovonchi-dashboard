@@ -344,7 +344,7 @@ export default function ModifierFormPage() {
       if (fromStore) return { id: fromStore.id, name: fromStore.name };
       const fromApi = apiItems.find((i) => i.id === aid);
       if (fromApi) return { id: fromApi.id, name: fromApi.name };
-      return { id: aid, name: 'Item' };
+      return { id: aid, name: 'Product' /* was: 'Item' */ };
     });
   }, [assignedItemIds, items, modifiers, id]);
 

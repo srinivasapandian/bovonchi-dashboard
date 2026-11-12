@@ -15,7 +15,7 @@ interface Props {
 }
 
 const modeOptions: { value: DurationMode; label: string; desc: string; icon: string }[] = [
-  { value: 'manual', label: 'Until manually re-enabled', desc: 'Item stays Out of Stock until someone changes it back.', icon: 'block' },
+  { value: 'manual', label: 'Until manually re-enabled', desc: 'Product stays Out of Stock until someone changes it back.' /* was: 'Item stays Out of Stock until someone changes it back.' */, icon: 'block' },
   { value: 'next_session', label: 'Until next session', desc: 'Auto-re-enables when the next assigned session starts.', icon: 'schedule' },
   { value: 'specific_time', label: 'Until specific time', desc: 'Auto-re-enables at the time you choose.', icon: 'event' },
 ];

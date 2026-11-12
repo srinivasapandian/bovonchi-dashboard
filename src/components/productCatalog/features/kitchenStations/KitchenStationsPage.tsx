@@ -627,19 +627,19 @@ export default function KitchenStationsPage() {
               style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 8, padding: '14px 16px', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}
             >
               <span className="material-symbols-rounded" style={{ fontSize: 20, color: ACCENT }}>label_off</span>
-              <span style={{ fontSize: 14, fontWeight: 700, color: T1, flex: 1 }}>Untagged Items ({untaggedItems.length})</span>
+              <span style={{ fontSize: 14, fontWeight: 700, color: T1, flex: 1 }}>{/* was: Untagged Items */}Untagged Products ({untaggedItems.length})</span>
               <span className="material-symbols-rounded" style={{ fontSize: 20, color: T3, transition: 'transform 0.2s', transform: untaggedExpanded ? 'rotate(180deg)' : 'none' }}>expand_more</span>
             </button>
             {untaggedExpanded && (
               <div style={{ padding: '0 16px 16px' }}>
                 <p style={{ fontSize: 12, color: T2, margin: '0 0 10px', lineHeight: 1.5 }}>
-                  These items have no kitchen station. Assign them so orders route correctly.
+                  {/* was: These items have no kitchen station. Assign them so orders route correctly. */}These products have no kitchen station. Assign them so orders route correctly.
                 </p>
                 <div style={{ position: 'relative', marginBottom: 10 }}>
                   <span className="material-symbols-rounded" style={{ position: 'absolute', left: 9, top: '50%', transform: 'translateY(-50%)', fontSize: 16, color: T3, pointerEvents: 'none' }}>search</span>
                   <input
                     type="search"
-                    placeholder="Search items..."
+                    placeholder="Search products..." /* was: placeholder="Search items..." */
                     value={untaggedSearch}
                     onChange={(e) => setUntaggedSearch(e.target.value)}
                     style={{ width: '100%', paddingLeft: 30, paddingRight: 10, border: `1px solid ${BORDER}`, borderRadius: 2, fontSize: 12, height: 34, boxSizing: 'border-box', outline: 'none', fontFamily: 'var(--font-primary)', color: T1, background: CARD_BG }}
@@ -697,7 +697,7 @@ export default function KitchenStationsPage() {
                     </div>
                   ))}
                   {filteredUntaggedItems.length === 0 && untaggedSearch && (
-                    <p style={{ fontSize: 12, color: T3, textAlign: 'center', padding: '16px 0', margin: 0 }}>No items matching "{untaggedSearch}"</p>
+                    <p style={{ fontSize: 12, color: T3, textAlign: 'center', padding: '16px 0', margin: 0 }}>{/* was: No items matching */}No products matching "{untaggedSearch}"</p>
                   )}
                 </div>
               </div>
@@ -750,7 +750,7 @@ export default function KitchenStationsPage() {
             {/*
             {deleteStationItemCount > 0 && (
               <Select
-                label="Move items to"
+                label="Move products to"
                 value={destinationStationId}
                 onChange={setDestinationStationId}
                 placeholder="Select a station..."
@@ -834,7 +834,7 @@ export default function KitchenStationsPage() {
             }
             title={activeTab === 'stations' ? 'Kitchen Stations' : 'Printers'}
             subtitle={activeTab === 'stations'
-              ? 'Organize items by preparation area for efficient kitchen routing'
+              ? 'Organize products by preparation area for efficient kitchen routing' /* was: 'Organize items by preparation area for efficient kitchen routing' */
               : 'Manage kitchen, label, and receipt printers for your stations'}
             actions={
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
@@ -1038,7 +1038,7 @@ export default function KitchenStationsPage() {
                               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, fontSize: 12, color: T3 }}>
                                 <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                                   <span className="material-symbols-rounded" style={{ fontSize: 14 }}>layers</span>
-                                  {ic} items
+                                  {/* was: {ic} items */}{ic} products
                                 </span>
                                 {/* <span
                                   style={{
@@ -1093,7 +1093,7 @@ export default function KitchenStationsPage() {
                             <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 12, color: T3 }}>
                               <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                                 <span className="material-symbols-rounded" style={{ fontSize: 14 }}>layers</span>
-                                {ic} items
+                                {/* was: {ic} items */}{ic} products
                               </span>
                               {/* <span style={{ display: 'flex', alignItems: 'center', gap: 4, color: pc === 0 ? ORANGE : T3 }}>
                                 <span className="material-symbols-rounded" style={{ fontSize: 14 }}>print</span>
@@ -1150,11 +1150,11 @@ export default function KitchenStationsPage() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
                 <span className="material-symbols-rounded" style={{ fontSize: 22, color: ORANGE }}>warning</span>
                 <h3 style={{ fontSize: 15, fontWeight: 700, color: T1, margin: 0 }}>
-                  Unmapped Kitchen Items ({unmappedItems.length})
+                  {/* was: Unmapped Kitchen Items ({unmappedItems.length}) */}Unmapped Kitchen Products ({unmappedItems.length})
                 </h3>
               </div>
               <p style={{ fontSize: 12, color: T2, margin: '0 0 14px', lineHeight: 1.5 }}>
-                These items are on the default station but haven't been explicitly assigned. Assign them to a specific station or confirm they belong on the default.
+                {/* was: These items are on the default station but haven't been explicitly assigned. Assign them to a specific station or confirm they belong on the default. */}These products are on the default station but haven't been explicitly assigned. Assign them to a specific station or confirm they belong on the default.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 {unmappedItems.slice(0, 10).map((item) => (
@@ -1211,19 +1211,19 @@ export default function KitchenStationsPage() {
                 style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 10, padding: 20, background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}
               >
                 <span className="material-symbols-rounded" style={{ fontSize: 22, color: ACCENT }}>label_off</span>
-                <span style={{ fontSize: 15, fontWeight: 700, color: T1, flex: 1 }}>Untagged Items ({untaggedItems.length})</span>
+                <span style={{ fontSize: 15, fontWeight: 700, color: T1, flex: 1 }}>{/* was: Untagged Items */}Untagged Products ({untaggedItems.length})</span>
                 <span className="material-symbols-rounded" style={{ fontSize: 20, color: T3, transition: 'transform 0.2s', transform: untaggedExpanded ? 'rotate(180deg)' : 'none' }}>expand_more</span>
               </button>
               {untaggedExpanded && (
                 <div style={{ padding: '0 20px 20px' }}>
                   <p style={{ fontSize: 12, color: T2, margin: '0 0 14px', lineHeight: 1.5 }}>
-                    These items have no kitchen station assigned. Assign them so orders route correctly.
+                    {/* was: These items have no kitchen station assigned. Assign them so orders route correctly. */}These products have no kitchen station assigned. Assign them so orders route correctly.
                   </p>
                   <div style={{ position: 'relative', marginBottom: 14 }}>
                     <span className="material-symbols-rounded" style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', fontSize: 16, color: T3, pointerEvents: 'none' }}>search</span>
                     <input
                       type="search"
-                      placeholder="Search items..."
+                      placeholder="Search products..." /* was: placeholder="Search items..." */
                       value={untaggedSearch}
                       onChange={(e) => setUntaggedSearch(e.target.value)}
                       style={{ width: '100%', paddingLeft: 32, paddingRight: 12, border: `1px solid ${BORDER}`, borderRadius: 2, fontSize: 13, height: 36, boxSizing: 'border-box', outline: 'none', fontFamily: 'var(--font-primary)', color: T1, background: CARD_BG }}
@@ -1278,7 +1278,7 @@ export default function KitchenStationsPage() {
                       </div>
                     ))}
                     {filteredUntaggedItems.length === 0 && untaggedSearch && (
-                      <p style={{ fontSize: 12, color: T3, textAlign: 'center', padding: '20px 0', margin: 0 }}>No items matching "{untaggedSearch}"</p>
+                      <p style={{ fontSize: 12, color: T3, textAlign: 'center', padding: '20px 0', margin: 0 }}>{/* was: No items matching */}No products matching "{untaggedSearch}"</p>
                     )}
                   </div>
                 </div>
@@ -1332,7 +1332,7 @@ export default function KitchenStationsPage() {
             {/*
             {deleteStationItemCount > 0 ? (
               <Select
-                label="Move items to"
+                label="Move products to"
                 value={destinationStationId}
                 onChange={setDestinationStationId}
                 placeholder="Select a station..."

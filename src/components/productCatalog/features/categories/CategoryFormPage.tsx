@@ -433,7 +433,7 @@ export default function CategoryFormPage() {
       if (fromModule) return { id: fromModule.id, name: fromModule.name };
       const fromStore = storeItems.find((i) => i.id === aid);
       if (fromStore) return { id: fromStore.id, name: fromStore.name };
-      return { id: aid, name: 'Item' };
+      return { id: aid, name: 'Product' /* was: 'Item' */ };
     });
   }, [assignedItemIds, existing, moduleItems, storeItems]);
 
@@ -793,7 +793,7 @@ export default function CategoryFormPage() {
                   <div style={{ marginTop: 10, padding: '8px 12px', borderRadius: 2, background: 'rgba(176,122,42,0.06)', border: '1px solid rgba(176,122,42,0.15)' }}>
                     <p style={{ fontSize: 11, color: '#8A6D33', margin: 0, fontFamily: 'var(--font-primary)', lineHeight: 1.5 }}>
                       <span className="material-symbols-rounded" style={{ fontSize: 14, verticalAlign: 'middle', marginRight: 4 }}>info</span>
-                      Hiding {disabledChannels.map((c) => getChannelDisplayName(c.typeName)).join(', ')} will affect <strong>{affectedCount} item{affectedCount !== 1 ? 's' : ''}</strong> in this category.
+                      Hiding {disabledChannels.map((c) => getChannelDisplayName(c.typeName)).join(', ')} will affect <strong>{affectedCount} {/* was: item */}product{affectedCount !== 1 ? 's' : ''}</strong> in this category.
                     </p>
                   </div>
                 );

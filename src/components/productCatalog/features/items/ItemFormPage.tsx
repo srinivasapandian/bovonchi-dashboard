@@ -1951,7 +1951,7 @@ export default function ItemFormPage() {
           (!currentId || it.id !== currentId),
       );
       if (dup) {
-        const dupName = (dup.name || '').trim() || 'another item';
+        const dupName = (dup.name || '').trim() || 'another product' /* was: 'another item' */;
         const msg = `This barcode is already linked to ${dupName}. Please use a unique code.`;
         setErrors((prev) => ({ ...prev, itemCode: msg }));
         addToast(msg, 'error');
@@ -1980,7 +1980,7 @@ export default function ItemFormPage() {
     () =>
       form.bestPairedItemIds.map((iid) => {
         const it = items.find((i) => i.id === iid);
-        return it ? { id: it.id, name: it.name } : { id: iid, name: 'Item' };
+        return it ? { id: it.id, name: it.name } : { id: iid, name: 'Product' /* was: 'Item' */ };
       }),
     [form.bestPairedItemIds, items],
   );
@@ -2182,7 +2182,7 @@ export default function ItemFormPage() {
         if (!it?.itemCode) continue;
         if ((it.itemCode || '').trim().toLowerCase() !== target) continue;
         if (currentId && it.id === currentId) continue;
-        return { id: it.id, name: (it.name || '').trim() || 'another item' };
+        return { id: it.id, name: (it.name || '').trim() || 'another product' /* was: 'another item' */ };
       }
       return null;
     },
@@ -3690,7 +3690,7 @@ export default function ItemFormPage() {
                   </div>
                   <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
                     {([
-                      { id: 'each' as const, label: 'Each', icon: 'inventory_2', desc: 'Individual items' },
+                      { id: 'each' as const, label: 'Each', icon: 'inventory_2', desc: 'Individual products' /* was: 'Individual items' */ },
                       { id: 'weight' as const, label: 'Weight', icon: 'scale', desc: 'Sold by weight' },
                       // { id: 'volume' as const, label: 'Volume', icon: 'local_drink', desc: 'Sold by volume' },
                     ]).map((opt) => {
@@ -5429,7 +5429,7 @@ export default function ItemFormPage() {
                             lineHeight: 1.45,
                           }}
                         >
-                          The seasonal end date ({form.seasonEnd}) has already passed. Update the dates or uncheck 'Seasonal Item' before saving.
+                          {/* was: The seasonal end date ({form.seasonEnd}) has already passed. Update the dates or uncheck 'Seasonal Item' before saving. */}The seasonal end date ({form.seasonEnd}) has already passed. Update the dates or uncheck 'Seasonal Product' before saving.
                         </div>
                       )}
                       {form.isSeasonal && (

@@ -2278,7 +2278,7 @@ export default function ItemsPage() {
               color: 'var(--t2)',
             }}
           >
-            {nItems} item{nItems !== 1 ? 's' : ''}
+            {/* was: {nItems} item{nItems !== 1 ? 's' : ''} */}{nItems} product{nItems !== 1 ? 's' : ''}
           </span>
           <div style={{ flex: 1 }} />
           {!isMobile && (
@@ -3098,7 +3098,7 @@ export default function ItemsPage() {
             background: 'rgba(184,149,80,0.06)', border: '1px solid rgba(184,149,80,0.15)',
           }}>
             <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--t1)' }}>
-              {selectedItems.size} item{selectedItems.size !== 1 ? 's' : ''} selected
+              {/* was: {selectedItems.size} item{selectedItems.size !== 1 ? 's' : ''} selected */}{selectedItems.size} product{selectedItems.size !== 1 ? 's' : ''} selected
             </span>
             <span style={{ width: 1, height: 20, background: 'rgba(184,149,80,0.2)' }} />
             <BulkActionsMenu actions={bulkActions} />
@@ -3263,7 +3263,7 @@ export default function ItemsPage() {
               1
                 ? 'y'
                 : 'ies'}{' '}
-              -- {totalItemsInView} items total
+              {/* was: -- {totalItemsInView} items total */}-- {totalItemsInView} products total
             </span>
             {/* {activeMenu !== 'all' && (() => {
               const selectedMenu = menus.find((m) => m.id === activeMenu);
@@ -3580,7 +3580,7 @@ export default function ItemsPage() {
         {activeMenu !== 'exclusive' && catalogReadyForBranch && totalItemsInView > 0 && (
           <div style={{ marginTop: 12, padding: '0 4px' }}>
             <span style={{ fontSize: 12, color: 'var(--t2)' }}>
-              {categoriesWithItems} categor{categoriesWithItems === 1 ? 'y' : 'ies'} -- {totalItemsInView} items
+              {/* was: {categoriesWithItems} categor{categoriesWithItems === 1 ? 'y' : 'ies'} -- {totalItemsInView} items */}{categoriesWithItems} categor{categoriesWithItems === 1 ? 'y' : 'ies'} -- {totalItemsInView} products
             </span>
           </div>
         )}

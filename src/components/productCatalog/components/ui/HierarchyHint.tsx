@@ -11,10 +11,10 @@ export type HintLayer = 'visibility' | 'availability';
 
 const HINTS: Record<string, { text: string; layer: HintLayer }> = {
   // Menu
-  'menu.channel_assignment': { text: "This menu is the ceiling — items can only appear on channels you enable here.", layer: 'visibility' },
+  'menu.channel_assignment': { text: "This menu is the ceiling — products can only appear on channels you enable here." /* was: "This menu is the ceiling — items can only appear on channels you enable here." */, layer: 'visibility' },
   'menu.session_scope': { text: "This menu is only active during selected sessions. Outside these times, devices show their default menu.", layer: 'visibility' },
   // Category
-  'category.channel_visibility': { text: "This is a parent control. Turning a channel OFF here blocks all items in this category from that channel.", layer: 'visibility' },
+  'category.channel_visibility': { text: "This is a parent control. Turning a channel OFF here blocks all products in this category from that channel." /* was: "This is a parent control. Turning a channel OFF here blocks all items in this category from that channel." */, layer: 'visibility' },
   'subcategory.channel_visibility': { text: "Constrained by parent category. You can narrow further but not widen.", layer: 'visibility' },
   // Item
   'item.channel_visibility': { text: "Choose which channels this item appears on. This narrows within what your category and menu allow.", layer: 'visibility' },
@@ -30,7 +30,7 @@ const HINTS: Record<string, { text: string; layer: HintLayer }> = {
   // Variation
   'variation.available': { text: "Turn OFF to temporarily remove this size from ordering.", layer: 'availability' },
   // POS
-  'pos.86_action': { text: "This is temporary — the item will come back. To permanently remove from a channel, use the Back Office.", layer: 'availability' },
+  'pos.86_action': { text: "This is temporary — the product will come back. To permanently remove from a channel, use the Back Office." /* was: "This is temporary — the item will come back. To permanently remove from a channel, use the Back Office." */, layer: 'availability' },
 };
 
 interface HierarchyHintProps {

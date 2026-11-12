@@ -102,7 +102,7 @@ const CHANNELS: { key: OrderType; label: string; icon: string }[] = [
 ];
 
 function itemCountLabel(n: number): string {
-  return `${n} item${n === 1 ? '' : 's'}`;
+  return `${n} product${n === 1 ? '' : 's'}` /* was: `${n} item${n === 1 ? '' : 's'}` */;
 }
 
 /** Normalise snake_case inactive mode to human-readable label (e.g. "until_manually_enabled" → "Until Manually Enabled"). */
@@ -494,8 +494,8 @@ function CellPopover({ result, channelLabel, diagnostics, onClose, onToggleVisib
                     </span>
                   ))}
                   {hasMultipleBlockingNames
-                    ? '. Item visibility and OOS stay disabled until at least one assigned category is on for this channel.'
-                    : '. Item visibility and OOS stay disabled until this category is on for this channel.'}
+                    ? '. Product visibility and OOS stay disabled until at least one assigned category is on for this channel.' /* was: '. Item visibility and OOS stay disabled until at least one assigned category is on for this channel.' */
+                    : '. Product visibility and OOS stay disabled until this category is on for this channel.' /* was: '. Item visibility and OOS stay disabled until this category is on for this channel.' */}
                 </>
               ) : (
                 `Enable ${channelLabel} for at least one category assigned to the item. Until a category is enabled for this channel, the item’s visibility and Out-of-Stock (OOS) status will remain disabled.`
@@ -854,7 +854,7 @@ export default function AvailabilityControlCentre() {
         const n = countItemsMatchingSession(s, items);
         return {
           value,
-          label: `${s.name} (${n} items)`,
+          label: `${s.name} (${n} products)` /* was: `${s.name} (${n} items)` */,
         };
       }),
     ],
@@ -1678,7 +1678,7 @@ export default function AvailabilityControlCentre() {
             { label: 'Active', value: summary.showing, color: GREEN, bg: 'rgba(95,122,85,0.06)' },
             { label: 'Out of Stock', value: summary.soldOut, color: ORANGE, bg: 'rgba(176,122,42,0.06)' },
             { label: 'Hidden / Draft', value: summary.hidden, color: T3, bg: HOVER },
-            { label: 'Total Items', value: summary.total, color: T1, bg: ACCENT_SOFT },
+            { label: 'Total Products' /* was: label: 'Total Items' */, value: summary.total, color: T1, bg: ACCENT_SOFT },
           ].map((kpi) => (
             <div key={kpi.label} style={{
               flex: '1 1 140px', padding: '14px 18px', borderRadius: 2,
@@ -1897,7 +1897,7 @@ export default function AvailabilityControlCentre() {
                     />
                   </th>
                   <th style={{ textAlign: 'left', padding: '12px 16px', borderBottom: `1px solid ${BORDER}`, position: 'sticky', left: 32, background: PAGE_BG, zIndex: 2, minWidth: 0, fontWeight: 600, fontSize: 11, color: T2, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                    Item
+                    {/* was: Item */}Product
                   </th>
                   {/* Status column (hidden on FE for now) */}
                   {false && (
@@ -1966,7 +1966,7 @@ export default function AvailabilityControlCentre() {
                           chevron_right
                         </span>
                         <span title={parentNameLabel.title}>{parentNameLabel.display}</span>
-                        <span style={{ fontSize: 13, color: T3, fontWeight: 500, marginLeft: 8 }}>{parentAllItems.length} items</span>
+                        <span style={{ fontSize: 13, color: T3, fontWeight: 500, marginLeft: 8 }}>{parentAllItems.length} {/* was: items */}products</span>
                       </td>
                     </tr>,
                     ...(isExpanded
@@ -2068,7 +2068,7 @@ export default function AvailabilityControlCentre() {
                               style={{ padding: '8px 16px 8px 28px', fontWeight: 600, color: T2, position: 'sticky', left: 32, background: '#F7F4EC', zIndex: 1, fontSize: 12, whiteSpace: 'normal', wordBreak: 'break-word', overflow: 'visible', lineHeight: 1.35 }}
                             >
                               <span title={childNameLabel.title}>{childNameLabel.display}</span>
-                              <span style={{ fontSize: 12, color: T3, fontWeight: 500, marginLeft: 8 }}>{childItems.length} items</span>
+                              <span style={{ fontSize: 12, color: T3, fontWeight: 500, marginLeft: 8 }}>{childItems.length} {/* was: items */}products</span>
                             </td>
                           </tr>,
                           ...childItems.map((item) => {
@@ -2295,7 +2295,7 @@ export default function AvailabilityControlCentre() {
                           {subCats.length > 0 ? (
                             <>
                               {subCats.length} sub-categor{subCats.length === 1 ? 'y' : 'ies'}
-                              <span style={{ marginLeft: 4 }}>· {subCatItemTotal} items</span>
+                              <span style={{ marginLeft: 4 }}>· {subCatItemTotal} {/* was: items */}products</span>
                             </>
                           ) : (
                             `${parent.itemCount} items`
@@ -2429,7 +2429,7 @@ export default function AvailabilityControlCentre() {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <span style={{ fontSize: 13, fontWeight: 600, color: T1, fontFamily: 'var(--font-primary)' }}>
-              {selectedRows.size} item{selectedRows.size !== 1 ? 's' : ''} selected
+              {/* was: {selectedRows.size} item{selectedRows.size !== 1 ? 's' : ''} selected */}{selectedRows.size} product{selectedRows.size !== 1 ? 's' : ''} selected
             </span>
             <button type="button" onClick={clearSelection} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 11, color: T3, textDecoration: 'underline', fontFamily: 'var(--font-primary)' }}>
               Clear
@@ -2601,7 +2601,7 @@ export default function AvailabilityControlCentre() {
                     </div>
                     {bulkScope === 'specific' && bulkChannels.size > 0 && (
                       <p style={{ fontSize: 10, color: TEAL, marginTop: 6, fontFamily: 'var(--font-primary)' }}>
-                        Items will remain available on other channels not selected above.
+                        {/* was: Items will remain available on other channels not selected above. */}Products will remain available on other channels not selected above.
                       </p>
                     )}
                   </div>
@@ -2681,7 +2681,7 @@ export default function AvailabilityControlCentre() {
                   Restore {itemCountLabel(selectedRows.size)}
                 </h3>
                 <p style={{ fontSize: 12, color: T2, margin: '0 0 16px', fontFamily: 'var(--font-primary)', lineHeight: 1.5 }}>
-                  This will set {selectedRows.size === 1 ? 'the selected item' : 'all selected items'} back to Active status and clear {selectedRows.size === 1 ? 'its' : 'their'} per-channel out-of-stock {selectedRows.size === 1 ? 'override' : 'overrides'}.
+                  {/* was: This will set {selectedRows.size === 1 ? 'the selected item' : 'all selected items'} back to Active status and clear {selectedRows.size === 1 ? 'its' : 'their'} per-channel out-of-stock {selectedRows.size === 1 ? 'override' : 'overrides'}. */}This will set {selectedRows.size === 1 ? 'the selected product' : 'all selected products'} back to Active status and clear {selectedRows.size === 1 ? 'its' : 'their'} per-channel out-of-stock {selectedRows.size === 1 ? 'override' : 'overrides'}.
                 </p>
                 <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
                   <button type="button" onClick={() => setBulkModal(null)} style={{ padding: '8px 16px', borderRadius: 2, border: `1px solid ${BORDER}`, background: CARD_BG, color: T2, fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'var(--font-primary)' }}>Cancel</button>

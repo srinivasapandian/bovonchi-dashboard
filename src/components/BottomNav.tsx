@@ -9,7 +9,7 @@ const PAD_BOTTOM = 'max(8px, env(safe-area-inset-bottom))';
 const ITEMS = [
   { icon: 'receipt_long', label: 'Orders', path: ORDERS_PATH, match: (p: string) => p.startsWith(ORDERS_PATH) },
   { icon: 'storefront', label: 'Catalog', path: pcPaths.availability, match: isCatalogPath },
-  { icon: 'inventory_2', label: 'Items', path: pcPaths.items, match: (p: string) => p.startsWith(pcPaths.items) },
+  { icon: 'inventory_2', label: 'Products', /* was: label: 'Items', */ path: pcPaths.items, match: (p: string) => p.startsWith(pcPaths.items) },
   { icon: 'category', label: 'Categories', path: pcPaths.categories, match: (p: string) => p.startsWith(pcPaths.categories) },
 ];
 

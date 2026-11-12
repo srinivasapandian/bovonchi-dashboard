@@ -29,7 +29,7 @@ export function quotedDeleteName(name: string): string {
 
 /** Title line: `Delete ‘Name’?` — pass verb `Remove` for nested row deletes */
 export function deleteConfirmTitle(name: string, verb = 'Delete'): string {
-  const n = name.trim() || 'this item';
+  const n = name.trim() || 'this product' /* was: 'this item' */;
   return `${verb} ${quotedDeleteName(n)}?`;
 }
 

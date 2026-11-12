@@ -140,7 +140,7 @@ export default function HappyHourWizard({ open, onClose, onComplete }: HappyHour
         {/* Step 2: Select Items */}
         {step === 2 && (
           <div>
-            <h2 style={{ fontSize: 18, fontWeight: 700, color: '#453F39', margin: '0 0 4px' }}>Select Items</h2>
+            <h2 style={{ fontSize: 18, fontWeight: 700, color: '#453F39', margin: '0 0 4px' }}>{/* was: Select Items */}Select Products</h2>
             <p style={{ fontSize: 12, color: '#6E665D', margin: '0 0 16px' }}>Which items are included in your happy hour? ({allSelectedItemIds.size} selected)</p>
             <p style={{ fontSize: 11, fontWeight: 600, color: '#9A9084', textTransform: 'uppercase', marginBottom: 8 }}>By Category <span style={{ fontSize: 9, color: '#5F7A55', background: '#16A34A15', padding: '1px 6px', borderRadius: 4, marginLeft: 4 }}>Recommended</span></p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 16 }}>
@@ -223,7 +223,7 @@ export default function HappyHourWizard({ open, onClose, onComplete }: HappyHour
               <div style={{ fontSize: 12, color: '#6E665D', marginBottom: 4 }}>{days.join(', ')}, {startTime} – {endTime}</div>
               <div style={{ fontSize: 12, color: '#6E665D', marginBottom: 4 }}>{allSelectedItemIds.size} items</div>
               <div style={{ fontSize: 12, color: '#6E665D' }}>
-                {pricingMode === 'percentage' ? `${pctOff}% off all items` : pricingMode === 'fixed' ? 'Fixed prices per category' : 'Custom prices'}
+                {pricingMode === 'percentage' ? `${pctOff}% off all products` /* was: `${pctOff}% off all items` */ : pricingMode === 'fixed' ? 'Fixed prices per category' : 'Custom prices'}
               </div>
             </div>
           </div>

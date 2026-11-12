@@ -36,7 +36,7 @@ const filterLabels: Record<FilterType, string> = {
   required: 'Required',
   optional: 'Optional',
   has_oos: 'Has Out-of-Stock',
-  unused: 'Unused (0 items)',
+  unused: 'Unused (0 products)' /* was: 'Unused (0 items)' */,
 };
 
 function isModifierEffectivelyRequired(mod: ModifierGroup): boolean {
@@ -417,7 +417,7 @@ export default function ModifiersPage() {
                     </div>
                     <div style={{ fontSize: 12, color: '#6E665D', marginBottom: 4 }}>
                       {mod.type === 'options_list' ? `${mod.options.length} option${mod.options.length !== 1 ? 's' : ''}` : 'Free text input'}
-                      {' · '}Applied to {mod.appliedItemCount ?? 0} item{(mod.appliedItemCount ?? 0) !== 1 ? 's' : ''}
+                      {' · '}Applied to {mod.appliedItemCount ?? 0} {/* was: item */}product{(mod.appliedItemCount ?? 0) !== 1 ? 's' : ''}
                     </div>
                     <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', alignItems: 'center' }}>
                       {mod.type === 'options_list' && mod.options.slice(0, 3).map((opt) => (
@@ -720,7 +720,7 @@ export default function ModifiersPage() {
                       {mod.type === 'options_list' && (
                         <span>{mod.options.length} option{mod.options.length !== 1 ? 's' : ''}</span>
                       )}
-                      <span>Applied to {mod.appliedItemCount ?? 0} item{(mod.appliedItemCount ?? 0) !== 1 ? 's' : ''}</span>
+                      <span>Applied to {mod.appliedItemCount ?? 0} {/* was: item */}product{(mod.appliedItemCount ?? 0) !== 1 ? 's' : ''}</span>
                       {getSelectionLabel(mod) && <span>{getSelectionLabel(mod)}</span>}
                       {hasOos(mod) && (
                         <span
@@ -958,7 +958,7 @@ function AppliedItemsDropdown({ mod }: { mod: ModifierGroup }) {
         }}
       >
         <span className="material-symbols-rounded" style={{ fontSize: 14 }}>link</span>
-        Applied to {count} item{count !== 1 ? 's' : ''}
+        {/* was: Applied to {count} item{count !== 1 ? 's' : ''} */}Applied to {count} product{count !== 1 ? 's' : ''}
       </div>
       {hasItems && (
         <div style={{ marginTop: 8, display: 'flex', flexWrap: 'wrap', gap: 6, paddingLeft: 18 }}>

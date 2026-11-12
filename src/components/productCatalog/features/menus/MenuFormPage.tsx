@@ -935,7 +935,7 @@ export default function MenuFormPage() {
 
             <SectionCard
               title="Menu Contents"
-              subtitle="Select which categories and items appear in this menu"
+              subtitle="Select which categories and products appear in this menu" /* was: subtitle="Select which categories and items appear in this menu" */
             >
               <div
                         style={{
@@ -983,7 +983,7 @@ export default function MenuFormPage() {
                     boxShadow: contentTab === 'item' ? '0 1px 3px rgba(0,0,0,0.08)' : 'none',
                   }}
                 >
-                  By Item
+                  {/* was: By Item */}By Product
                 </button>
                         </div>
 
@@ -1129,7 +1129,7 @@ export default function MenuFormPage() {
                   type="text"
                       value={itemSearch}
                       onChange={(e) => setItemSearch(e.target.value)}
-                      placeholder="Search items by name or code..."
+                      placeholder="Search products by name or code..." /* was: placeholder="Search items by name or code..." */
                   style={{
                     width: '100%',
                         boxSizing: 'border-box',
@@ -1227,7 +1227,7 @@ export default function MenuFormPage() {
                     })}
                     {sortedFilteredItems.length === 0 ? (
                       <div style={{ padding: 32, textAlign: 'center', color: T3, fontSize: 13 }}>
-                        No items found
+                        {/* was: No items found */}No products found
                       </div>
                     ) : null}
                   </div>
@@ -1257,7 +1257,7 @@ export default function MenuFormPage() {
               subtitle=""
             >
               <p style={{ fontSize: 11, color: '#9A9084', margin: '-8px 0 12px', fontFamily: 'var(--font-primary)', lineHeight: 1.5, paddingLeft: 10, borderLeft: '2px solid rgba(124,58,237,0.2)' }}>
-                This is the ceiling — items can only appear on channels you enable here. If a channel is OFF, no item in this menu will show on that channel.
+                {/* was: This is the ceiling — items can only appear on channels you enable here. If a channel is OFF, no item in this menu will show on that channel. */}This is the ceiling — products can only appear on channels you enable here. If a channel is OFF, no product in this menu will show on that channel.
               </p>
               <div style={{ marginBottom: 24 }}>
                 <div

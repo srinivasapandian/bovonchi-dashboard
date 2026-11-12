@@ -328,7 +328,7 @@ export default function CombosPage() {
           }
         }}
         title={deleteTarget ? deleteConfirmTitle(deleteTarget.name) : ''}
-        description="This combo will be removed from all menus and channels. Items inside the combo are NOT affected. Past order data is preserved."
+        description="This combo will be removed from all menus and channels. Products inside the combo are NOT affected. Past order data is preserved." /* was: description="This combo will be removed from all menus and channels. Items inside the combo are NOT affected. Past order data is preserved." */
       />
 
       <ComboTutorial open={tutorialOpen} onClose={() => setTutorialOpen(false)} />

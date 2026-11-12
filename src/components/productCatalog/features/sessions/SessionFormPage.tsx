@@ -619,7 +619,7 @@ export default function SessionFormPage() {
         if (st) return { id: st.id, name: st.name };
         const sn = existing?.assignedSessionItems?.find((x) => x.id === itemId);
         if (sn) return { id: sn.id, name: sn.name };
-        return { id: itemId, name: 'Item' };
+        return { id: itemId, name: 'Product' /* was: 'Item' */ };
       })
       .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base', numeric: true }));
   }, [assignedItemIds, moduleItems, items, existing?.assignedSessionItems]);
@@ -940,7 +940,7 @@ export default function SessionFormPage() {
         ))}
       </div>
       <p style={{ fontSize: 10, color: 'var(--t3, #9A9084)', margin: '8px 0 0' }}>
-        Leave blank to use the item's base price during this session.
+        {/* was: Leave blank to use the item's base price during this session. */}Leave blank to use the product's base price during this session.
       </p>
     </div>
   );
@@ -1172,7 +1172,7 @@ export default function SessionFormPage() {
                 <div style={{ marginBottom: 12, padding: 12, background: '#EDF3EB', border: '1px solid #CFDCC6', borderRadius: 2 }}>
                   <p style={{ fontSize: 11, color: '#6F8260', margin: 0, display: 'flex', alignItems: 'center', gap: 6 }}>
                     <span className="material-symbols-rounded" style={{ fontSize: 16 }}>info</span>
-                    Default session schedule is fixed — only item assignments can be changed.
+                    {/* was: Default session schedule is fixed — only item assignments can be changed. */}Default session schedule is fixed — only product assignments can be changed.
                   </p>
                 </div>
               ) : null}

@@ -407,7 +407,7 @@ export default function MenusPage() {
               </div>
               <h2 style={{ margin: '0 0 6px', fontSize: 18, fontWeight: 700, color: T1, fontFamily: 'var(--font-primary)' }}>No menus created yet</h2>
               <p style={{ margin: '0 0 20px', fontSize: 13, color: T2, textAlign: 'center', maxWidth: 360, fontFamily: 'var(--font-primary)', lineHeight: 1.5 }}>
-                Menus let you organize categories and items for different channels, devices, and time slots.
+                {/* was: Menus let you organize categories and items for different channels, devices, and time slots. */}Menus let you organize categories and products for different channels, devices, and time slots.
               </p>
               <Button onClick={() => navigate(pcPaths.menusCreate)} style={{ background: ACCENT, color: '#fff', borderRadius: 2, fontWeight: 600, fontSize: 14, padding: '10px 20px' }}
                 icon={<span className="material-symbols-rounded" style={{ fontSize: 18, color: '#fff' }}>add</span>}>
@@ -453,7 +453,7 @@ export default function MenusPage() {
                           <MenuListStatusBadge status={menu.status} />
                         </div>
                         <div style={{ fontSize: 12, color: T2, marginTop: 2 }}>
-                          {menuCats.length} categories · {totalItems} items
+                          {/* was: {menuCats.length} categories · {totalItems} items */}{menuCats.length} categories · {totalItems} products
                         </div>
                       </div>
                       <span className="material-symbols-rounded" style={{ fontSize: 20, color: T3, flexShrink: 0 }}>chevron_right</span>
@@ -612,7 +612,7 @@ export default function MenusPage() {
                     lineHeight: 1.5,
                   }}
                 >
-                  Menus let you organize categories and items for different channels, devices, and time slots.
+                  {/* was: Menus let you organize categories and items for different channels, devices, and time slots. */}Menus let you organize categories and products for different channels, devices, and time slots.
                 </p>
                 <Button
                   onClick={() => navigate(pcPaths.menusCreate)}
@@ -812,7 +812,7 @@ export default function MenusPage() {
                             </div>
                           ) : null}
                           <div style={{ fontSize: 11, color: T3, marginTop: 4 }}>
-                            {menuCats.length} categories · {totalItems} items
+                            {/* was: {menuCats.length} categories · {totalItems} items */}{menuCats.length} categories · {totalItems} products
                           </div>
 
                           {!isSm ? (
@@ -982,7 +982,7 @@ export default function MenusPage() {
                               <div>
                                 <div style={sectionLabel}>Quick stats</div>
                                 <div style={{ fontSize: 12, color: T2, fontFamily: 'var(--font-primary)', lineHeight: 1.5 }}>
-                                  {totalItems} items · {assignedDeviceCount} device{assignedDeviceCount !== 1 ? 's' : ''} ·{' '}
+                                  {/* was: {totalItems} items · {assignedDeviceCount} device{assignedDeviceCount !== 1 ? 's' : ''} ·{' '} */}{totalItems} products · {assignedDeviceCount} device{assignedDeviceCount !== 1 ? 's' : ''} ·{' '}
                                   {menuOrderTypePills.length} channel{menuOrderTypePills.length !== 1 ? 's' : ''}
                                   <br />
                                   <span style={{ color: T3 }}>Last updated {formatDate(menu.lastUpdated)}</span>
@@ -1008,7 +1008,7 @@ export default function MenusPage() {
                                   fontFamily: 'var(--font-primary)',
                                 }}
                               >
-                                View items →
+                                {/* was: View items → */}View products →
                               </button>
                             </div>
                           </div>

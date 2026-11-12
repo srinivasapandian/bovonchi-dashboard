@@ -66,7 +66,7 @@ export default function MenuPriceEditorPage() {
         setMenuPrice({ menuId: id, itemId, overridePrice: Number(price) });
       }
     });
-    addToast(`Prices updated for ${Object.keys(edits).length} items in '${menu?.name}'`, 'success');
+    addToast(`Prices updated for ${Object.keys(edits).length} products in '${menu?.name}'` /* was: `Prices updated for ${Object.keys(edits).length} items in '${menu?.name}'` */, 'success');
     navigate(pcPaths.menus);
   };
 
@@ -87,12 +87,12 @@ export default function MenuPriceEditorPage() {
     });
     setEdits(newEdits);
     setShowBulkModal(false);
-    addToast(`Adjusted ${selected.size} items`, 'success');
+    addToast(`Adjusted ${selected.size} products` /* was: `Adjusted ${selected.size} items` */, 'success');
   };
 
   const handleResetAll = () => {
     if (!id) return;
-    if (!window.confirm('Remove all menu-specific prices? Items will use their base price.')) return;
+    if (!window.confirm('Remove all menu-specific prices? Products will use their base price.' /* was: 'Remove all menu-specific prices? Items will use their base price.' */)) return;
     removeAllForMenu(id);
     setEdits({});
     addToast('All prices reset to base', 'success');
@@ -114,7 +114,7 @@ export default function MenuPriceEditorPage() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, flexWrap: 'wrap', gap: 10 }}>
             <div>
               <h1 style={{ fontSize: 20, fontWeight: 700, color: '#453F39', margin: '0 0 4px' }}>Price Editor: {menu.name}</h1>
-              <p style={{ fontSize: 12, color: '#6E665D', margin: 0 }}>{menuItems.length} items in this menu</p>
+              <p style={{ fontSize: 12, color: '#6E665D', margin: 0 }}>{menuItems.length} {/* was: items */}products in this menu</p>
             </div>
             <div style={{ display: 'flex', gap: 8 }}>
               {selected.size > 0 && (
@@ -148,7 +148,7 @@ export default function MenuPriceEditorPage() {
                   <th style={{ padding: '10px 12px', width: 30 }}>
                     <input type="checkbox" checked={selected.size === filteredItems.length && filteredItems.length > 0} onChange={toggleAll} style={{ accentColor: ACCENT }} />
                   </th>
-                  <th style={{ padding: '10px 12px', textAlign: 'left', fontSize: 11, fontWeight: 600, color: '#9A9084', textTransform: 'uppercase' }}>Item</th>
+                  <th style={{ padding: '10px 12px', textAlign: 'left', fontSize: 11, fontWeight: 600, color: '#9A9084', textTransform: 'uppercase' }}>{/* was: Item */}Product</th>
                   <th style={{ padding: '10px 12px', textAlign: 'right', fontSize: 11, fontWeight: 600, color: '#9A9084', textTransform: 'uppercase', width: 90 }}>Base Price</th>
                   <th style={{ padding: '10px 12px', textAlign: 'right', fontSize: 11, fontWeight: 600, color: '#9A9084', textTransform: 'uppercase', width: 110 }}>Menu Price</th>
                   <th style={{ padding: '10px 12px', textAlign: 'right', fontSize: 11, fontWeight: 600, color: '#9A9084', textTransform: 'uppercase', width: 70 }}>Diff</th>
@@ -207,7 +207,7 @@ export default function MenuPriceEditorPage() {
       {showBulkModal && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.4)' }}>
           <div style={{ background: '#fff', borderRadius: 2, padding: 28, width: 400, maxWidth: '90vw' }}>
-            <h3 style={{ fontSize: 16, fontWeight: 700, color: '#453F39', margin: '0 0 16px' }}>Adjust {selected.size} Items</h3>
+            <h3 style={{ fontSize: 16, fontWeight: 700, color: '#453F39', margin: '0 0 16px' }}>{/* was: Adjust {selected.size} Items */}Adjust {selected.size} Products</h3>
             <div style={{ display: 'flex', gap: 6, marginBottom: 16 }}>
               {(['percentage', 'flat', 'fixed'] as const).map((m) => (
                 <button key={m} type="button" onClick={() => setBulkMode(m)}

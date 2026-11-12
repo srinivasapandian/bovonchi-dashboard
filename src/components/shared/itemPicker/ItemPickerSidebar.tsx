@@ -356,7 +356,7 @@ export function ItemPickerSidebar({
               {group.name}
             </span>
             <span style={{ fontSize: 12, color: 'var(--t3, #9A9084)', flexShrink: 0 }}>
-              {agg.length} item{agg.length !== 1 ? 's' : ''}
+              {/* was: {agg.length} item{agg.length !== 1 ? 's' : ''} */}{agg.length} product{agg.length !== 1 ? 's' : ''}
             </span>
             <span
               className="material-symbols-rounded"

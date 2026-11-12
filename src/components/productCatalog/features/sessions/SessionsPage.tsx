@@ -644,7 +644,7 @@ export default function SessionsPage() {
                       ))}
                     </div>
                     <div style={{ display: 'flex', gap: 12, fontSize: 10, color: T3 }}>
-                      <span>{assignedCount} items</span>
+                      <span>{assignedCount} {/* was: items */}products</span>
                       <span>{slotCount} slot{slotCount !== 1 ? 's' : ''}</span>
                       <span>{weeklyHours}h/week</span>
                     </div>
@@ -674,10 +674,10 @@ export default function SessionsPage() {
                       {/* Assigned items */}
                       <div style={{ marginTop: 14 }}>
                         <div style={{ fontSize: 10, fontWeight: 700, color: T1, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 6 }}>
-                          Assigned items ({assignedCount})
+                          {/* was: Assigned items ({assignedCount}) */}Assigned products ({assignedCount})
                         </div>
                         {assignedItems.length === 0 ? (
-                          <p style={{ fontSize: 11, color: T3, margin: 0 }}>No items assigned.</p>
+                          <p style={{ fontSize: 11, color: T3, margin: 0 }}>{/* was: No items assigned. */}No products assigned.</p>
                         ) : (
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
                             {assignedItems.map((item) => (
@@ -937,7 +937,7 @@ export default function SessionsPage() {
                       {isSm && (
                         <>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexShrink: 0, marginRight: 8 }}>
-                            <Stat icon="layers" label={`${assignedCount} items`} />
+                            <Stat icon="layers" label={`${assignedCount} products` /* was: `${assignedCount} items` */} />
                             <Stat icon="schedule" label={`${slotCount} slot${slotCount !== 1 ? 's' : ''}`} />
                             <span style={{ fontSize: 11, color: T3 }}>{weeklyHours}h/week</span>
                           </div>
@@ -1033,7 +1033,7 @@ export default function SessionsPage() {
                         }}
                       >
                         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 12 }}>
-                          <Stat icon="layers" label={`${assignedCount} items`} />
+                          <Stat icon="layers" label={`${assignedCount} products` /* was: `${assignedCount} items` */} />
                           <Stat icon="schedule" label={`${slotCount} slot${slotCount !== 1 ? 's' : ''}`} />
                           <span style={{ fontSize: 11, color: T3 }}>{weeklyHours}h/week</span>
                         </div>
@@ -1152,10 +1152,10 @@ export default function SessionsPage() {
                             marginBottom: 8,
                           }}
                         >
-                          Assigned items ({assignedItems.length})
+                          {/* was: Assigned items ({assignedItems.length}) */}Assigned products ({assignedItems.length})
                         </div>
                         {assignedItems.length === 0 ? (
-                          <p style={{ fontSize: 11, color: T3, margin: 0 }}>No items assigned to this session.</p>
+                          <p style={{ fontSize: 11, color: T3, margin: 0 }}>{/* was: No items assigned to this session. */}No products assigned to this session.</p>
                         ) : (
                           <div
                             style={{

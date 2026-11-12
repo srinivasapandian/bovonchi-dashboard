@@ -308,7 +308,7 @@ function SortableSlotRow({ slot, index, allItems, pricingModel, onUpdate, onRemo
       </div>
 
       {/* Eligible items with supplement pricing */}
-      <label style={labelStyle}>Eligible Items ({slot.eligibleItems.length}/20)</label>
+      <label style={labelStyle}>{/* was: Eligible Items */}Eligible Products ({slot.eligibleItems.length}/20)</label>
       {pricingModel === 'dynamic' && slot.eligibleItems.length > 0 && (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 8 }}>
           {slot.eligibleItems.map((ei) => {
@@ -564,7 +564,7 @@ export default function ComboFormPage() {
     if (form.slots.length === 0) errs.slots = 'Add at least one component slot';
     form.slots.forEach((s, i) => {
       if (!s.slotName.trim()) errs[`slot_name_${i}`] = `Slot ${i + 1} needs a name`;
-      if (s.slotType === 'required' && s.eligibleItems.length === 0) errs[`slot_items_${i}`] = `"${s.slotName || `Slot ${i + 1}`}" needs at least 1 item`;
+      if (s.slotType === 'required' && s.eligibleItems.length === 0) errs[`slot_items_${i}`] = `"${s.slotName || `Slot ${i + 1}`}" needs at least 1 product`; /* was: needs at least 1 item */
       if (s.maxSelections < s.minSelections) errs[`slot_sel_${i}`] = `"${s.slotName}": max must be >= min`;
       if (s.eligibleItems.some((ei) => Number(ei.supplementPrice) < 0)) {
         errs[`slot_price_${i}`] = `"${s.slotName || `Slot ${i + 1}`}" has supplement price below 0`;
