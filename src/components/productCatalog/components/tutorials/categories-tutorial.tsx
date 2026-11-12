@@ -14,9 +14,12 @@ import TutorialSlideshow, { type TutorialSlide } from "./tutorial-slideshow";
 
 function Slide1Illustration() {
   const menuSections = [
-    { title: "Starters", items: ["Garlic Bread", "Bruschetta"] },
-    { title: "Pizzas", items: ["Margherita", "Pepperoni"] },
-    { title: "Drinks", items: ["Mojito", "Lemonade"] },
+    // { title: "Starters", items: ["Garlic Bread", "Bruschetta"] },
+    { title: "Rings", items: ["Solitaire Ring", "Band Ring"] },
+    // { title: "Pizzas", items: ["Margherita", "Pepperoni"] },
+    { title: "Earrings", items: ["Hoop Earrings", "Stud Earrings"] },
+    // { title: "Drinks", items: ["Mojito", "Lemonade"] },
+    { title: "Bracelets", items: ["Chain Bracelet", "Charm Bracelet"] },
   ];
 
   return (
@@ -43,7 +46,7 @@ function Slide1Illustration() {
             letterSpacing: "0.06em",
           }}
         >
-          Menu
+          {/* was: Menu */}Catalog
         </div>
         {menuSections.map((section) => (
           <div key={section.title} style={{ marginBottom: 6 }}>
@@ -124,9 +127,9 @@ function Slide2Illustration() {
               fontSize: 10,
             }}
           >
-            🍕
+            {/* was: 🍕 */}💍
           </div>
-          <span style={{ fontSize: 11, fontWeight: 700, color: "#453F39" }}>Pizzas</span>
+          <span style={{ fontSize: 11, fontWeight: 700, color: "#453F39" }}>{/* was: Pizzas */}Earrings</span>
           <span
             style={{
               fontSize: 8,
@@ -145,8 +148,10 @@ function Slide2Illustration() {
         {/* Connector lines + children */}
         <div style={{ marginLeft: 20, borderLeft: "2px solid #E6DFD3", paddingLeft: 12, marginTop: 4 }}>
           {[
-            { name: "Vegetarian Pizzas", items: "Margherita, Garden Special" },
-            { name: "Non-Veg Pizzas", items: "Pepperoni, BBQ Chicken" },
+            // { name: "Vegetarian Pizzas", items: "Margherita, Garden Special" },
+            { name: "Gold Earrings", items: "Hoops, Studs" },
+            // { name: "Non-Veg Pizzas", items: "Pepperoni, BBQ Chicken" },
+            { name: "Silver Earrings", items: "Drops, Huggies" },
           ].map((child) => (
             <div
               key={child.name}
@@ -217,22 +222,28 @@ function Slide2Illustration() {
 function Slide3Illustration() {
   const examples = [
     {
-      item: "Garlic Bread",
-      categories: [{ name: "Sides", dotted: false }],
+      // item: "Garlic Bread",
+      item: "Pearl Studs",
+      // categories: [{ name: "Sides", dotted: false }],
+      categories: [{ name: "Earrings", dotted: false }],
       label: "One category",
       labelColor: "#5F7A55",
     },
     {
-      item: "Truffle Fries",
+      // item: "Truffle Fries",
+      item: "Ear Cuff Set",
       categories: [
-        { name: "Sides", dotted: false },
-        { name: "Bar Snacks", dotted: false },
+        // { name: "Sides", dotted: false },
+        { name: "Earrings", dotted: false },
+        // { name: "Bar Snacks", dotted: false },
+        { name: "Ear Cuffs", dotted: false },
       ],
       label: "Multiple",
       labelColor: "#B07A2A",
     },
     {
-      item: "Daily Special",
+      // item: "Daily Special",
+      item: "Custom Piece",
       categories: [{ name: "Uncategorized", dotted: true }],
       label: "No category",
       labelColor: "#9A9084",
@@ -297,8 +308,10 @@ function Slide3Illustration() {
 /* ─── Slide 4: Visibility Flows Down ─── */
 
 const CHANNEL_COLORS: Record<string, string> = {
-  "Dine-in": "#B89550",
-  "Delivery": "#5E8C7B",
+  // "Dine-in": "#B89550",
+  "Online": "#8C6A7A",
+  // "Delivery": "#5E8C7B",
+  "Hidden": "#A63D2F",
   "Pickup": "#8C6A7A",
 };
 
@@ -336,8 +349,8 @@ function Slide4Illustration() {
       <div style={{ flex: 1 }}>
         <div style={{ fontSize: 9, fontWeight: 700, color: "#5F7A55", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 6, textAlign: "center" }}>Before</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-          <VisRow name="Pizzas" channels={["Dine-in", "Delivery", "Pickup"]} />
-          <VisRow name="Veg Pizzas" isChild channels={["Dine-in", "Delivery", "Pickup"]} />
+          {/* was: <VisRow name="Pizzas" channels={["Dine-in", "Delivery", "Pickup"]} /> */}<VisRow name="Earrings" channels={["Online"]} />
+          {/* was: <VisRow name="Veg Pizzas" isChild channels={["Dine-in", "Delivery", "Pickup"]} /> */}<VisRow name="Gold Earrings" isChild channels={["Online"]} />
         </div>
       </div>
 
@@ -345,12 +358,12 @@ function Slide4Illustration() {
       <div style={{ flex: 1 }}>
         <div style={{ fontSize: 9, fontWeight: 700, color: "#A63D2F", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 6, textAlign: "center" }}>After</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-          <VisRow name="Pizzas" channels={["Dine-in", "Pickup"]} />
-          <VisRow name="Veg Pizzas" isChild channels={["Dine-in", "Pickup"]} />
+          {/* was: <VisRow name="Pizzas" channels={["Dine-in", "Pickup"]} /> */}<VisRow name="Earrings" channels={["Hidden"]} />
+          {/* was: <VisRow name="Veg Pizzas" isChild channels={["Dine-in", "Pickup"]} /> */}<VisRow name="Gold Earrings" isChild channels={["Hidden"]} />
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 6 }}>
           <div style={{ width: 14, height: 1, background: "#A63D2F" }} />
-          <span style={{ fontSize: 8, fontWeight: 600, color: "#A63D2F" }}>Veg Pizzas follows parent automatically</span>
+          <span style={{ fontSize: 8, fontWeight: 600, color: "#A63D2F" }}>{/* was: Veg Pizzas follows parent automatically */}Gold Earrings follows parent automatically</span>
         </div>
       </div>
     </div>
@@ -439,7 +452,8 @@ const CATEGORIES_SLIDES: TutorialSlide[] = [
   },
   {
     headline: "Parent & Child Categories",
-    body: "Need more detail? Create subcategories. \u2018Pizzas\u2019 can have \u2018Vegetarian\u2019 and \u2018Non-Veg\u2019 inside it. One level of nesting \u2014 simple and clean.",
+    // body: "Need more detail? Create subcategories. \u2018Pizzas\u2019 can have \u2018Vegetarian\u2019 and \u2018Non-Veg\u2019 inside it. One level of nesting \u2014 simple and clean.",
+    body: "Need more detail? Create subcategories. ‘Earrings’ can have ‘Gold’ and ‘Silver’ inside it. One level of nesting — simple and clean.",
     illustration: <Slide2Illustration />,
   },
   {
@@ -451,7 +465,8 @@ const CATEGORIES_SLIDES: TutorialSlide[] = [
   },
   {
     headline: "Visibility Flows Down",
-    body: "Control where each category appears \u2014 Dine-in, Delivery, Kiosk. Turn off a parent and all subcategories follow automatically.",
+    // body: "Control where each category appears \u2014 Dine-in, Delivery, Kiosk. Turn off a parent and all subcategories follow automatically.",
+    body: "Control whether each category appears on your Online channel. Turn off a parent and all subcategories follow automatically.",
     illustration: <Slide4Illustration />,
   },
   {

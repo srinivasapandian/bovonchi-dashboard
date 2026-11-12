@@ -49,7 +49,8 @@ function SlideTwoIllustration() {
   //   [[true, true], [false, false], [true, true]],
   //   [[true, false], [true, false], [false, false]],
   // ];
-  const items = ['Classic T-Shirt', 'Canvas Tote Bag', 'Ceramic Mug'];
+  // const items = ['Classic T-Shirt', 'Canvas Tote Bag', 'Ceramic Mug'];
+  const items = ['Solitaire Ring', 'Pearl Studs', 'Charm Bracelet'];
   // const channels = ['Pickup'];
   const channels = ['Online'];
   const states: Array<Array<[boolean, boolean]>> = [
@@ -106,7 +107,7 @@ function SlideThreeIllustration() {
         <div>
           {/* <div style={{ fontSize: 11, fontWeight: 700, color: T1 }}>Chicken Tikka</div>
           <div style={{ fontSize: 9, color: T3 }}>Delivery</div> */}
-          <div style={{ fontSize: 11, fontWeight: 700, color: T1 }}>Classic T-Shirt</div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: T1 }}>{/* was: Classic T-Shirt */}Solitaire Ring</div>
           {/* <div style={{ fontSize: 9, color: T3 }}>Pickup</div> */}
           <div style={{ fontSize: 9, color: T3 }}>Online</div>
         </div>

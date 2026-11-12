@@ -6,9 +6,12 @@ import TutorialSlideshow, { type TutorialSlide } from "./tutorial-slideshow";
 function SlideOneIllustration() {
   // Horizontal day timeline with three colored blocks and visible gaps
   const blocks = [
-    { label: "Breakfast", time: "7–11 AM", color: "#B07A2A", left: "8%", width: "22%" },
-    { label: "Lunch", time: "11:30–2:30", color: "#7F9770", left: "33%", width: "17%" },
-    { label: "Dinner", time: "5–10 PM", color: "#7D8F69", left: "56%", width: "28%" },
+    // { label: "Breakfast", time: "7–11 AM", color: "#B07A2A", left: "8%", width: "22%" },
+    { label: "Morning Drop", time: "7–11 AM", color: "#B07A2A", left: "8%", width: "22%" },
+    // { label: "Lunch", time: "11:30–2:30", color: "#7F9770", left: "33%", width: "17%" },
+    { label: "Flash Sale", time: "11:30–2:30", color: "#7F9770", left: "33%", width: "17%" },
+    // { label: "Dinner", time: "5–10 PM", color: "#7D8F69", left: "56%", width: "28%" },
+    { label: "Evening Drop", time: "5–10 PM", color: "#7D8F69", left: "56%", width: "28%" },
   ];
 
   return (
@@ -46,7 +49,7 @@ function SlideOneIllustration() {
       </div>
       {/* Note */}
       <div style={{ marginTop: 8, textAlign: "center", fontSize: 9, color: "#9A9084", fontStyle: "italic" }}>
-        Items not in any session are unavailable — your &lsquo;All Day&rsquo; session covers everything by default.
+        {/* was: Items not in any session are unavailable — your &lsquo;All Day&rsquo; session covers everything by default. */}Products not in any session are unavailable — your &lsquo;All Day&rsquo; session covers everything by default.
       </div>
     </div>
   );
@@ -76,7 +79,7 @@ function SlideTwoIllustration() {
                     borderRadius: 3, display: "flex", alignItems: "center", justifyContent: "center",
                   }}
                 >
-                  <span style={{ fontSize: 7, fontWeight: 700, color: "#B07A2A" }}>Happy Hour</span>
+                  <span style={{ fontSize: 7, fontWeight: 700, color: "#B07A2A" }}>{/* was: Happy Hour */}Flash Sale</span>
                 </div>
               </div>
             </div>
@@ -110,14 +113,20 @@ function SlideTwoIllustration() {
 /* ─── Slide 3: Items Appear and Disappear ─── */
 function SlideThreeIllustration() {
   const breakfastItems = [
-    { name: "Breakfast Burrito", emoji: "🌯" },
-    { name: "Pancakes", emoji: "🥞" },
-    { name: "Fresh Juice", emoji: "🧃" },
+    // { name: "Breakfast Burrito", emoji: "🌯" },
+    { name: "Pearl Studs", emoji: "✨" },
+    // { name: "Pancakes", emoji: "🥞" },
+    { name: "Gold Hoops", emoji: "⭕" },
+    // { name: "Fresh Juice", emoji: "🧃" },
+    { name: "Ear Cuffs", emoji: "💎" },
   ];
   const lunchItems = [
-    { name: "Caesar Salad", emoji: "🥗" },
-    { name: "Club Sandwich", emoji: "🥪" },
-    { name: "Soup of the Day", emoji: "🍲" },
+    // { name: "Caesar Salad", emoji: "🥗" },
+    { name: "Silver Chain", emoji: "📿" },
+    // { name: "Club Sandwich", emoji: "🥪" },
+    { name: "Charm Bracelet", emoji: "📿" },
+    // { name: "Soup of the Day", emoji: "🍲" },
+    { name: "Solitaire Ring", emoji: "💍" },
   ];
 
   return (
@@ -125,7 +134,7 @@ function SlideThreeIllustration() {
       {/* Left panel: 9:15 AM */}
       <div style={{ flex: 1, background: "#fff", borderRadius: 2, border: "1px solid #ECE5D8", padding: 10 }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
-          <span style={{ fontSize: 9, fontWeight: 700, color: "#B07A2A", background: "#D9770615", padding: "2px 6px", borderRadius: 4 }}>Breakfast</span>
+          <span style={{ fontSize: 9, fontWeight: 700, color: "#B07A2A", background: "#D9770615", padding: "2px 6px", borderRadius: 4 }}>{/* was: Breakfast */}Morning Drop</span>
           <span style={{ fontSize: 8, color: "#9A9084" }}>9:15 AM</span>
         </div>
         {breakfastItems.map((item) => (
@@ -145,7 +154,7 @@ function SlideThreeIllustration() {
       {/* Right panel: 11:30 AM */}
       <div style={{ flex: 1, background: "#fff", borderRadius: 2, border: "1px solid #ECE5D8", padding: 10 }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
-          <span style={{ fontSize: 9, fontWeight: 700, color: "#7F9770", background: "#10B98115", padding: "2px 6px", borderRadius: 4 }}>Lunch</span>
+          <span style={{ fontSize: 9, fontWeight: 700, color: "#7F9770", background: "#10B98115", padding: "2px 6px", borderRadius: 4 }}>{/* was: Lunch */}Flash Sale</span>
           <span style={{ fontSize: 8, color: "#9A9084" }}>11:30 AM</span>
         </div>
         {lunchItems.map((item) => (
@@ -162,9 +171,12 @@ function SlideThreeIllustration() {
 /* ─── Slide 4: Menus Switch Automatically ─── */
 function SlideFourIllustration() {
   const screens = [
-    { time: "8:00 AM", menu: "Breakfast Menu", color: "#B07A2A" },
-    { time: "12:30 PM", menu: "Lunch Menu", color: "#7F9770" },
-    { time: "6:00 PM", menu: "Dinner Menu", color: "#7D8F69" },
+    // { time: "8:00 AM", menu: "Breakfast Menu", color: "#B07A2A" },
+    { time: "8:00 AM", menu: "Morning Drop", color: "#B07A2A" },
+    // { time: "12:30 PM", menu: "Lunch Menu", color: "#7F9770" },
+    { time: "12:30 PM", menu: "Flash Sale", color: "#7F9770" },
+    // { time: "6:00 PM", menu: "Dinner Menu", color: "#7D8F69" },
+    { time: "6:00 PM", menu: "Evening Drop", color: "#7D8F69" },
   ];
 
   return (
@@ -198,7 +210,7 @@ function SlideFourIllustration() {
         ))}
       </div>
       <div style={{ textAlign: "center", marginTop: 6, fontSize: 9, color: "#9A9084", fontWeight: 500 }}>
-        Same device, three menus, zero effort.
+        {/* was: Same device, three menus, zero effort. */}Same store, three drops, zero effort.
       </div>
     </div>
   );
@@ -207,9 +219,11 @@ function SlideFourIllustration() {
 /* ─── Slide 5: Getting Started ─── */
 function SlideFiveIllustration() {
   const steps = [
-    { num: 1, text: "Click 'Create Session' and name it — e.g., Happy Hour", icon: Clock },
+    // { num: 1, text: "Click 'Create Session' and name it — e.g., Happy Hour", icon: Clock },
+    { num: 1, text: "Click 'Create Session' and name it — e.g., Flash Sale", icon: Clock },
     { num: 2, text: "Pick days and set start/end times", icon: Calendar },
-    { num: 3, text: "Assign items from your catalog", icon: Layers },
+    // { num: 3, text: "Assign items from your catalog", icon: Layers },
+    { num: 3, text: "Assign products from your catalog", icon: Layers },
     { num: 4, text: "Preview the weekly timeline and save", icon: Eye },
   ];
 
@@ -247,7 +261,7 @@ function SlideFiveIllustration() {
       <div style={{ marginTop: 10, padding: "8px 12px", background: "#EDF3EB", borderRadius: 2, border: "1px solid #CFDCC6" }}>
         <span style={{ fontSize: 9, color: "#7D8F69", fontWeight: 600 }}>Tip: </span>
         <span style={{ fontSize: 9, color: "#4F6144" }}>
-          Every new item gets the &lsquo;All Day&rsquo; session by default. You only need custom sessions for items with restricted hours.
+          {/* was: Every new item gets the &lsquo;All Day&rsquo; session by default. You only need custom sessions for items with restricted hours. */}Every new product gets the &lsquo;All Day&rsquo; session by default. You only need custom sessions for products with restricted hours.
         </span>
       </div>
     </div>
@@ -258,27 +272,34 @@ function SlideFiveIllustration() {
 const SESSION_SLIDES: TutorialSlide[] = [
   {
     headline: "What is a Session?",
-    body: "A session is a time window — Breakfast from 7 to 11 AM, Happy Hour from 4 to 7 PM. Items assigned to a session only appear on your menus during that window.",
+    // body: "A session is a time window — Breakfast from 7 to 11 AM, Happy Hour from 4 to 7 PM. Items assigned to a session only appear on your menus during that window.",
+    body: "A session is a time window — Morning Drop from 7 to 11 AM, Flash Sale from 4 to 7 PM. Products assigned to a session only appear in your store during that window.",
     illustration: <SlideOneIllustration />,
   },
   {
     headline: "Flexible Time Slots",
-    body: "One session can have different hours on different days. Happy Hour could run 4–7 PM on weekdays but 2–7 PM on weekends. Add as many slots as you need.",
+    // body: "One session can have different hours on different days. Happy Hour could run 4–7 PM on weekdays but 2–7 PM on weekends. Add as many slots as you need.",
+    body: "One session can have different hours on different days. Flash Sale could run 4–7 PM on weekdays but 2–7 PM on weekends. Add as many slots as you need.",
     illustration: <SlideTwoIllustration />,
   },
   {
-    headline: "Items Appear and Disappear",
-    body: "Assign items to a session and they show up when it starts and vanish when it ends. A Breakfast Burrito appears at 7 AM and disappears at 11 AM — no manual switching.",
+    // headline: "Items Appear and Disappear",
+    headline: "Products Appear and Disappear",
+    // body: "Assign items to a session and they show up when it starts and vanish when it ends. A Breakfast Burrito appears at 7 AM and disappears at 11 AM — no manual switching.",
+    body: "Assign products to a session and they show up when it starts and vanish when it ends. A Morning Drop piece appears at 7 AM and disappears at 11 AM — no manual switching.",
     illustration: <SlideThreeIllustration />,
   },
   {
-    headline: "Menus Switch Automatically",
-    body: "A waiter's tablet can show a different menu for each session — Breakfast Menu in the morning, Lunch Menu at noon, Dinner Menu in the evening. The switch happens automatically.",
+    // headline: "Menus Switch Automatically",
+    headline: "Your Store Switches Automatically",
+    // body: "A waiter's tablet can show a different menu for each session — Breakfast Menu in the morning, Lunch Menu at noon, Dinner Menu in the evening. The switch happens automatically.",
+    body: "Your online store can show different products for each session — Morning Drop in the morning, Flash Sale at noon, Evening Drop at night. The switch happens automatically.",
     illustration: <SlideFourIllustration />,
   },
   {
     headline: "Getting Started",
-    body: "Create a session in 30 seconds. Pick a name, set the days and times, assign items. Your 'All Day' session already covers everything — custom sessions are for when you want more control.",
+    // body: "Create a session in 30 seconds. Pick a name, set the days and times, assign items. Your 'All Day' session already covers everything — custom sessions are for when you want more control.",
+    body: "Create a session in 30 seconds. Pick a name, set the days and times, assign products. Your 'All Day' session already covers everything — custom sessions are for when you want more control.",
     illustration: <SlideFiveIllustration />,
   },
 ];

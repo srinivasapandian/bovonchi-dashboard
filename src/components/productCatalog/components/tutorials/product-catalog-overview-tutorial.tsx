@@ -46,7 +46,7 @@ function SlideTwoIllustration() {
   const blocks = [
     { icon: 'schedule', label: 'Sessions', desc: 'When', color: PURPLE },
     { icon: 'category', label: 'Categories', desc: 'Where', color: ACCENT },
-    { icon: 'countertops', label: 'Kitchen Stations', desc: 'Routing', color: TEAL },
+    // { icon: 'countertops', label: 'Kitchen Stations', desc: 'Routing', color: TEAL },
     // { icon: 'tune', label: 'Modifiers', desc: 'Customisation', color: ORANGE },
     { icon: 'tune', label: 'Product Options', desc: 'Customisation', color: ORANGE },
     // { icon: 'inventory_2', label: 'Items', desc: 'Your products', color: ACCENT },
@@ -80,18 +80,21 @@ function SlideThreeIllustration() {
     // { icon: 'schedule', label: 'Lunch & Dinner', color: PURPLE },
     // { icon: 'countertops', label: 'Pizza Oven', color: TEAL },
     // { icon: 'tune', label: '8 toppings', color: ORANGE },
-    { icon: 'category', label: 'T-Shirts', color: ACCENT },
-    { icon: 'schedule', label: 'Weekdays', color: PURPLE },
-    { icon: 'countertops', label: 'Packing Station', color: TEAL },
-    { icon: 'tune', label: '4 sizes', color: ORANGE },
+    // { icon: 'category', label: 'T-Shirts', color: ACCENT },
+    { icon: 'category', label: 'Rings', color: ACCENT },
+    // { icon: 'schedule', label: 'Weekdays', color: PURPLE },
+    { icon: 'schedule', label: 'Flash Sale', color: PURPLE },
+    // { icon: 'countertops', label: 'Packing Station', color: TEAL },
+    // { icon: 'tune', label: '4 sizes', color: ORANGE },
+    { icon: 'tune', label: '14k / Size 6', color: ORANGE },
   ];
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
       <div style={{ padding: '10px 20px', borderRadius: 2, background: '#fff', border: `2px solid ${ACCENT}30`, boxShadow: '0 2px 8px rgba(0,0,0,0.06)', textAlign: 'center' }}>
         {/* <div style={{ fontSize: 12, fontWeight: 700, color: T1 }}>Margherita Pizza</div>
         <div style={{ fontSize: 14, fontWeight: 700, color: ACCENT }}>$9.50</div> */}
-        <div style={{ fontSize: 12, fontWeight: 700, color: T1 }}>Classic T-Shirt</div>
-        <div style={{ fontSize: 14, fontWeight: 700, color: ACCENT }}>$19.50</div>
+        <div style={{ fontSize: 12, fontWeight: 700, color: T1 }}>{/* was: Classic T-Shirt */}Solitaire Ring</div>
+        <div style={{ fontSize: 14, fontWeight: 700, color: ACCENT }}>{/* was: $19.50 */}$285.00</div>
       </div>
       <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'center' }}>
         {connections.map((c) => (
@@ -117,7 +120,8 @@ function SlideFourIllustration() {
   //   [[true, true], [true, false], [true, true]],
   //   [[true, true], [true, true], [false, false]],
   // ];
-  const items = ['Classic T-Shirt', 'Canvas Tote Bag', 'Ceramic Mug'];
+  // const items = ['Classic T-Shirt', 'Canvas Tote Bag', 'Ceramic Mug'];
+  const items = ['Solitaire Ring', 'Pearl Studs', 'Charm Bracelet'];
   // const channels = ['Pickup'];
   const channels = ['Online'];
   const states: Array<Array<[boolean, boolean]>> = [
@@ -156,15 +160,19 @@ function SlideFourIllustration() {
 function SlideFiveIllustration() {
   const steps = [
     { num: 1, icon: 'schedule', label: 'Sessions', desc: 'Set trading hours', color: PURPLE },
-    { num: 2, icon: 'countertops', label: 'Kitchen Stations', desc: 'Define prep areas', color: TEAL },
+    // { num: 2, icon: 'countertops', label: 'Kitchen Stations', desc: 'Define prep areas', color: TEAL },
     // { num: 3, icon: 'category', label: 'Categories', desc: 'Organise menu sections', color: ACCENT },
-    { num: 3, icon: 'category', label: 'Categories', desc: 'Organise store sections', color: ACCENT },
+    // { num: 3, icon: 'category', label: 'Categories', desc: 'Organise store sections', color: ACCENT },
+    { num: 2, icon: 'category', label: 'Categories', desc: 'Organise store sections', color: ACCENT },
     // { num: 4, icon: 'tune', label: 'Modifiers', desc: 'Set up customisation', color: ORANGE },
-    { num: 4, icon: 'tune', label: 'Product Options', desc: 'Set up customisation', color: ORANGE },
+    // { num: 4, icon: 'tune', label: 'Product Options', desc: 'Set up customisation', color: ORANGE },
+    { num: 3, icon: 'tune', label: 'Product Options', desc: 'Set up customisation', color: ORANGE },
     // { num: 5, icon: 'inventory_2', label: 'Items', desc: 'Add your products', color: ACCENT },
-    { num: 5, icon: 'inventory_2', label: 'Products', desc: 'Add your products', color: ACCENT },
+    // { num: 5, icon: 'inventory_2', label: 'Products', desc: 'Add your products', color: ACCENT },
+    { num: 4, icon: 'inventory_2', label: 'Products', desc: 'Add your products', color: ACCENT },
     // { num: 6, icon: 'rocket_launch', label: 'Go Live', desc: 'Sync and serve', color: GREEN },
-    { num: 6, icon: 'rocket_launch', label: 'Go Live', desc: 'Sync and sell', color: GREEN },
+    // { num: 6, icon: 'rocket_launch', label: 'Go Live', desc: 'Sync and sell', color: GREEN },
+    { num: 5, icon: 'rocket_launch', label: 'Go Live', desc: 'Sync and sell', color: GREEN },
   ];
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
@@ -190,7 +198,8 @@ function SlideFiveIllustration() {
 const OVERVIEW_SLIDES: TutorialSlide[] = [
   {
     illustration: <SlideOneIllustration />,
-    headline: "Your Digital Menu, One Place",
+    // headline: "Your Digital Menu, One Place",
+    headline: "Your Online Store, One Place",
     // body: "Everything your customers see on every channel — POS, kiosks, delivery apps, online ordering — is built and managed from this single section. Build once, serve everywhere.",
     // body: "Everything your shoppers see on your e-commerce site — and available for Pickup — is built and managed from this single section. Build once, sell everywhere.",
     body: "Everything your shoppers see on your e-commerce site — on the Online channel — is built and managed from this single section. Build once, sell everywhere.",
@@ -200,7 +209,8 @@ const OVERVIEW_SLIDES: TutorialSlide[] = [
     headline: "The Building Blocks",
     // body: "Four foundational entities power your catalog: Sessions (when), Categories (where), Kitchen Stations (routing), and Modifiers (customisation). Set these up first, then add your items.",
     // body: "Four foundational entities power your catalog: Sessions (when), Categories (where), Kitchen Stations (routing), and Product Options (customisation). Set these up first, then add your items.",
-    body: "Four foundational entities power your catalog: Sessions (when), Categories (where), Kitchen Stations (routing), and Product Options (customisation). Set these up first, then add your products.",
+    // body: "Four foundational entities power your catalog: Sessions (when), Categories (where), Kitchen Stations (routing), and Product Options (customisation). Set these up first, then add your products.",
+    body: "Three foundational entities power your catalog: Sessions (when), Categories (where), and Product Options (customisation). Set these up first, then add your products.",
   },
   {
     illustration: <SlideThreeIllustration />,
@@ -208,7 +218,8 @@ const OVERVIEW_SLIDES: TutorialSlide[] = [
     headline: "Products — The Heart of Everything",
     // body: "Every item connects to categories, sessions, kitchen stations, and modifiers. Name it, price it, categorise it, assign it — and it appears everywhere.",
     // body: "Every item connects to categories, sessions, kitchen stations, and product options. Name it, price it, categorise it, assign it — and it appears everywhere.",
-    body: "Every product connects to categories, sessions, kitchen stations, and product options. Name it, price it, categorise it, assign it — and it appears everywhere.",
+    // body: "Every product connects to categories, sessions, kitchen stations, and product options. Name it, price it, categorise it, assign it — and it appears everywhere.",
+    body: "Every product connects to categories, sessions, and product options. Name it, price it, categorise it, assign it — and it appears everywhere.",
   },
   {
     illustration: <SlideFourIllustration />,
@@ -223,7 +234,8 @@ const OVERVIEW_SLIDES: TutorialSlide[] = [
     headline: "Where to Start",
     // body: "Follow this order: Sessions → Kitchen Stations → Categories → Modifiers → Items → Go Live. Start with Sessions and work your way down.",
     // body: "Follow this order: Sessions → Kitchen Stations → Categories → Product Options → Items → Go Live. Start with Sessions and work your way down.",
-    body: "Follow this order: Sessions → Kitchen Stations → Categories → Product Options → Products → Go Live. Start with Sessions and work your way down.",
+    // body: "Follow this order: Sessions → Kitchen Stations → Categories → Product Options → Products → Go Live. Start with Sessions and work your way down.",
+    body: "Follow this order: Sessions → Categories → Product Options → Products → Go Live. Start with Sessions and work your way down.",
   },
 ];
 

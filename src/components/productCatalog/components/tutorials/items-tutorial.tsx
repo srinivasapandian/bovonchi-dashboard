@@ -35,13 +35,13 @@ function Slide1Illustration() {
             justifyContent: "center",
           }}
         >
-          <span style={{ fontSize: 28 }}>🍕</span>
+          <span style={{ fontSize: 28 }}>{/* was: 🍕 */}💍</span>
         </div>
         <div style={{ padding: "10px 12px" }}>
           {/* Name row + arrow */}
           <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
             <span style={{ fontSize: 13, fontWeight: 700, color: "#453F39" }}>
-              Margherita Pizza
+              {/* was: Margherita Pizza */}Solitaire Diamond Ring
             </span>
             <span
               style={{
@@ -68,16 +68,16 @@ function Slide1Illustration() {
                 color: "#B89550",
               }}
             >
-              Pizzas
+              {/* was: Pizzas */}Rings
             </span>
           </div>
           {/* Description */}
           <p style={{ fontSize: 9, color: "#9A9084", margin: 0, marginBottom: 6, lineHeight: 1.4 }}>
-            Classic tomato sauce, fresh mozzarella, basil
+            {/* was: Classic tomato sauce, fresh mozzarella, basil */}18k gold band with a brilliant-cut diamond
           </p>
           {/* Price */}
           <div style={{ fontSize: 14, fontWeight: 700, color: "#453F39" }}>
-            $12.99
+            {/* was: $12.99 */}$285.00
           </div>
         </div>
       </div>
@@ -131,17 +131,22 @@ function Slide1Illustration() {
 
 function Slide2Illustration() {
   const rows = [
-    { name: "Pizzas", count: 3, expanded: false },
+    // { name: "Pizzas", count: 3, expanded: false },
+    { name: "Rings", count: 3, expanded: false },
     {
-      name: "Beverages",
+      // name: "Beverages",
+      name: "Earrings",
       count: 2,
       expanded: true,
       items: [
-        { name: "Mojito", price: "$10.50" },
-        { name: "Fresh Juice", price: "$6.99" },
+        // { name: "Mojito", price: "$10.50" },
+        { name: "Bubble Dome Earrings", price: "$159.00" },
+        // { name: "Fresh Juice", price: "$6.99" },
+        { name: "Four-Prong Studs", price: "$118.00" },
       ],
     },
-    { name: "Desserts", count: 1, expanded: false },
+    // { name: "Desserts", count: 1, expanded: false },
+    { name: "Necklaces", count: 1, expanded: false },
   ];
 
   return (
@@ -169,7 +174,7 @@ function Slide2Illustration() {
               {row.name}
             </span>
             <span style={{ fontSize: 10, color: "#9A9084" }}>
-              {row.count} items
+              {/* was: {row.count} items */}{row.count} products
             </span>
           </div>
           {/* Expanded items */}
@@ -310,7 +315,8 @@ function Slide3Illustration() {
             // { icon: SlidersHorizontal, label: "Modifiers" },
             { icon: SlidersHorizontal, label: "Product Options" },
             { icon: Clock, label: "Availability" },
-            { icon: Tag, label: "Allergens & Labels" },
+            // { icon: Tag, label: "Allergens & Labels" },
+            { icon: Tag, label: "Tags & Labels" },
           ].map((section) => {
             const Icon = section.icon;
             return (
@@ -360,7 +366,8 @@ const ITEMS_SLIDES: TutorialSlide[] = [
   },
   {
     headline: "Quick Create vs. Full Detail",
-    body: "You only need a name and a price to create an item. Everything else \u2014 images, allergens, modifiers \u2014 is optional and hidden until you need it.",
+    // body: "You only need a name and a price to create an item. Everything else \u2014 images, allergens, modifiers \u2014 is optional and hidden until you need it.",
+    body: "You only need a name and a price to create a product. Everything else — images, product options, availability — is optional and hidden until you need it.",
     illustration: <Slide3Illustration />,
   },
 ];
