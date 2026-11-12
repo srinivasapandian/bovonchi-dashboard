@@ -118,7 +118,7 @@ export default function OrderDrawer({ order, symbol, tz, onClose }: Props) {
           </section>
 
           <section>
-            <h3>Piece Details</h3>
+            <h3>{/* was: Piece Details */}Product Details</h3>
             {loading && !items.length ? (
               <>
                 <div className="bv-skeleton" style={{ width: '90%', height: 16, marginBottom: 10 }} />
@@ -138,14 +138,14 @@ export default function OrderDrawer({ order, symbol, tz, onClose }: Props) {
                 </div>
               ))
             ) : (
-              !loading && <div className="bv-drawer__muted">No pieces on this order.</div>
+              !loading && <div className="bv-drawer__muted">{/* was: No pieces on this order. */}No products on this order.</div>
             )}
           </section>
 
           <section>
             <h3>Bill Details</h3>
             <div className="bv-drawer__row">
-              <span>Item Total</span>
+              <span>{/* was: Item Total */}Product Total</span>
               <span>{money(sums.itemTotal)}</span>
             </div>
             <div className="bv-drawer__row">
