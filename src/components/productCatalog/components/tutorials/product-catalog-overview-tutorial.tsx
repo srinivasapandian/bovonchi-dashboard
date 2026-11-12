@@ -13,10 +13,12 @@ const T3 = '#9A9084';
 /* ─── Slide 1: Your Digital Menu, One Place ─── */
 function SlideOneIllustration() {
   const channels = [
-    { icon: 'point_of_sale', label: 'POS', color: ACCENT },
-    { icon: 'tablet_android', label: 'Kiosk', color: PURPLE },
-    { icon: 'delivery_dining', label: 'Delivery', color: TEAL },
-    { icon: 'language', label: 'Online', color: GREEN },
+    // { icon: 'point_of_sale', label: 'POS', color: ACCENT },
+    // { icon: 'tablet_android', label: 'Kiosk', color: PURPLE },
+    // { icon: 'delivery_dining', label: 'Delivery', color: TEAL },
+    // { icon: 'language', label: 'Online', color: GREEN },
+    { icon: 'language', label: 'Online Store', color: ACCENT },
+    { icon: 'takeout_dining', label: 'Pickup', color: TEAL },
   ];
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
@@ -71,16 +73,22 @@ function SlideTwoIllustration() {
 /* ─── Slide 3: Items — The Heart of Everything ─── */
 function SlideThreeIllustration() {
   const connections = [
-    { icon: 'category', label: 'Pizzas', color: ACCENT },
-    { icon: 'schedule', label: 'Lunch & Dinner', color: PURPLE },
-    { icon: 'countertops', label: 'Pizza Oven', color: TEAL },
-    { icon: 'tune', label: '8 toppings', color: ORANGE },
+    // { icon: 'category', label: 'Pizzas', color: ACCENT },
+    // { icon: 'schedule', label: 'Lunch & Dinner', color: PURPLE },
+    // { icon: 'countertops', label: 'Pizza Oven', color: TEAL },
+    // { icon: 'tune', label: '8 toppings', color: ORANGE },
+    { icon: 'category', label: 'T-Shirts', color: ACCENT },
+    { icon: 'schedule', label: 'Weekdays', color: PURPLE },
+    { icon: 'countertops', label: 'Packing Station', color: TEAL },
+    { icon: 'tune', label: '4 sizes', color: ORANGE },
   ];
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
       <div style={{ padding: '10px 20px', borderRadius: 2, background: '#fff', border: `2px solid ${ACCENT}30`, boxShadow: '0 2px 8px rgba(0,0,0,0.06)', textAlign: 'center' }}>
-        <div style={{ fontSize: 12, fontWeight: 700, color: T1 }}>Margherita Pizza</div>
-        <div style={{ fontSize: 14, fontWeight: 700, color: ACCENT }}>$9.50</div>
+        {/* <div style={{ fontSize: 12, fontWeight: 700, color: T1 }}>Margherita Pizza</div>
+        <div style={{ fontSize: 14, fontWeight: 700, color: ACCENT }}>$9.50</div> */}
+        <div style={{ fontSize: 12, fontWeight: 700, color: T1 }}>Classic T-Shirt</div>
+        <div style={{ fontSize: 14, fontWeight: 700, color: ACCENT }}>$19.50</div>
       </div>
       <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'center' }}>
         {connections.map((c) => (
@@ -99,23 +107,31 @@ function SlideThreeIllustration() {
 
 /* ─── Slide 4: Control Center ─── */
 function SlideFourIllustration() {
-  const items = ['Margherita', 'Caesar Salad', 'Fish & Chips'];
-  const channels = ['Dine-in', 'Delivery', 'Online'];
+  // const items = ['Margherita', 'Caesar Salad', 'Fish & Chips'];
+  // const channels = ['Dine-in', 'Delivery', 'Online'];
+  // const states: Array<Array<[boolean, boolean]>> = [
+  //   [[true, true], [true, true], [true, true]],
+  //   [[true, true], [true, false], [true, true]],
+  //   [[true, true], [true, true], [false, false]],
+  // ];
+  const items = ['Classic T-Shirt', 'Canvas Tote Bag', 'Ceramic Mug'];
+  const channels = ['Pickup'];
   const states: Array<Array<[boolean, boolean]>> = [
-    [[true, true], [true, true], [true, true]],
-    [[true, true], [true, false], [true, true]],
-    [[true, true], [true, true], [false, false]],
+    [[true, true]],
+    [[true, false]],
+    [[false, false]],
   ];
   return (
     <div style={{ borderRadius: 2, border: '1px solid #E6DFD3', overflow: 'hidden', fontSize: 8 }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '70px repeat(3, 1fr)', background: '#FFFFFF' }}>
+      {/* original grid: gridTemplateColumns: '70px repeat(3, 1fr)' (3 channels) */}
+      <div style={{ display: 'grid', gridTemplateColumns: '70px repeat(1, 1fr)', background: '#FFFFFF' }}>
         <div style={{ padding: '5px 6px', fontWeight: 600, color: T2 }}>Item</div>
         {channels.map((ch) => (
           <div key={ch} style={{ padding: '5px 4px', textAlign: 'center', fontWeight: 600, color: T3 }}>{ch}</div>
         ))}
       </div>
       {items.map((item, i) => (
-        <div key={item} style={{ display: 'grid', gridTemplateColumns: '70px repeat(3, 1fr)', borderTop: '1px solid #F4F0E8' }}>
+        <div key={item} style={{ display: 'grid', gridTemplateColumns: '70px repeat(1, 1fr)', borderTop: '1px solid #F4F0E8' }}>
           <div style={{ padding: '5px 6px', fontWeight: 500, color: T1, fontSize: 8 }}>{item}</div>
           {states[i].map(([vis, avail], j) => (
             <div key={j} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '5px 4px' }}>
@@ -137,10 +153,12 @@ function SlideFiveIllustration() {
   const steps = [
     { num: 1, icon: 'schedule', label: 'Sessions', desc: 'Set trading hours', color: PURPLE },
     { num: 2, icon: 'countertops', label: 'Kitchen Stations', desc: 'Define prep areas', color: TEAL },
-    { num: 3, icon: 'category', label: 'Categories', desc: 'Organise menu sections', color: ACCENT },
+    // { num: 3, icon: 'category', label: 'Categories', desc: 'Organise menu sections', color: ACCENT },
+    { num: 3, icon: 'category', label: 'Categories', desc: 'Organise store sections', color: ACCENT },
     { num: 4, icon: 'tune', label: 'Modifiers', desc: 'Set up customisation', color: ORANGE },
     { num: 5, icon: 'inventory_2', label: 'Items', desc: 'Add your products', color: ACCENT },
-    { num: 6, icon: 'rocket_launch', label: 'Go Live', desc: 'Sync and serve', color: GREEN },
+    // { num: 6, icon: 'rocket_launch', label: 'Go Live', desc: 'Sync and serve', color: GREEN },
+    { num: 6, icon: 'rocket_launch', label: 'Go Live', desc: 'Sync and sell', color: GREEN },
   ];
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
@@ -167,7 +185,8 @@ const OVERVIEW_SLIDES: TutorialSlide[] = [
   {
     illustration: <SlideOneIllustration />,
     headline: "Your Digital Menu, One Place",
-    body: "Everything your customers see on every channel — POS, kiosks, delivery apps, online ordering — is built and managed from this single section. Build once, serve everywhere.",
+    // body: "Everything your customers see on every channel — POS, kiosks, delivery apps, online ordering — is built and managed from this single section. Build once, serve everywhere.",
+    body: "Everything your shoppers see on your e-commerce site — and available for Pickup — is built and managed from this single section. Build once, sell everywhere.",
   },
   {
     illustration: <SlideTwoIllustration />,
@@ -182,7 +201,8 @@ const OVERVIEW_SLIDES: TutorialSlide[] = [
   {
     illustration: <SlideFourIllustration />,
     headline: "Control Centre — See Everything",
-    body: "The Control Centre shows what's visible and available on every channel in a single matrix. A dot means the item is visible — teal for available, amber for OOS (Out of Stock). A crossed-out eye means hidden.",
+    // body: "The Control Centre shows what's visible and available on every channel in a single matrix. A dot means the item is visible — teal for available, amber for OOS (Out of Stock). A crossed-out eye means hidden.",
+    body: "The Control Centre shows what's visible and available for Pickup in a single matrix. A dot means the item is visible — teal for available, amber for OOS (Out of Stock). A crossed-out eye means hidden.",
   },
   {
     illustration: <SlideFiveIllustration />,

@@ -29,7 +29,7 @@ import TextArea from '../../components/forms/TextArea';
 import NumberField from '../../components/forms/NumberField';
 import Select from '../../components/forms/Select';
 import { Toggle } from '../../components/ui/Toggle';
-import { isThirdPartyTypeGroup } from '../../utils/outletOrderTypes';
+import { isThirdPartyTypeGroup, isPickupOrderType } from '../../utils/outletOrderTypes';
 import ChipSelectList from '../../components/forms/ChipSelectList';
 import { ItemAssignmentSection } from '../../components/ui/ItemAssignmentSection';
 import { DeleteConfirmationModal } from '../../components/ui/DeleteConfirmationModal';
@@ -180,7 +180,7 @@ function getOrderTypesForBranch(
   return raw.filter((ot: { isEnabled?: number | boolean; typeGroup?: string }) => {
     // Include disabled (isEnabled: 0) order types too; still exclude in-store.
     const notInstore = (ot?.typeGroup ?? 'T') !== 'I';
-    return notInstore;
+    return notInstore && isPickupOrderType(ot);
   }) as BranchOutletOrderType[];
 }
 
@@ -3937,6 +3937,8 @@ export default function ItemFormPage() {
               </div>
             </div>
 
+            {/* Hidden for e-commerce: Kiosk (Table Side / Order Station / Menu Station) + Contactless Dine-in */}
+            {false && (
             <div style={mobileWhiteCard}>
               <div style={{ border: '1px solid var(--card-border, #E6DFD3)', borderRadius: 2, padding: '12px 16px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: form.isTableSide || form.isOrderStation || form.isMenuStation ? 12 : 0 }}>
@@ -3993,6 +3995,7 @@ export default function ItemFormPage() {
                 />
               </div>
             </div>
+            )}
 
             <div style={mobileWhiteCard}>
               <h2 style={S.cardTitle}>Pricing</h2>
@@ -4397,7 +4400,8 @@ export default function ItemFormPage() {
               </div> */}
             </div>
 
-            {form.itemType === 'prepared_food_beverage' && (
+            {/* Hidden for e-commerce: Kitchen details */}
+            {false && form.itemType === 'prepared_food_beverage' && (
               <div id="item-field-kitchen" style={mobileWhiteCard}>
                 <h2 style={S.cardTitle}>Kitchen details</h2>
                 <p style={S.cardSubtitle}>Configure kitchen routing, prep time, and KOT settings for this item.</p>
@@ -4823,7 +4827,8 @@ export default function ItemFormPage() {
                     </div>
                     <p style={{ fontSize: 10, color: 'var(--t3, #9A9084)', marginTop: 8, fontFamily: 'var(--font-primary)' }}>Up to 5 additional images</p>
                   </div>
-                  {form.itemType === 'prepared_food_beverage' && (
+                  {/* Hidden for e-commerce: Alcohol & age restriction */}
+                  {false && form.itemType === 'prepared_food_beverage' && (
                     <div>
                       <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 12, fontFamily: 'var(--font-primary)' }}>Alcohol & age restriction</div>
                       <Toggle checked={form.containsAlcohol} onChange={(c) => patch('containsAlcohol', c)} label="Contains alcohol" />
@@ -5489,6 +5494,8 @@ export default function ItemFormPage() {
                     </div>
                   </div>
                   <div>
+                    {/* Hidden for e-commerce: Allergens, Dietary labels, Ingredients */}
+                    {false && (<>
                     <ChipSelectList
                       label="Allergens"
                       options={allergenOptionsSorted}
@@ -5529,6 +5536,7 @@ export default function ItemFormPage() {
                       allowCustom
                       customPlaceholder="Add ingredient..."
                     />
+                    </>)}
                     <ChipSelectList
                       label="Tags"
                       options={tagOptionsSorted}
@@ -5542,7 +5550,8 @@ export default function ItemFormPage() {
                       allowCustom
                       customPlaceholder="Add tag..."
                     />
-                    {/* Nutritional Information */}
+                    {/* Nutritional Information — hidden for e-commerce */}
+                    {false && (<>
                     <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--t2, #6E665D)', textTransform: 'uppercase', letterSpacing: '0.04em', margin: '24px 0 10px', fontFamily: 'var(--font-primary)' }}>Nutritional Information</div>
                     <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : '1fr 1fr 1fr 1fr 1fr', gap: 12, marginBottom: 8 }}>
                       <div>
@@ -5585,6 +5594,7 @@ export default function ItemFormPage() {
                         </div>
                       ))}
                     </div>
+                    </>)}
 
                     {/* PCF-14: Half-and-Half Split */}
                     {/* <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--t2, #6E665D)', textTransform: 'uppercase', letterSpacing: '0.04em', margin: '16px 0 8px', fontFamily: 'var(--font-primary)' }}>Half-and-Half</div>
@@ -5609,7 +5619,8 @@ export default function ItemFormPage() {
                       </div>
                     )} */}
 
-                    {/* Revenue Class */}
+                    {/* Revenue Class — hidden for e-commerce */}
+                    {false && (
                     <div style={{ marginTop: 20 }}>
                       <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--t2, #6E665D)', textTransform: 'uppercase', letterSpacing: '0.04em', margin: '0 0 6px', fontFamily: 'var(--font-primary)', lineHeight: 1.3 }}>Revenue Class</div>
                       <Select
@@ -5624,6 +5635,7 @@ export default function ItemFormPage() {
                         placeholder="Select revenue class"
                       />
                     </div>
+                    )}
 
                     {/* Unit of Measure — moved to Basic Information section */}
 

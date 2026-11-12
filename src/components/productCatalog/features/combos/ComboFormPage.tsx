@@ -59,6 +59,8 @@ function mapOutletOrderTypeToKey(entry: OutletOrderType): OrderType | null {
   }
 }
 
+import { isPickupOrderType } from '../../utils/outletOrderTypes';
+
 function getOutletOrderVisibilityRows(
   selectedBranch: Record<string, any> | null | undefined,
 ): Array<{ key: OrderType; label: string }> {
@@ -69,7 +71,7 @@ function getOutletOrderVisibilityRows(
   raw.forEach((entry: OutletOrderType) => {
     // Include disabled (isEnabled: 0) order types too; still exclude in-store.
     const notInstore = (entry?.typeGroup ?? 'T') !== 'I';
-    if (!notInstore) return;
+    if (!notInstore || !isPickupOrderType(entry)) return;
     const key = mapOutletOrderTypeToKey(entry);
     if (!key || seen.has(key)) return;
     seen.add(key);

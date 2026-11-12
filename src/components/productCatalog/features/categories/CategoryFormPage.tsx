@@ -52,6 +52,8 @@ function getChannelDisplayName(typeName: string): string {
   return typeName.charAt(0).toUpperCase() + typeName.slice(1).toLowerCase();
 }
 
+import { isPickupOrderType } from '../../utils/outletOrderTypes';
+
 function getOrderTypesForBranch(selectedBranch: Record<string, any> | null | undefined): OutletOrderType[] {
   if (!selectedBranch) return [];
   const raw: any[] = selectedBranch.orderTypes ?? [];
@@ -59,7 +61,7 @@ function getOrderTypesForBranch(selectedBranch: Record<string, any> | null | und
   return raw.filter((ot: any) => {
     // Include disabled (isEnabled: 0) order types too; still exclude in-store.
     const notInstore = (ot?.typeGroup ?? 'T') !== 'I';
-    return notInstore;
+    return notInstore && isPickupOrderType(ot);
   });
 }
 

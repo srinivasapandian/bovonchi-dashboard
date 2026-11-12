@@ -53,11 +53,13 @@ const CARD_BG = '#FFFFFF';
 const PAGE_BG = '#FFFFFF';
 
 const CHANNELS: { key: OrderType; label: string; abbr: string; icon: string }[] = [
-  { key: 'dine_in',         label: 'Dine-in',  abbr: 'Dine',  icon: 'restaurant'     },
-  { key: 'takeout',         label: 'Takeout',   abbr: 'T/A',   icon: 'takeout_dining' },
-  { key: 'delivery',        label: 'Delivery',  abbr: 'Del',   icon: 'delivery_dining'},
-  { key: 'online_ordering', label: 'Online',    abbr: 'Web',   icon: 'language'       },
-  { key: 'catering',        label: 'Catering',  abbr: 'Cater', icon: 'room_service'   },
+  // Hidden for now — Pickup is the only channel for the e-commerce storefront.
+  // { key: 'dine_in',         label: 'Dine-in',  abbr: 'Dine',  icon: 'restaurant'     },
+  // { key: 'takeout',         label: 'Takeout',   abbr: 'T/A',   icon: 'takeout_dining' },
+  // { key: 'delivery',        label: 'Delivery',  abbr: 'Del',   icon: 'delivery_dining'},
+  // { key: 'online_ordering', label: 'Online',    abbr: 'Web',   icon: 'language'       },
+  // { key: 'catering',        label: 'Catering',  abbr: 'Cater', icon: 'room_service'   },
+  { key: 'takeout',         label: 'Pickup',    abbr: 'Pickup', icon: 'takeout_dining' },
 ];
 /** Channel row with a stable `id` — equals the outlet orderTypeId UUID when loaded from branch, or `key` for the fallback list. */
 type ChannelRow = { key: OrderType; label: string; abbr: string; icon: string; id: string };
@@ -516,8 +518,9 @@ export default function ControlCentreMobile({
       const base = CHANNELS.find((c) => c.key === key);
       if (!base) return;
 
-      const typeName = String(entry?.typeName ?? '').trim();
-      const label = typeName || base.label;
+      // const typeName = String(entry?.typeName ?? '').trim();
+      // const label = typeName || base.label;
+      const label = base.label;
       const dedupeKey = `${key}:${label.toLowerCase().replace(/[\s-]+/g, '')}`;
       if (seenLabels.has(dedupeKey)) return;
       seenLabels.add(dedupeKey);

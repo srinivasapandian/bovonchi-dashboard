@@ -60,6 +60,8 @@ const orderTypeLabels: Record<OrderType, string> = {
   catering: 'Catering',
 };
 
+import { isPickupOrderType } from '../../utils/outletOrderTypes';
+
 const statusPriority: Record<string, number> = { live: 0, scheduled: 1, draft: 2 };
 
 /** Location branch `orderTypes`: id → display name (enabled, non–in-store only). */
@@ -73,7 +75,7 @@ function locationOrderTypeNameById(selectedBranch: BranchData | null): Map<strin
     if (!id) continue;
     // Include disabled (isEnabled: 0) order types too; still exclude in-store.
     const notInstore = (row.typeGroup ?? 'T') !== 'I';
-    if (!notInstore) continue;
+    if (!notInstore || !isPickupOrderType(row)) continue;
     const name = String(row.typeName ?? '').trim();
     m.set(id, name || id);
   }

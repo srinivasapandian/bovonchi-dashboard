@@ -91,11 +91,13 @@ const CONTROL_CENTRE_CHANNEL_HEADER_LABEL: CSSProperties = {
 };
 
 const CHANNELS: { key: OrderType; label: string; icon: string }[] = [
-  { key: 'dine_in', label: 'Dine-in', icon: 'restaurant' },
-  { key: 'takeout', label: 'Takeout', icon: 'takeout_dining' },
-  { key: 'delivery', label: 'Delivery', icon: 'delivery_dining' },
-  { key: 'online_ordering', label: 'Online', icon: 'language' },
-  { key: 'catering', label: 'Catering', icon: 'room_service' },
+  // E-commerce storefront: Pickup is the only channel (others hidden for now).
+  // { key: 'dine_in', label: 'Dine-in', icon: 'restaurant' },
+  // { key: 'takeout', label: 'Takeout', icon: 'takeout_dining' },
+  // { key: 'delivery', label: 'Delivery', icon: 'delivery_dining' },
+  // { key: 'online_ordering', label: 'Online', icon: 'language' },
+  // { key: 'catering', label: 'Catering', icon: 'room_service' },
+  { key: 'takeout', label: 'Pickup', icon: 'takeout_dining' },
 ];
 
 function itemCountLabel(n: number): string {
@@ -207,9 +209,12 @@ function getOutletOrderTypeRows(
     const key = mapOutletOrderTypeToKey(entry);
     const entryId = String(entry?.id ?? '').trim();
     if (!key || !entryId) return;
-    const baseLabel = CHANNELS.find((c) => c.key === key)?.label ?? key;
-    const typeName = String(entry?.typeName ?? '').trim();
-    const label = typeName || baseLabel;
+    // Only Pickup is supported — skip Dine-in, Delivery, etc.
+    if (key !== 'takeout') return;
+    // const baseLabel = CHANNELS.find((c) => c.key === key)?.label ?? key;
+    // const typeName = String(entry?.typeName ?? '').trim();
+    // const label = typeName || baseLabel;
+    const label = 'Pickup';
     const dedupeKey = `${key}:${label.toLowerCase().replace(/[\s-]+/g, '')}`;
     if (seenLabels.has(dedupeKey)) return;
     seenLabels.add(dedupeKey);

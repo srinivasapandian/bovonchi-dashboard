@@ -81,6 +81,8 @@ function mapOutletOrderTypeToKey(ot: OutletOrderType): OrderType | null {
   }
 }
 
+import { isPickupOrderType } from '../../utils/outletOrderTypes';
+
 function getOutletOrderTypeIdByKey(
   selectedBranch: Record<string, any> | null | undefined,
 ): Partial<Record<OrderType, string>> {
@@ -113,7 +115,7 @@ function getOutletChannels(
   raw.forEach((entry: OutletOrderType) => {
     // Include disabled (isEnabled: 0) order types too; still exclude in-store.
     const notInstore = (entry?.typeGroup ?? 'T') !== 'I';
-    if (!notInstore) return;
+    if (!notInstore || !isPickupOrderType(entry)) return;
 
     const key = mapOutletOrderTypeToKey(entry);
     const id = String(entry?.id ?? '').trim();

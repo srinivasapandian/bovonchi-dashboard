@@ -23,6 +23,18 @@ export function getOrderTypesForBranch(selectedBranch: unknown): OutletOrderType
   return out;
 }
 
+/**
+ * E-commerce storefront supports Pickup only — every other order type (Dine-in, Delivery,
+ * third-party, online, catering) is hidden in the UI.
+ */
+export function isPickupOrderType(ot: { id?: unknown; typeName?: unknown; typeGroup?: unknown } | null | undefined): boolean {
+  if (!ot) return false;
+  const text = `${String(ot.typeName ?? '')} ${String(ot.id ?? '')}`.toLowerCase().replace(/[\s-]+/g, '_');
+  if (/(takeout|take_out|takeaway|take_away|pickup|pick_up)/.test(text)) return true;
+  if (/(dine|dining|walk_in|walkin|eat_in|delivery|online|catering|cater)/.test(text)) return false;
+  return String(ot.typeGroup ?? '').toUpperCase() === 'P';
+}
+
 /** Third-party marketplace order types (Doordash, Grubhub, Swiggy, …) carry typeGroup 'T'. */
 export function isThirdPartyTypeGroup(typeGroup: unknown): boolean {
   return String(typeGroup ?? '').toUpperCase() === 'T';
@@ -33,7 +45,7 @@ export function isThirdPartyTypeGroup(typeGroup: unknown): boolean {
  * the backend applies the Delivery rule to every third-party order type.
  */
 export function getKitchenPrintOrderTypes(selectedBranch: unknown): OutletOrderType[] {
-  return getOrderTypesForBranch(selectedBranch).filter((ot) => !isThirdPartyTypeGroup(ot.typeGroup));
+  return getOrderTypesForBranch(selectedBranch).filter((ot) => !isThirdPartyTypeGroup(ot.typeGroup) && isPickupOrderType(ot));
 }
 
 export function getChannelDisplayName(typeName: string): string {

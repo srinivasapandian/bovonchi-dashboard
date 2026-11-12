@@ -13,10 +13,11 @@ const T3 = '#9A9084';
 /* ─── Slide 1: What is Control Centre ─── */
 function SlideOneIllustration() {
   const channels = [
-    { icon: 'restaurant', label: 'Dine-in', color: ACCENT },
-    { icon: 'takeout_dining', label: 'Takeout', color: PURPLE },
-    { icon: 'delivery_dining', label: 'Delivery', color: TEAL },
-    { icon: 'language', label: 'Online', color: GREEN },
+    // { icon: 'restaurant', label: 'Dine-in', color: ACCENT },
+    // { icon: 'takeout_dining', label: 'Takeout', color: PURPLE },
+    // { icon: 'delivery_dining', label: 'Delivery', color: TEAL },
+    // { icon: 'language', label: 'Online', color: GREEN },
+    { icon: 'takeout_dining', label: 'Pickup', color: ACCENT },
   ];
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
@@ -40,23 +41,31 @@ function SlideOneIllustration() {
 
 /* ─── Slide 2: Reading the Matrix ─── */
 function SlideTwoIllustration() {
-  const items = ['Chicken Tikka', 'Butter Naan', 'Mango Lassi'];
-  const channels = ['Dine-in', 'Delivery', 'Online'];
+  // const items = ['Chicken Tikka', 'Butter Naan', 'Mango Lassi'];
+  // const channels = ['Dine-in', 'Delivery', 'Online'];
+  // const states: Array<Array<[boolean, boolean]>> = [
+  //   [[true, true], [true, true], [true, false]],
+  //   [[true, true], [false, false], [true, true]],
+  //   [[true, false], [true, false], [false, false]],
+  // ];
+  const items = ['Classic T-Shirt', 'Canvas Tote Bag', 'Ceramic Mug'];
+  const channels = ['Pickup'];
   const states: Array<Array<[boolean, boolean]>> = [
-    [[true, true], [true, true], [true, false]],
-    [[true, true], [false, false], [true, true]],
-    [[true, false], [true, false], [false, false]],
+    [[true, true]],
+    [[true, false]],
+    [[false, false]],
   ];
   return (
     <div style={{ borderRadius: 2, border: '1px solid #E6DFD3', overflow: 'hidden', fontSize: 9 }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '90px repeat(3, 1fr)', background: '#FFFFFF' }}>
+      {/* original grid: gridTemplateColumns: '90px repeat(3, 1fr)' */}
+      <div style={{ display: 'grid', gridTemplateColumns: '90px repeat(1, 1fr)', background: '#FFFFFF' }}>
         <div style={{ padding: '6px 8px', fontWeight: 600, color: T2 }}>Item</div>
         {channels.map((ch) => (
           <div key={ch} style={{ padding: '6px 4px', textAlign: 'center', fontWeight: 600, color: T3 }}>{ch}</div>
         ))}
       </div>
       {items.map((item, i) => (
-        <div key={item} style={{ display: 'grid', gridTemplateColumns: '90px repeat(3, 1fr)', borderTop: '1px solid #F4F0E8' }}>
+        <div key={item} style={{ display: 'grid', gridTemplateColumns: '90px repeat(1, 1fr)', borderTop: '1px solid #F4F0E8' }}>
           <div style={{ padding: '6px 8px', fontWeight: 500, color: T1 }}>{item}</div>
           {states[i].map(([vis, avail], j) => (
             <div key={j} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '6px 4px' }}>
@@ -93,8 +102,10 @@ function SlideThreeIllustration() {
     <div style={{ borderRadius: 2, border: '1px solid #E6DFD3', background: '#fff', padding: 14, boxShadow: '0 4px 12px rgba(0,0,0,0.08)' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
         <div>
-          <div style={{ fontSize: 11, fontWeight: 700, color: T1 }}>Chicken Tikka</div>
-          <div style={{ fontSize: 9, color: T3 }}>Delivery</div>
+          {/* <div style={{ fontSize: 11, fontWeight: 700, color: T1 }}>Chicken Tikka</div>
+          <div style={{ fontSize: 9, color: T3 }}>Delivery</div> */}
+          <div style={{ fontSize: 11, fontWeight: 700, color: T1 }}>Classic T-Shirt</div>
+          <div style={{ fontSize: 9, color: T3 }}>Pickup</div>
         </div>
         <span className="material-symbols-rounded" style={{ fontSize: 14, color: T3 }}>close</span>
       </div>
@@ -151,12 +162,14 @@ const CONTROL_CENTRE_SLIDES: TutorialSlide[] = [
   {
     illustration: <SlideOneIllustration />,
     headline: "Your Control Centre",
-    body: "Control Centre gives you a single matrix to see and manage what's visible and available across every channel — Dine-in, Takeout, Delivery, and Online.",
+    // body: "Control Centre gives you a single matrix to see and manage what's visible and available across every channel — Dine-in, Takeout, Delivery, and Online.",
+    body: "Control Centre gives you a single matrix to see and manage what's visible and available for your e-commerce store's Pickup channel.",
   },
   {
     illustration: <SlideTwoIllustration />,
     headline: "Reading the Matrix",
-    body: "Each cell shows one indicator: a teal dot means the item is available, an amber dot means OOS (Out of Stock), and a crossed-out eye means the item is hidden on that channel.",
+    // body: "Each cell shows one indicator: a teal dot means the item is available, an amber dot means OOS (Out of Stock), and a crossed-out eye means the item is hidden on that channel.",
+    body: "Each cell shows one indicator: a teal dot means the item is available, an amber dot means OOS (Out of Stock), and a crossed-out eye means the product is hidden on Pickup.",
   },
   {
     illustration: <SlideThreeIllustration />,

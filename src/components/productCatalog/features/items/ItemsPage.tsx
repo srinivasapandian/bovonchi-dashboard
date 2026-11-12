@@ -56,7 +56,7 @@ import { BulkActionsMenu, type BulkAction } from '../../components/ui/BulkAction
 import { BulkKitchenPrintModal } from '../../components/ui/BulkKitchenPrintModal';
 import { useBulkKitchenPrint } from '../../hooks/useBulkKitchenPrint';
 import { itemStationIds } from '../../utils/kitchenPrintRouting';
-import { isThirdPartyTypeGroup } from '../../utils/outletOrderTypes';
+import { isThirdPartyTypeGroup, isPickupOrderType } from '../../utils/outletOrderTypes';
 import type { KitchenPrintFormValue } from '../../data/types';
 
 /* ------ helpers ------------------------------------------------------------------------------------------------------------------------------------------ */
@@ -111,7 +111,7 @@ function getOutletOrderTypeRows(
     const ot = entry as OutletOrderType;
     // Include disabled (isEnabled: 0) order types too; still exclude in-store.
     const notInStore = (ot.typeGroup ?? 'T') !== 'I';
-    if (!notInStore) return;
+    if (!notInStore || !isPickupOrderType(ot)) return;
     const key = mapOutletOrderTypeToKey(ot);
     if (!key) return;
     const id = String(ot.id ?? '').trim();
@@ -152,7 +152,7 @@ function getOrderTypesForBranch(selectedBranch: Record<string, unknown> | null |
   return raw.filter((ot: { isEnabled?: number | boolean; typeGroup?: string }) => {
     // Include disabled (isEnabled: 0) order types too; still exclude in-store.
     const notInstore = (ot?.typeGroup ?? 'T') !== 'I';
-    return notInstore;
+    return notInstore && isPickupOrderType(ot);
   }) as BranchOutletOrderType[];
 }
 
@@ -424,12 +424,13 @@ const ALL_COLUMNS: ColumnDef[] = [
   { key: 'price', label: 'Price', defaultVisible: true, group: 'standard' },
   // { key: 'status', label: 'Status', defaultVisible: true, group: 'standard' },
   { key: 'actions', label: 'Actions', defaultVisible: true, group: 'standard' },
-  { key: 'age_restriction', label: 'Age', defaultVisible: false, group: 'extended' },
-  { key: 'kitchen_station', label: 'Kitchen Station', defaultVisible: false, group: 'extended' },
+  // { key: 'age_restriction', label: 'Age', defaultVisible: false, group: 'extended' },
+  // Hidden for now (e-commerce storefront):
+  // { key: 'kitchen_station', label: 'Kitchen Station', defaultVisible: false, group: 'extended' },
   { key: 'modifiers', label: 'Modifiers', defaultVisible: false, group: 'extended' },
   // { key: 'variations', label: 'Variations', defaultVisible: false, group: 'extended' },
   { key: 'sessions', label: 'Sessions', defaultVisible: false, group: 'extended' },
-  { key: 'order_types', label: 'Order Types', defaultVisible: false, group: 'extended' },
+  // { key: 'order_types', label: 'Order Types', defaultVisible: false, group: 'extended' },
   { key: 'created_date', label: 'Created Date', defaultVisible: false, group: 'extended' },
 ];
 
@@ -437,6 +438,8 @@ const ALL_COLUMNS: ColumnDef[] = [
 
 type ViewMode = 'standard' | 'grid' | 'performance';
 const MAX_VISIBLE_COLUMNS = 9;
+/** Columns hidden from the UI; also stripped from any previously persisted selection. */
+const HIDDEN_COLUMN_KEYS = new Set(['kitchen_station', 'order_types', 'age_restriction']);
 
 /* PCF-8: Sortable wrapper for item rows in reorder mode */
 function SortableItemRow({ item, renderItemRow }: { item: MenuItem; renderItemRow: (item: MenuItem) => React.ReactNode }) {
@@ -631,7 +634,7 @@ export default function ItemsPage() {
   ) : null;
   const [showColumnsPanel, setShowColumnsPanel] = useState(false);
   const visibleColumns = useMemo(
-    () => new Set(visibleColumnsArray),
+    () => new Set(visibleColumnsArray.filter((k: string) => !HIDDEN_COLUMN_KEYS.has(k))),
     [visibleColumnsArray],
   );
   const [pendingDeleteIds, setPendingDeleteIds] = useState<string[] | null>(null);
@@ -775,7 +778,7 @@ export default function ItemsPage() {
   }, [showColumnsPanel]);
 
   const toggleColumn = useCallback((key: string) => {
-    const next = new Set(visibleColumnsArray);
+    const next = new Set(visibleColumnsArray.filter((k: string) => !HIDDEN_COLUMN_KEYS.has(k)));
     if (next.has(key)) next.delete(key);
     else {
       if (next.size >= MAX_VISIBLE_COLUMNS) return;

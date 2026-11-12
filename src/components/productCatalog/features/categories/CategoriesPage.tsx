@@ -61,6 +61,8 @@ const T3 = '#9A9084';
 const BORDER = '#E6DFD3';
 const MAX_VISIBLE_ORDER_TYPES = 4;
 
+import { isPickupOrderType } from '../../utils/outletOrderTypes';
+
 interface OutletOrderType {
   id: string;
   typeName: string;
@@ -81,7 +83,7 @@ function getOrderTypesForBranch(selectedBranch: Record<string, any> | null | und
   return raw.filter((ot: any) => {
     // Include disabled (isEnabled: 0) order types too; still exclude in-store.
     const notInstore = (ot?.typeGroup ?? 'T') !== 'I';
-    return notInstore;
+    return notInstore && isPickupOrderType(ot);
   });
 }
 
