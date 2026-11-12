@@ -1975,7 +1975,7 @@ export default function AvailabilityControlCentre() {
                           const outsideSession = sessionItemIds !== null && !sessionItemIds.has(item.id);
                           const itemNameLabel = truncateControlCentreLabel(item.name);
                           return (
-                            <tr key={`${parent.id}-${item.id}`} style={{ borderBottom: `1px solid ${PAGE_BG}`, opacity: outsideSession ? 0.4 : 1 }}>
+                            <tr key={`${parent.id}-${item.id}`} onClick={(e) => { if (diagnosticCell || activeChannels.length !== 1) return; e.currentTarget.querySelector<HTMLButtonElement>('button[data-cc-cell]')?.click(); }} style={{ cursor: activeChannels.length === 1 ? 'pointer' : undefined, borderBottom: `1px solid ${PAGE_BG}`, opacity: outsideSession ? 0.4 : 1 }}>
                               <td style={{ padding: '6px 8px', textAlign: 'center' }}>
                                 <input type="checkbox" checked={selectedRows.has(item.id)} onChange={() => toggleRowSelect(item.id)} onClick={(e) => e.stopPropagation()} style={{ accentColor: ACCENT, width: 14, height: 14, cursor: 'pointer' }} />
                               </td>
@@ -1996,7 +1996,7 @@ export default function AvailabilityControlCentre() {
                                 return (
                                   <td key={ch.id} style={{ textAlign: 'center', padding: '6px 8px', width: CONTROL_CENTRE_CHANNEL_COL_PX, minWidth: CONTROL_CENTRE_CHANNEL_COL_PX, maxWidth: CONTROL_CENTRE_CHANNEL_COL_PX, boxSizing: 'border-box', overflow: 'visible', verticalAlign: 'middle', position: 'relative' }}>
                                     <button
-                                      type="button"
+                                      type="button" data-cc-cell
                                       onClick={(e) => {
                                         e.stopPropagation();
                                         if (e.shiftKey) {
@@ -2075,7 +2075,7 @@ export default function AvailabilityControlCentre() {
                             const outsideSession = sessionItemIds !== null && !sessionItemIds.has(item.id);
                             const itemNameLabel = truncateControlCentreLabel(item.name);
                             return (
-                              <tr key={`${child.id}-${item.id}`} style={{ borderBottom: `1px solid ${PAGE_BG}`, opacity: outsideSession ? 0.4 : 1 }}>
+                              <tr key={`${child.id}-${item.id}`} onClick={(e) => { if (diagnosticCell || activeChannels.length !== 1) return; e.currentTarget.querySelector<HTMLButtonElement>('button[data-cc-cell]')?.click(); }} style={{ cursor: activeChannels.length === 1 ? 'pointer' : undefined, borderBottom: `1px solid ${PAGE_BG}`, opacity: outsideSession ? 0.4 : 1 }}>
                                 <td style={{ padding: '6px 8px', textAlign: 'center' }}>
                                   <input type="checkbox" checked={selectedRows.has(item.id)} onChange={() => toggleRowSelect(item.id)} onClick={(e) => e.stopPropagation()} style={{ accentColor: ACCENT, width: 14, height: 14, cursor: 'pointer' }} />
                                 </td>
@@ -2096,7 +2096,7 @@ export default function AvailabilityControlCentre() {
                                   return (
                                     <td key={ch.id} style={{ textAlign: 'center', padding: '6px 8px', width: CONTROL_CENTRE_CHANNEL_COL_PX, minWidth: CONTROL_CENTRE_CHANNEL_COL_PX, maxWidth: CONTROL_CENTRE_CHANNEL_COL_PX, boxSizing: 'border-box', overflow: 'visible', verticalAlign: 'middle', position: 'relative' }}>
                                       <button
-                                        type="button"
+                                        type="button" data-cc-cell
                                         onClick={(e) => {
                                           e.stopPropagation();
                                           if (e.shiftKey) {
