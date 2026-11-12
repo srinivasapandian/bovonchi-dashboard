@@ -63,7 +63,8 @@ import type { KitchenPrintFormValue } from '../../data/types';
 
 const orderTypeLabels: Record<OrderType, string> = {
   dine_in: 'Dine-in',
-  takeout: 'Takeaway',
+  // takeout: 'Takeaway',
+  takeout: 'Online',
   delivery: 'Delivery',
   online_ordering: 'Online',
   catering: 'Catering',
@@ -116,7 +117,8 @@ function getOutletOrderTypeRows(
     if (!key) return;
     const id = String(ot.id ?? '').trim();
     if (!id) return;
-    const baseLabel = (ot.typeName ?? '').trim() || orderTypeLabels[key];
+    // const baseLabel = (ot.typeName ?? '').trim() || orderTypeLabels[key];
+    const baseLabel = 'Online'; // only the Pickup channel is shown, labelled "Online"
     const dedupeKey = `${key}:${baseLabel.toLowerCase().replace(/[\s-]+/g, '')}`;
     if (seenLabels.has(dedupeKey)) return;
     seenLabels.add(dedupeKey);
@@ -140,6 +142,8 @@ type BranchOutletOrderType = {
 
 function getChannelDisplayName(typeName: string): string {
   const n = (typeName ?? '').toLowerCase();
+  // Pickup channel is shown to users as "Online" (original name kept in the data).
+  if (/(takeout|take_out|takeaway|take_away|pickup|pick_up)/.test(n.replace(/[\s-]+/g, '_'))) return 'Online';
   if (n.includes('dining') || n.includes('dinein') || n.includes('dine-in') || n.includes('walk-in') || n.includes('walkin')) return 'Dine-in';
   if (!typeName) return '';
   return typeName.charAt(0).toUpperCase() + typeName.slice(1).toLowerCase();

@@ -97,7 +97,8 @@ const CHANNELS: { key: OrderType; label: string; icon: string }[] = [
   // { key: 'delivery', label: 'Delivery', icon: 'delivery_dining' },
   // { key: 'online_ordering', label: 'Online', icon: 'language' },
   // { key: 'catering', label: 'Catering', icon: 'room_service' },
-  { key: 'takeout', label: 'Pickup', icon: 'takeout_dining' },
+  // { key: 'takeout', label: 'Pickup', icon: 'takeout_dining' },
+  { key: 'takeout', label: 'Online', icon: 'takeout_dining' },
 ];
 
 function itemCountLabel(n: number): string {
@@ -214,7 +215,8 @@ function getOutletOrderTypeRows(
     // const baseLabel = CHANNELS.find((c) => c.key === key)?.label ?? key;
     // const typeName = String(entry?.typeName ?? '').trim();
     // const label = typeName || baseLabel;
-    const label = 'Pickup';
+    // const label = 'Pickup';
+    const label = 'Online';
     const dedupeKey = `${key}:${label.toLowerCase().replace(/[\s-]+/g, '')}`;
     if (seenLabels.has(dedupeKey)) return;
     seenLabels.add(dedupeKey);

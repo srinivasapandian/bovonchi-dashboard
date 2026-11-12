@@ -124,7 +124,8 @@ function getOutletChannels(
 
     channels.push({
       key,
-      label: String(entry?.typeName ?? '').trim() || key,
+      // label: String(entry?.typeName ?? '').trim() || key,
+      label: 'Online', // only the Pickup channel is shown, labelled "Online"
       id,
     });
   });

@@ -54,7 +54,8 @@ const MENU_ICONS = [
 
 const orderTypeLabels: Record<OrderType, string> = {
   dine_in: 'Dine In',
-  takeout: 'Takeout',
+  // takeout: 'Takeout',
+  takeout: 'Online',
   delivery: 'Delivery',
   online_ordering: 'Online Ordering',
   catering: 'Catering',
@@ -76,8 +77,9 @@ function locationOrderTypeNameById(selectedBranch: BranchData | null): Map<strin
     // Include disabled (isEnabled: 0) order types too; still exclude in-store.
     const notInstore = (row.typeGroup ?? 'T') !== 'I';
     if (!notInstore || !isPickupOrderType(row)) continue;
-    const name = String(row.typeName ?? '').trim();
-    m.set(id, name || id);
+    // const name = String(row.typeName ?? '').trim();
+    // m.set(id, name || id);
+    m.set(id, 'Online'); // only the Pickup channel is shown, labelled "Online"
   }
   return m;
 }

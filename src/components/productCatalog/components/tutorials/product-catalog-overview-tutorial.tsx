@@ -18,7 +18,8 @@ function SlideOneIllustration() {
     // { icon: 'delivery_dining', label: 'Delivery', color: TEAL },
     // { icon: 'language', label: 'Online', color: GREEN },
     { icon: 'language', label: 'Online Store', color: ACCENT },
-    { icon: 'takeout_dining', label: 'Pickup', color: TEAL },
+    // { icon: 'takeout_dining', label: 'Pickup', color: TEAL },
+    { icon: 'takeout_dining', label: 'Online', color: TEAL },
   ];
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
@@ -115,7 +116,8 @@ function SlideFourIllustration() {
   //   [[true, true], [true, true], [false, false]],
   // ];
   const items = ['Classic T-Shirt', 'Canvas Tote Bag', 'Ceramic Mug'];
-  const channels = ['Pickup'];
+  // const channels = ['Pickup'];
+  const channels = ['Online'];
   const states: Array<Array<[boolean, boolean]>> = [
     [[true, true]],
     [[true, false]],
@@ -186,7 +188,8 @@ const OVERVIEW_SLIDES: TutorialSlide[] = [
     illustration: <SlideOneIllustration />,
     headline: "Your Digital Menu, One Place",
     // body: "Everything your customers see on every channel — POS, kiosks, delivery apps, online ordering — is built and managed from this single section. Build once, serve everywhere.",
-    body: "Everything your shoppers see on your e-commerce site — and available for Pickup — is built and managed from this single section. Build once, sell everywhere.",
+    // body: "Everything your shoppers see on your e-commerce site — and available for Pickup — is built and managed from this single section. Build once, sell everywhere.",
+    body: "Everything your shoppers see on your e-commerce site — on the Online channel — is built and managed from this single section. Build once, sell everywhere.",
   },
   {
     illustration: <SlideTwoIllustration />,
@@ -202,7 +205,8 @@ const OVERVIEW_SLIDES: TutorialSlide[] = [
     illustration: <SlideFourIllustration />,
     headline: "Control Centre — See Everything",
     // body: "The Control Centre shows what's visible and available on every channel in a single matrix. A dot means the item is visible — teal for available, amber for OOS (Out of Stock). A crossed-out eye means hidden.",
-    body: "The Control Centre shows what's visible and available for Pickup in a single matrix. A dot means the item is visible — teal for available, amber for OOS (Out of Stock). A crossed-out eye means hidden.",
+    // body: "The Control Centre shows what's visible and available for Pickup in a single matrix. A dot means the item is visible — teal for available, amber for OOS (Out of Stock). A crossed-out eye means hidden.",
+    body: "The Control Centre shows what's visible and available for Online in a single matrix. A dot means the item is visible — teal for available, amber for OOS (Out of Stock). A crossed-out eye means hidden.",
   },
   {
     illustration: <SlideFiveIllustration />,

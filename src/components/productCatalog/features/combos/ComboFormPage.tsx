@@ -32,7 +32,7 @@ const labelStyle: CSSProperties = { fontSize: 12, fontWeight: 500, color: '#6E66
 const ACCENT = '#B89550';
 
 const allOrderTypes: OrderType[] = ['dine_in', 'takeout', 'delivery', 'online_ordering', 'catering'];
-const channelLabels: Record<OrderType, string> = { dine_in: 'Dine In', takeout: 'Takeout', delivery: 'Delivery', online_ordering: 'Online', catering: 'Catering' };
+const channelLabels: Record<OrderType, string> = { dine_in: 'Dine In', takeout: 'Online', delivery: 'Delivery', online_ordering: 'Online', catering: 'Catering' };
 
 type OutletOrderType = {
   id?: string | number;
@@ -75,7 +75,8 @@ function getOutletOrderVisibilityRows(
     const key = mapOutletOrderTypeToKey(entry);
     if (!key || seen.has(key)) return;
     seen.add(key);
-    rows.push({ key, label: String(entry?.typeName ?? '').trim() || channelLabels[key] });
+    // rows.push({ key, label: String(entry?.typeName ?? '').trim() || channelLabels[key] });
+    rows.push({ key, label: 'Online' }); // only the Pickup channel is shown, labelled "Online"
   });
   return rows;
 }

@@ -64,7 +64,8 @@ const itemTypeConfig: { value: ItemType; icon: string; label: string; desc: stri
 
 const channelLabels: Record<OrderType, string> = {
   dine_in: 'Dine In',
-  takeout: 'Takeout',
+  // takeout: 'Takeout',
+  takeout: 'Online',
   delivery: 'Delivery',
   online_ordering: 'Online Ordering',
   catering: 'Catering',
@@ -164,6 +165,8 @@ type BranchOutletOrderType = {
 
 function getChannelDisplayName(typeName: string): string {
   const n = (typeName ?? '').toLowerCase();
+  // Pickup channel is shown to users as "Online" (original name kept in the data).
+  if (/(takeout|take_out|takeaway|take_away|pickup|pick_up)/.test(n.replace(/[\s-]+/g, '_'))) return 'Online';
   if (n.includes('dining') || n.includes('dinein') || n.includes('dine-in') || n.includes('walk-in') || n.includes('walkin')) {
     return 'Dine-in';
   }

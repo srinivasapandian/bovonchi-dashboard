@@ -59,7 +59,8 @@ const CHANNELS: { key: OrderType; label: string; abbr: string; icon: string }[] 
   // { key: 'delivery',        label: 'Delivery',  abbr: 'Del',   icon: 'delivery_dining'},
   // { key: 'online_ordering', label: 'Online',    abbr: 'Web',   icon: 'language'       },
   // { key: 'catering',        label: 'Catering',  abbr: 'Cater', icon: 'room_service'   },
-  { key: 'takeout',         label: 'Pickup',    abbr: 'Pickup', icon: 'takeout_dining' },
+  // { key: 'takeout',         label: 'Pickup',    abbr: 'Pickup', icon: 'takeout_dining' },
+  { key: 'takeout',         label: 'Online',    abbr: 'Online', icon: 'takeout_dining' },
 ];
 /** Channel row with a stable `id` — equals the outlet orderTypeId UUID when loaded from branch, or `key` for the fallback list. */
 type ChannelRow = { key: OrderType; label: string; abbr: string; icon: string; id: string };

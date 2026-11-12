@@ -241,7 +241,7 @@ export default function CombosPage() {
                 {/* PCF-17: Order type quick toggle pills */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 8 }}>
                   {(['dine_in', 'takeout', 'delivery'] as const).map((ot) => {
-                    const labels: Record<string, string> = { dine_in: 'Dine-in', takeout: 'Takeout', delivery: 'Delivery' };
+                    const labels: Record<string, string> = { dine_in: 'Dine-in', takeout: 'Online', delivery: 'Delivery' };
                     const vis = combo.orderTypeVisibility ?? {};
                     const isOn = vis[ot] !== false;
                     return (

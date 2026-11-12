@@ -17,7 +17,8 @@ function SlideOneIllustration() {
     // { icon: 'takeout_dining', label: 'Takeout', color: PURPLE },
     // { icon: 'delivery_dining', label: 'Delivery', color: TEAL },
     // { icon: 'language', label: 'Online', color: GREEN },
-    { icon: 'takeout_dining', label: 'Pickup', color: ACCENT },
+    // { icon: 'takeout_dining', label: 'Pickup', color: ACCENT },
+    { icon: 'takeout_dining', label: 'Online', color: ACCENT },
   ];
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
@@ -49,7 +50,8 @@ function SlideTwoIllustration() {
   //   [[true, false], [true, false], [false, false]],
   // ];
   const items = ['Classic T-Shirt', 'Canvas Tote Bag', 'Ceramic Mug'];
-  const channels = ['Pickup'];
+  // const channels = ['Pickup'];
+  const channels = ['Online'];
   const states: Array<Array<[boolean, boolean]>> = [
     [[true, true]],
     [[true, false]],
@@ -105,7 +107,8 @@ function SlideThreeIllustration() {
           {/* <div style={{ fontSize: 11, fontWeight: 700, color: T1 }}>Chicken Tikka</div>
           <div style={{ fontSize: 9, color: T3 }}>Delivery</div> */}
           <div style={{ fontSize: 11, fontWeight: 700, color: T1 }}>Classic T-Shirt</div>
-          <div style={{ fontSize: 9, color: T3 }}>Pickup</div>
+          {/* <div style={{ fontSize: 9, color: T3 }}>Pickup</div> */}
+          <div style={{ fontSize: 9, color: T3 }}>Online</div>
         </div>
         <span className="material-symbols-rounded" style={{ fontSize: 14, color: T3 }}>close</span>
       </div>
@@ -163,13 +166,15 @@ const CONTROL_CENTRE_SLIDES: TutorialSlide[] = [
     illustration: <SlideOneIllustration />,
     headline: "Your Control Centre",
     // body: "Control Centre gives you a single matrix to see and manage what's visible and available across every channel — Dine-in, Takeout, Delivery, and Online.",
-    body: "Control Centre gives you a single matrix to see and manage what's visible and available for your e-commerce store's Pickup channel.",
+    // body: "Control Centre gives you a single matrix to see and manage what's visible and available for your e-commerce store's Pickup channel.",
+    body: "Control Centre gives you a single matrix to see and manage what's visible and available for your e-commerce store's Online channel.",
   },
   {
     illustration: <SlideTwoIllustration />,
     headline: "Reading the Matrix",
     // body: "Each cell shows one indicator: a teal dot means the item is available, an amber dot means OOS (Out of Stock), and a crossed-out eye means the item is hidden on that channel.",
-    body: "Each cell shows one indicator: a teal dot means the item is available, an amber dot means OOS (Out of Stock), and a crossed-out eye means the product is hidden on Pickup.",
+    // body: "Each cell shows one indicator: a teal dot means the item is available, an amber dot means OOS (Out of Stock), and a crossed-out eye means the product is hidden on Pickup.",
+    body: "Each cell shows one indicator: a teal dot means the item is available, an amber dot means OOS (Out of Stock), and a crossed-out eye means the product is hidden on Online.",
   },
   {
     illustration: <SlideThreeIllustration />,
