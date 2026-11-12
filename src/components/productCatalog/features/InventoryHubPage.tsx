@@ -14,7 +14,7 @@ import UserProfileDropdown, { getInitials } from '../../layout/UserProfileDropdo
 const MODULES = [
   { icon: 'inventory_2', label: 'Items', desc: 'Manage menu items, pricing & availability', path: pcPaths.items, color: '#B89550', countKey: 'items' as const },
   { icon: 'category', label: 'Categories', desc: 'Organize items into categories', path: pcPaths.categories, color: '#8C6A7A', countKey: 'categories' as const },
-  { icon: 'tune', label: 'Modifiers', desc: 'Add-ons, toppings & customizations', path: pcPaths.modifiers, color: '#5E8C7B', countKey: 'modifiers' as const },
+  { icon: 'tune', label: 'Product Options' /* was: 'Modifiers' */, desc: 'Size, metal, finish & other choices' /* was: 'Add-ons, toppings & customizations' */, path: pcPaths.modifiers, color: '#5E8C7B', countKey: 'modifiers' as const },
   { icon: 'schedule', label: 'Sessions', desc: 'Time-based availability slots', path: pcPaths.sessions, color: '#5F7A55', countKey: 'sessions' as const },
   { icon: 'soup_kitchen', label: 'Kitchen Stations', desc: 'Routing & printer configuration', path: pcPaths.kitchenStations, color: '#A63D2F', countKey: 'stations' as const },
   { icon: 'sync', label: 'Sync History', desc: 'Track menu sync to devices', path: pcPaths.syncHistory, color: '#8A7F72', countKey: null },
@@ -72,7 +72,7 @@ export default function InventoryHubPage() {
   useErrorToast(categoriesError, { fallbackMessage: 'Failed to load categories' });
   useErrorToast(menusError, { fallbackMessage: 'Failed to load menus' });
   useErrorToast(combosError, { fallbackMessage: 'Failed to load combos' });
-  useErrorToast(modifiersError, { fallbackMessage: 'Failed to load modifiers' });
+  useErrorToast(modifiersError, { fallbackMessage: 'Failed to load product options' /* was: 'Failed to load modifiers' */ });
   useErrorToast(optionSetsError, { fallbackMessage: 'Failed to load variation sets' });
   useErrorToast(sessionsError, { fallbackMessage: 'Failed to load sessions' });
   useErrorToast(stationsError, { fallbackMessage: 'Failed to load kitchen stations' });

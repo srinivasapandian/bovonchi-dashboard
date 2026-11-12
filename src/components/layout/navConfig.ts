@@ -13,7 +13,7 @@ export const CATALOG_NAV: NavLeaf[] = [
   { label: 'Control Centre', icon: 'dashboard', path: pcPaths.availability },
   { label: 'Items', icon: 'inventory_2', path: pcPaths.items },
   { label: 'Categories', icon: 'category', path: pcPaths.categories },
-  { label: 'Modifiers', icon: 'tune', path: pcPaths.modifiers },
+  { label: 'Product Options', /* was: label: 'Modifiers', */ icon: 'tune', path: pcPaths.modifiers },
   // Menus, Variations, Combos and Set Menus are hidden, as in the Merchant Portal sidebar.
   // Their routes still exist in App.tsx; add a link back here to re-enable one.
   { label: 'Sessions', icon: 'schedule', path: pcPaths.sessions },

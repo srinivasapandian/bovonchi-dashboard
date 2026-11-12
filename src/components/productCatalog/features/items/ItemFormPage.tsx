@@ -1086,7 +1086,7 @@ export default function ItemFormPage() {
   const isMobile = useMediaQuery('(max-width: 768px)');
   useErrorToast(itemsError, { fallbackMessage: 'Failed to load items' });
   useErrorToast(stationsError, { fallbackMessage: 'Failed to load kitchen stations' });
-  useErrorToast(modifiersError, { fallbackMessage: 'Failed to load modifiers' });
+  useErrorToast(modifiersError, { fallbackMessage: 'Failed to load product options' /* was: 'Failed to load modifiers' */ });
   useErrorToast(sessionsError, { fallbackMessage: 'Failed to load sessions' });
   useErrorToast(optionSetsError, { fallbackMessage: 'Failed to load option sets' });
   useErrorToast(attributesError.tags, { fallbackMessage: 'Failed to load tags' });
@@ -2917,7 +2917,7 @@ export default function ItemFormPage() {
               secondaryName: modifierSecondary(m),
               subtitle: modifierSubtitle(m),
             }
-          : { id, name: 'Modifier' };
+          : { id, name: 'Product Option' /* was: 'Modifier' */ };
       }),
     [form.modifierIds, modifiers, modifierSecondary, modifierSubtitle],
   );
@@ -5289,7 +5289,7 @@ export default function ItemFormPage() {
                   {/* ── End Catering ─────────────────────────── */}
                   <div style={{ marginTop: 12 }}>
                     <ItemAssignmentSection
-                      title="Modifiers"
+                      title="Product Options" /* was: title="Modifiers" */
                       titleCountBadge={`${form.modifierIds.length}/${MAX_MODIFIERS}`}
                       icon="tune"
                       items={modifierItemsForAssignment}
@@ -5301,11 +5301,11 @@ export default function ItemFormPage() {
                       }}
                       onReorder={(ids) => setForm((prev) => ({ ...prev, modifierIds: ids }))}
                       collapsible={false}
-                      searchPlaceholder="Search modifiers..."
-                      emptyLabel="No modifiers selected yet."
-                      addButtonLabel="Add modifiers"
+                      searchPlaceholder="Search product options..." /* was: "Search modifiers..." */
+                      emptyLabel="No product options selected yet." /* was: "No modifiers selected yet." */
+                      addButtonLabel="Add product options" /* was: "Add modifiers" */
                       persistedSelectedIds={initialModifierIdsRef.current}
-                      noResultsLabel="No modifiers match your search."
+                      noResultsLabel="No product options match your search." /* was: "No modifiers match your search." */
                       maxSelections={MAX_MODIFIERS}
                     />
                   </div>

@@ -121,7 +121,7 @@ function Slide4Illustration() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
       <div style={{ fontSize: 9, fontWeight: 700, color: "#6E665D", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 2 }}>
-        Show modifier on these channels
+        Show product option on these channels
       </div>
       {channels.map((ch) => (
         <div
@@ -170,7 +170,8 @@ function Slide4Illustration() {
 
 function Slide5Illustration() {
   const steps = [
-    { num: 1, text: "Click Add Modifier" },
+    // { num: 1, text: "Click Add Modifier" },
+    { num: 1, text: "Click Add Product Option" },
     { num: 2, text: "Name it & add your options" },
     { num: 3, text: "Set required / optional & min-max" },
     { num: 4, text: "Apply to your items" },
@@ -220,23 +221,28 @@ function Slide5Illustration() {
 
 const MODIFIERS_SLIDES: TutorialSlide[] = [
   {
-    headline: "What is a Modifier?",
-    body: "A modifier lets customers customize their order \u2014 pick a size, add toppings, or choose extras. Each modifier set can be applied to one or many items.",
+    // headline: "What is a Modifier?",
+    headline: "What is a Product Option?",
+    // body: "A modifier lets customers customize their order \u2014 pick a size, add toppings, or choose extras. Each modifier set can be applied to one or many items.",
+    body: "A product option lets shoppers choose how they want an item — pick a size, metal, or finish. Each product option can be applied to one or many products.",
     illustration: <Slide1Illustration />,
   },
   {
     headline: "Required vs. Optional",
-    body: "Mark a modifier as required to force a selection before checkout. Optional modifiers let customers skip. For multi-select, set min and max selection limits.",
+    // body: "Mark a modifier as required to force a selection before checkout. Optional modifiers let customers skip. For multi-select, set min and max selection limits.",
+    body: "Mark a product option as required to force a selection before checkout. Optional ones let shoppers skip. For multi-select, set min and max selection limits.",
     illustration: <Slide3Illustration />,
   },
   {
     headline: "Channel Visibility",
-    body: "Control which order channels see each modifier. Show size options for dine-in but hide them for delivery, or enable special instructions only for online orders.",
+    // body: "Control which order channels see each modifier. Show size options for dine-in but hide them for delivery, or enable special instructions only for online orders.",
+    body: "Control whether each product option is shown on your Online channel, or hide it where it doesn't apply.",
     illustration: <Slide4Illustration />,
   },
   {
     headline: "Getting Started",
-    body: "Create a modifier, add your options with optional price adjustments, then apply it to items from the item form. Changes sync to all assigned items instantly.",
+    // body: "Create a modifier, add your options with optional price adjustments, then apply it to items from the item form. Changes sync to all assigned items instantly.",
+    body: "Create a product option, add your choices with optional price adjustments, then apply it to products from the item form. Changes sync to all assigned products instantly.",
     illustration: <Slide5Illustration />,
   },
 ];

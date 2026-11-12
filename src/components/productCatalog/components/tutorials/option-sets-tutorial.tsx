@@ -36,7 +36,7 @@ function SlideOneIllustration() {
         <div style={{ flex: 1, borderRadius: 2, overflow: "hidden", border: "1px solid #ECE5D8" }}>
           <div style={{ height: 3, background: "#7F9770" }} />
           <div style={{ padding: "10px 10px 8px" }}>
-            <div style={{ fontSize: 10, fontWeight: 700, color: "#7F9770", marginBottom: 6 }}>Modifiers</div>
+            <div style={{ fontSize: 10, fontWeight: 700, color: "#7F9770", marginBottom: 6 }}>{/* was: Modifiers */}Product Options</div>
             <div style={{ textAlign: "center", fontSize: 18, marginBottom: 6 }}>☕</div>
             {[
               { name: "Oat Milk", price: "+$0.50" },
@@ -262,8 +262,10 @@ function SlideFiveIllustration() {
 /* ─── Slide definitions ─── */
 const VARIATION_SET_SLIDES: TutorialSlide[] = [
   {
-    headline: "Variations vs. Modifiers",
-    body: "Variations are fixed forms of an item — Small, Medium, Large. Each has its own price. Modifiers are add-ons chosen during ordering — Extra Cheese, No Onions. Use both together.",
+    // headline: "Variations vs. Modifiers",
+    headline: "Variations vs. Product Options",
+    // body: "Variations are fixed forms of an item — Small, Medium, Large. Each has its own price. Modifiers are add-ons chosen during ordering — Extra Cheese, No Onions. Use both together.",
+    body: "Variations are fixed forms of an item — Small, Medium, Large. Each has its own price. Product options are choices made while ordering — size, metal, finish. Use both together.",
     illustration: <SlideOneIllustration />,
   },
   {

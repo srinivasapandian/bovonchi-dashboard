@@ -836,8 +836,8 @@ export default function ComboFormPage() {
           {/* Combo-Level Modifiers */}
           <div style={cardStyle}>
             <ItemAssignmentSection
-              title="Combo-Level Modifiers"
-              description="Modifiers that apply to the entire combo (e.g., &quot;Make it Large&quot;)."
+              title="Combo-Level Product Options" /* was: "Combo-Level Modifiers" */
+              description="Product options that apply to the entire combo (e.g., &quot;Make it Large&quot;)." /* was: "Modifiers that apply to the entire combo (e.g., &quot;Make it Large&quot;)." */
               icon="tune"
               items={modifierItemsForPicker}
               selectedIds={form.modifierIds}
@@ -845,9 +845,9 @@ export default function ComboFormPage() {
               onRemove={removeModifier}
               collapsible={false}
               emptyLabel="None added"
-              searchPlaceholder="Search modifiers..."
-              addButtonLabel="Add Modifiers"
-              noResultsLabel="No modifiers found."
+              searchPlaceholder="Search product options..." /* was: "Search modifiers..." */
+              addButtonLabel="Add Product Options" /* was: "Add Modifiers" */
+              noResultsLabel="No product options found." /* was: "No modifiers found." */
               persistedSelectedIds={[]}
             />
           </div>

@@ -307,7 +307,8 @@ function Slide3Illustration() {
         >
           {[
             { icon: Camera, label: "Images" },
-            { icon: SlidersHorizontal, label: "Modifiers" },
+            // { icon: SlidersHorizontal, label: "Modifiers" },
+            { icon: SlidersHorizontal, label: "Product Options" },
             { icon: Clock, label: "Availability" },
             { icon: Tag, label: "Allergens & Labels" },
           ].map((section) => {

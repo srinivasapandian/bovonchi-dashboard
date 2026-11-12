@@ -126,7 +126,7 @@ export default function ModifiersPage() {
 
   const setTopBarProps = useDesktopTopBar();
   useEffect(() => {
-    setTopBarProps({ title: 'Modifiers', breadcrumbs: 'Product Catalog' });
+    setTopBarProps({ title: 'Product Options' /* was: 'Modifiers' */, breadcrumbs: 'Product Catalog' });
   }, [setTopBarProps]);
 
   // Fetch modifiers on mount / branch change
@@ -280,10 +280,10 @@ export default function ModifiersPage() {
         await deleteModifierOnServer(deleteTarget.id, locationId, token);
         setDeleteTarget(null);
         clearModifiersCache();
-        addToast('Modifier deleted', 'success');
+        addToast('Product option deleted' /* was: 'Modifier deleted' */, 'success');
         void fetchModifiers(locationId, token, { force: true });
       } catch (e) {
-        addToast(e instanceof Error ? e.message : 'Failed to delete modifier', 'error');
+        addToast(e instanceof Error ? e.message : 'Failed to delete product option' /* was: 'Failed to delete modifier' */, 'error');
       } finally {
         setDeleting(false);
       }
@@ -291,7 +291,7 @@ export default function ModifiersPage() {
       removeModifier(deleteTarget.id);
       setDeleteTarget(null);
       clearModifiersCache();
-      addToast('Modifier deleted', 'success');
+      addToast('Product option deleted' /* was: 'Modifier deleted' */, 'success');
     }
   };
 
@@ -335,7 +335,7 @@ export default function ModifiersPage() {
         <div style={{ position: 'sticky', top: 0, zIndex: 50, background: '#fff', borderBottom: '1px solid #E6DFD3', padding: '12px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span onClick={() => navigate(PC_BASE)} className="material-symbols-rounded" style={{ fontSize: 22, color: '#453F39', cursor: 'pointer' }}>arrow_back</span>
-            <h1 style={{ fontSize: 18, fontWeight: 700, color: '#453F39', margin: 0 }}>Modifiers</h1>
+            <h1 style={{ fontSize: 18, fontWeight: 700, color: '#453F39', margin: 0 }}>{/* was: Modifiers */}Product Options</h1>
           </div>
           <span onClick={() => navigate(pcPaths.modifiersCreate)} className="material-symbols-rounded" style={{ fontSize: 24, color: '#B89550', cursor: 'pointer' }}>add</span>
         </div>
@@ -345,12 +345,12 @@ export default function ModifiersPage() {
 
           {/* Toolbar - stacked vertically */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 16 }}>
-            <SearchInput value={search} onChange={setSearch} placeholder="Search by modifier or item..." />
+            <SearchInput value={search} onChange={setSearch} placeholder="Search by product option or item..." /* was: "Search by modifier or item..." */ />
             <CatalogDropdown
               value={filter}
               onChange={(v) => setFilter(v as FilterType)}
               options={filterOptions}
-              ariaLabel="Filter modifiers"
+              ariaLabel="Filter product options" /* was: "Filter modifiers" */
               triggerStyle={selectStyle}
             />
           </div>
@@ -365,10 +365,10 @@ export default function ModifiersPage() {
                 name="modifiers"
                 description={
                   search || filter !== 'all'
-                    ? 'No modifiers match your filters. Try adjusting your search or filter.'
-                    : 'Create your first modifier set to get started with item customization.'
+                    ? 'No product options match your filters. Try adjusting your search or filter.' /* was: 'No modifiers match your filters. Try adjusting your search or filter.' */
+                    : 'Create your first product option to let shoppers choose size, metal or finish.' /* was: 'Create your first modifier set to get started with item customization.' */
                 }
-                action={!search && filter === 'all' ? <Button onClick={() => navigate(pcPaths.modifiersCreate)}>Add Modifier</Button> : undefined}
+                action={!search && filter === 'all' ? <Button onClick={() => navigate(pcPaths.modifiersCreate)}>{/* was: Add Modifier */}Add Product Option</Button> : undefined}
               />
             </div>
           ) : (
@@ -461,7 +461,7 @@ export default function ModifiersPage() {
           onClose={() => setDeleteTarget(null)}
           onConfirm={confirmDeleteModifier}
           confirmLoading={deleting}
-          title={deleteTarget ? deleteConfirmTitle(deleteTarget.displayName || deleteTarget.name) : deleteConfirmTitle('this modifier')}
+          title={deleteTarget ? deleteConfirmTitle(deleteTarget.displayName || deleteTarget.name) : deleteConfirmTitle('this product option' /* was: 'this modifier' */)}
           description={
             deleteTarget ? (
               <>Applied to {deleteTarget.appliedItemCount ?? 0} item{(deleteTarget.appliedItemCount ?? 0) !== 1 ? 's' : ''}. This will remove it from all items.</>
@@ -482,11 +482,11 @@ export default function ModifiersPage() {
               tune
             </span>
           }
-          title="Modifiers"
-          subtitle="Manage modifier sets for item customization"
+          title="Product Options" /* was: title="Modifiers" */
+          subtitle="Manage choices like size, metal and finish" /* was: subtitle="Manage modifier sets for item customization" */
           actions={
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-              <CatalogHelpLink topic="Modifiers" Tutorial={ModifiersTutorial} createPath={pcPaths.modifiersCreate} />
+              <CatalogHelpLink topic="Product Options" /* was: topic="Modifiers" */ Tutorial={ModifiersTutorial} createPath={pcPaths.modifiersCreate} />
               <Button
                 icon={
                   <span className="material-symbols-rounded" style={{ fontSize: 18, color: 'rgba(255,255,255,0.95)' }}>
@@ -506,14 +506,14 @@ export default function ModifiersPage() {
         {/* Toolbar: Search + Filter */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16, flexWrap: 'wrap' }}>
           <div style={{ width: 300 }}>
-            <SearchInput value={search} onChange={setSearch} placeholder="Search by modifier or item..." />
+            <SearchInput value={search} onChange={setSearch} placeholder="Search by product option or item..." /* was: "Search by modifier or item..." */ />
           </div>
           <div style={{ minWidth: 200, flexShrink: 0 }}>
             <CatalogDropdown
               value={filter}
               onChange={(v) => setFilter(v as FilterType)}
               options={filterOptions}
-              ariaLabel="Filter modifiers"
+              ariaLabel="Filter product options" /* was: "Filter modifiers" */
               triggerStyle={selectStyle}
             />
           </div>
@@ -529,12 +529,12 @@ export default function ModifiersPage() {
               name="modifiers"
               description={
                 search || filter !== 'all'
-                  ? 'No modifiers match your filters. Try adjusting your search or filter.'
-                  : 'Create your first modifier set to get started with item customization.'
+                  ? 'No product options match your filters. Try adjusting your search or filter.' /* was: 'No modifiers match your filters. Try adjusting your search or filter.' */
+                  : 'Create your first product option to let shoppers choose size, metal or finish.' /* was: 'Create your first modifier set to get started with item customization.' */
               }
               action={
                 !search && filter === 'all' ? (
-                  <Button onClick={() => navigate(pcPaths.modifiersCreate)}>Add Modifier</Button>
+                  <Button onClick={() => navigate(pcPaths.modifiersCreate)}>{/* was: Add Modifier */}Add Product Option</Button>
                 ) : undefined
               }
             />
@@ -806,7 +806,7 @@ export default function ModifiersPage() {
         title={
           deleteTarget
             ? deleteConfirmTitle(deleteTarget.displayName || deleteTarget.name)
-            : deleteConfirmTitle('this modifier')
+            : deleteConfirmTitle('this product option' /* was: 'this modifier' */)
         }
         description={
           deleteTarget ? (

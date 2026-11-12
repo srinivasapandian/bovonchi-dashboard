@@ -294,7 +294,7 @@ export default function ModifierFormPage() {
   const { addToast } = useToastStore();
   const { auth } = useAuth();
   const { selectedBranch } = useBranch();
-  useErrorToast(error, { fallbackMessage: 'Failed to load modifiers' });
+  useErrorToast(error, { fallbackMessage: 'Failed to load product options' /* was: 'Failed to load modifiers' */ });
 
   const location = useLocation();
   const isEditRoute = location.pathname === pcPaths.modifierEdit;
@@ -366,8 +366,8 @@ export default function ModifierFormPage() {
   const setTopBarProps = useDesktopTopBar();
   useEffect(() => {
     setTopBarProps({
-      title: isEdit ? 'Edit Modifier' : isCloneHydrate ? 'New Modifier (clone)' : 'New Modifier',
-      breadcrumbs: 'Product Catalog > Modifiers',
+      title: isEdit ? 'Edit Product Option' : isCloneHydrate ? 'New Product Option (clone)' : 'New Product Option', /* was: isEdit ? 'Edit Modifier' : isCloneHydrate ? 'New Modifier (clone)' : 'New Modifier' */
+      breadcrumbs: 'Product Catalog > Product Options', /* was: 'Product Catalog > Modifiers' */
     });
   }, [setTopBarProps, isEdit, isCloneHydrate]);
 
@@ -591,7 +591,7 @@ export default function ModifierFormPage() {
 
     // Name is required. Duplicate names are allowed.
     if (!form.name.trim()) {
-      errs.name = 'Modifier name is required';
+      errs.name = 'Product option name is required' /* was: 'Modifier name is required' */;
     }
 
     if (form.type === 'options_list') {
@@ -631,7 +631,7 @@ export default function ModifierFormPage() {
 
       if ((form.isRequired || form.minSelection >= 1) && form.options.length > 0) {
         const allOos = form.options.every((o) => !o.isAvailable);
-        if (allOos) errs.allOos = 'A Required modifier set cannot have all options Out of Stock';
+        if (allOos) errs.allOos = 'A Required product option cannot have all choices Out of Stock' /* was: 'A Required modifier set cannot have all options Out of Stock' */;
       }
     }
 
@@ -738,19 +738,19 @@ export default function ModifierFormPage() {
             ...(Object.keys(deleteFields).length > 0 ? { deleteFields } : {}),
           };
           await updateModifierOnServer(payload, token);
-          addToast('Modifier updated successfully', 'success');
+          addToast('Product option updated successfully' /* was: 'Modifier updated successfully' */, 'success');
           navigate(buildModifiersListPath(id));
           return;
         }
         const payload = buildPayload();
         const createResp = await createModifierOnServer(payload, token);
         const newId = pickHighlightIdFromApiResponse(createResp);
-        addToast('Modifier created successfully', 'success');
+        addToast('Product option created successfully' /* was: 'Modifier created successfully' */, 'success');
         navigate(buildModifiersListPath(newId));
         return;
       } catch (e) {
         setSubmitLocked(false);
-        addToast(e instanceof Error ? e.message : 'Failed to save modifier', 'error');
+        addToast(e instanceof Error ? e.message : 'Failed to save product option' /* was: 'Failed to save modifier' */, 'error');
       }
     } else {
       // Fallback: local-only (no API)
@@ -768,11 +768,11 @@ export default function ModifierFormPage() {
       };
       if (isEdit && id) {
         updateModifier(id, localPayload);
-        addToast('Modifier updated successfully', 'success');
+        addToast('Product option updated successfully' /* was: 'Modifier updated successfully' */, 'success');
       } else {
         addModifier(localPayload);
         // For local-only, pending items can't be easily applied without a real ID
-        addToast('Modifier created successfully', 'success');
+        addToast('Product option created successfully' /* was: 'Modifier created successfully' */, 'success');
       }
       navigate(buildModifiersListPath());
     }
@@ -794,7 +794,7 @@ export default function ModifierFormPage() {
       {isMobile && (
         <div style={{ position: 'sticky', top: 0, zIndex: 50, background: '#fff', borderBottom: '1px solid #E6DFD3', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 12 }}>
           <span onClick={handleCancel} className="material-symbols-rounded" style={{ fontSize: 22, color: '#453F39', cursor: 'pointer' }}>arrow_back</span>
-          <h1 style={{ fontSize: 18, fontWeight: 700, color: '#453F39', margin: 0 }}>{isEdit ? 'Edit Modifier' : 'New Modifier'}</h1>
+          <h1 style={{ fontSize: 18, fontWeight: 700, color: '#453F39', margin: 0 }}>{isEdit ? 'Edit Product Option' : 'New Product Option'}{/* was: {isEdit ? 'Edit Modifier' : 'New Modifier'} */}</h1>
         </div>
       )}
       <div style={isMobile ? { background: '#FFFFFF', minHeight: '100vh', display: 'flex', flexDirection: 'column' as const } : formPageOuterStyle}>
@@ -1233,7 +1233,7 @@ export default function ModifierFormPage() {
             onToggle={toggleAssignedItem}
             onRemove={removeAssignedItem}
             defaultOpen={false}
-            emptyLabel="No items using this modifier yet."
+            emptyLabel="No items using this product option yet." /* was: "No items using this modifier yet." */
             persistedSelectedIds={initialAssignedItemIdsRef.current}
             hideSubtitle
           />
@@ -1273,7 +1273,7 @@ export default function ModifierFormPage() {
             ? deleteConfirmTitle(form.options[optionDeleteIdx].name.trim(), 'Remove')
             : deleteConfirmTitle('this option', 'Remove')
         }
-        description="This option will be removed from the modifier. This cannot be undone."
+        description="This choice will be removed from the product option. This cannot be undone." /* was: "This option will be removed from the modifier. This cannot be undone." */
         confirmLabel="Remove"
       />
 
@@ -1287,7 +1287,7 @@ export default function ModifierFormPage() {
           void handleSave();
         }}
         title="Apply Changes to All Items?"
-        description={`This modifier is applied to ${assignedItemIds.length} item${assignedItemIds.length !== 1 ? 's' : ''}. Your changes will apply to all of them.`}
+        /* was: description={`This modifier is applied to ... */ description={`This product option is applied to ${assignedItemIds.length} item${assignedItemIds.length !== 1 ? 's' : ''}. Your changes will apply to all of them.`}
         confirmLabel="Save Changes"
       />
 
@@ -1301,7 +1301,7 @@ export default function ModifierFormPage() {
           void handleSave();
         }}
         title="Rename Before Saving?"
-        description={`The modifier name still contains "(Copy)". It's recommended to rename it to avoid confusion. Save anyway?`}
+        /* was: description={`The modifier name still contains ... */ description={`The product option name still contains "(Copy)". It's recommended to rename it to avoid confusion. Save anyway?`}
         confirmLabel="Save Anyway"
       />
       <DiscardChangesModal open={showDiscardModal} onKeepEditing={handleKeepEditing} onConfirm={handleConfirmDiscard} />

@@ -47,7 +47,8 @@ function SlideTwoIllustration() {
     { icon: 'schedule', label: 'Sessions', desc: 'When', color: PURPLE },
     { icon: 'category', label: 'Categories', desc: 'Where', color: ACCENT },
     { icon: 'countertops', label: 'Kitchen Stations', desc: 'Routing', color: TEAL },
-    { icon: 'tune', label: 'Modifiers', desc: 'Customisation', color: ORANGE },
+    // { icon: 'tune', label: 'Modifiers', desc: 'Customisation', color: ORANGE },
+    { icon: 'tune', label: 'Product Options', desc: 'Customisation', color: ORANGE },
     { icon: 'inventory_2', label: 'Items', desc: 'Your products', color: ACCENT },
   ];
   return (
@@ -157,7 +158,8 @@ function SlideFiveIllustration() {
     { num: 2, icon: 'countertops', label: 'Kitchen Stations', desc: 'Define prep areas', color: TEAL },
     // { num: 3, icon: 'category', label: 'Categories', desc: 'Organise menu sections', color: ACCENT },
     { num: 3, icon: 'category', label: 'Categories', desc: 'Organise store sections', color: ACCENT },
-    { num: 4, icon: 'tune', label: 'Modifiers', desc: 'Set up customisation', color: ORANGE },
+    // { num: 4, icon: 'tune', label: 'Modifiers', desc: 'Set up customisation', color: ORANGE },
+    { num: 4, icon: 'tune', label: 'Product Options', desc: 'Set up customisation', color: ORANGE },
     { num: 5, icon: 'inventory_2', label: 'Items', desc: 'Add your products', color: ACCENT },
     // { num: 6, icon: 'rocket_launch', label: 'Go Live', desc: 'Sync and serve', color: GREEN },
     { num: 6, icon: 'rocket_launch', label: 'Go Live', desc: 'Sync and sell', color: GREEN },
@@ -194,12 +196,14 @@ const OVERVIEW_SLIDES: TutorialSlide[] = [
   {
     illustration: <SlideTwoIllustration />,
     headline: "The Building Blocks",
-    body: "Four foundational entities power your catalog: Sessions (when), Categories (where), Kitchen Stations (routing), and Modifiers (customisation). Set these up first, then add your items.",
+    // body: "Four foundational entities power your catalog: Sessions (when), Categories (where), Kitchen Stations (routing), and Modifiers (customisation). Set these up first, then add your items.",
+    body: "Four foundational entities power your catalog: Sessions (when), Categories (where), Kitchen Stations (routing), and Product Options (customisation). Set these up first, then add your items.",
   },
   {
     illustration: <SlideThreeIllustration />,
     headline: "Items — The Heart of Everything",
-    body: "Every item connects to categories, sessions, kitchen stations, and modifiers. Name it, price it, categorise it, assign it — and it appears everywhere.",
+    // body: "Every item connects to categories, sessions, kitchen stations, and modifiers. Name it, price it, categorise it, assign it — and it appears everywhere.",
+    body: "Every item connects to categories, sessions, kitchen stations, and product options. Name it, price it, categorise it, assign it — and it appears everywhere.",
   },
   {
     illustration: <SlideFourIllustration />,
@@ -211,7 +215,8 @@ const OVERVIEW_SLIDES: TutorialSlide[] = [
   {
     illustration: <SlideFiveIllustration />,
     headline: "Where to Start",
-    body: "Follow this order: Sessions → Kitchen Stations → Categories → Modifiers → Items → Go Live. Start with Sessions and work your way down.",
+    // body: "Follow this order: Sessions → Kitchen Stations → Categories → Modifiers → Items → Go Live. Start with Sessions and work your way down.",
+    body: "Follow this order: Sessions → Kitchen Stations → Categories → Product Options → Items → Go Live. Start with Sessions and work your way down.",
   },
 ];
 

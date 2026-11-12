@@ -937,7 +937,7 @@ function* fetchModifiersWorker(action: ReturnType<typeof A.fetchModifiersRequest
     yield put(A.fetchModifiersSuccess({ modifiers, locationId }));
     deferred?.resolve();
   } catch (e) {
-    const msg = e instanceof Error ? e.message : 'Failed to fetch modifiers';
+    const msg = e instanceof Error ? e.message : 'Failed to fetch product options'; /* was: 'Failed to fetch modifiers' */
     yield put(A.fetchModifiersFailure({ error: msg }));
     deferred?.reject(e instanceof Error ? e : new Error(msg));
   }

@@ -431,7 +431,7 @@ const ALL_COLUMNS: ColumnDef[] = [
   // { key: 'age_restriction', label: 'Age', defaultVisible: false, group: 'extended' },
   // Hidden for now (e-commerce storefront):
   // { key: 'kitchen_station', label: 'Kitchen Station', defaultVisible: false, group: 'extended' },
-  { key: 'modifiers', label: 'Modifiers', defaultVisible: false, group: 'extended' },
+  { key: 'modifiers', label: 'Product Options' /* was: 'Modifiers' */, defaultVisible: false, group: 'extended' },
   // { key: 'variations', label: 'Variations', defaultVisible: false, group: 'extended' },
   { key: 'sessions', label: 'Sessions', defaultVisible: false, group: 'extended' },
   // { key: 'order_types', label: 'Order Types', defaultVisible: false, group: 'extended' },
